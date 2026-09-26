@@ -171,8 +171,8 @@ Mtx GiantCake_IMtx5 = IDENTITY;
 Lights1 GiantCake_gicScope2_Light =
     #include "assets/levelGroup/GiantCake/gicScope2/gicScope2.light.inc.c"
 
-Vtx GiantCake_a_model1_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model1/a_model1.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_2Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_2Oclock/CakeWithNoStrawberries_Cream_2Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx6 = IDENTITY;
 unsigned char GiantCake_Pad1[] = FILEPAD;
@@ -184,57 +184,57 @@ unsigned char GiantCake_frosting_ci8_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/frosting.ci8.pal.inc.c"
 };
 
-Gfx GiantCake_a_model1_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model1/a_model1.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_2Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_2Oclock/CakeWithNoStrawberries_Cream_2Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model2_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model2/a_model2.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_8Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_8Oclock/CakeWithNoStrawberries_Cream_8Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx7 = IDENTITY;
 
-Gfx GiantCake_a_model2_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model2/a_model2.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_8Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_8Oclock/CakeWithNoStrawberries_Cream_8Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model3_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model3/a_model3.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_10Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_10Oclock/CakeWithNoStrawberries_Cream_10Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx8 = IDENTITY;
 
-Gfx GiantCake_a_model3_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model3/a_model3.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_10Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_10Oclock/CakeWithNoStrawberries_Cream_10Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model4_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model4/a_model4.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_4Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_4Oclock/CakeWithNoStrawberries_Cream_4Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx9 = IDENTITY;
 
-Gfx GiantCake_a_model4_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model4/a_model4.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_4Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_4Oclock/CakeWithNoStrawberries_Cream_4Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model5_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model5/a_model5.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_12Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_12Oclock/CakeWithNoStrawberries_Cream_12Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx10 = IDENTITY;
 
-Gfx GiantCake_a_model5_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model5/a_model5.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_12Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_12Oclock/CakeWithNoStrawberries_Cream_12Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model6_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model6/a_model6.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Cream_6Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_6Oclock/CakeWithNoStrawberries_Cream_6Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx11 = IDENTITY;
 
-Gfx GiantCake_a_model6_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model6/a_model6.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Cream_6Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Cream_6Oclock/CakeWithNoStrawberries_Cream_6Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model7_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model7/a_model7.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_Frosting_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Frosting/CakeWithNoStrawberries_Frosting.vtx.inc.c"
 };
 Mtx GiantCake_IMtx12 = IDENTITY;
 unsigned char GiantCake_Pad3[] = FILEPAD;
@@ -254,12 +254,12 @@ unsigned char GiantCake_frosting3_ci8_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/frosting3.ci8.pal.inc.c"
 };
 
-Gfx GiantCake_a_model7_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model7/a_model7.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_Frosting_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_Frosting/CakeWithNoStrawberries_Frosting.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model8_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model8/a_model8.vtx.inc.c"
+Vtx GiantCake_CakeWithNoStrawberries_BottomSponge_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_BottomSponge/CakeWithNoStrawberries_BottomSponge.vtx.inc.c"
 };
 Mtx GiantCake_IMtx13 = IDENTITY;
 unsigned char GiantCake_Pad7[] = FILEPAD;
@@ -271,17 +271,17 @@ unsigned char GiantCake_base_ci8_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/base.ci8.pal.inc.c"
 };
 
-Gfx GiantCake_a_model8_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model8/a_model8.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberries_BottomSponge_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberries_BottomSponge/CakeWithNoStrawberries_BottomSponge.gfx.inc.c"
 };
 Mtx GiantCake_IMtx14 = IDENTITY;
 
-Gfx GiantCake_a_model9_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model9/a_model9.gfx.inc.c"
+Gfx GiantCake_CakeWithNoStrawberriesModel_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeWithNoStrawberriesModel/CakeWithNoStrawberriesModel.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model10_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model10/a_model10.vtx.inc.c"
+Vtx GiantCake_WalkingWheel_Axle_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_Axle/WalkingWheel_Axle.vtx.inc.c"
 };
 Mtx GiantCake_IMtx15 = IDENTITY;
 unsigned char GiantCake_Pad9[] = FILEPAD;
@@ -293,35 +293,35 @@ unsigned char GiantCake_crank_ci8_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/crank.ci8.pal.inc.c"
 };
 
-Gfx GiantCake_a_model10_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model10/a_model10.gfx.inc.c"
+Gfx GiantCake_WalkingWheel_Axle_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_Axle/WalkingWheel_Axle.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model11_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model11/a_model11.vtx.inc.c"
+Vtx GiantCake_WalkingWheel_SweepArmOne_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_SweepArmOne/WalkingWheel_SweepArmOne.vtx.inc.c"
 };
 Mtx GiantCake_IMtx16 = IDENTITY;
 
-Gfx GiantCake_a_model11_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model11/a_model11.gfx.inc.c"
+Gfx GiantCake_WalkingWheel_SweepArmOne_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_SweepArmOne/WalkingWheel_SweepArmOne.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model12_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model12/a_model12.vtx.inc.c"
+Vtx GiantCake_WalkingWheel_SweepArmTwo_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_SweepArmTwo/WalkingWheel_SweepArmTwo.vtx.inc.c"
 };
 Mtx GiantCake_IMtx17 = IDENTITY;
 
-Gfx GiantCake_a_model12_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model12/a_model12.gfx.inc.c"
+Gfx GiantCake_WalkingWheel_SweepArmTwo_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheel_SweepArmTwo/WalkingWheel_SweepArmTwo.gfx.inc.c"
 };
 Mtx GiantCake_IMtx18 = IDENTITY;
 
-Gfx GiantCake_a_model13_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model13/a_model13.gfx.inc.c"
+Gfx GiantCake_WalkingWheelModel_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/WalkingWheelModel/WalkingWheelModel.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model14_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model14/a_model14.vtx.inc.c"
+Vtx GiantCake_Strawberry_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry/Strawberry.vtx.inc.c"
 };
 Mtx GiantCake_IMtx19 = IDENTITY;
 unsigned char GiantCake_Pad11[] = FILEPAD;
@@ -333,80 +333,80 @@ unsigned char GiantCake_strawberry_ci8_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/strawberry.ci8.pal.inc.c"
 };
 
-Gfx GiantCake_a_model14_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model14/a_model14.gfx.inc.c"
+Gfx GiantCake_Strawberry_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry/Strawberry.gfx.inc.c"
 };
 Mtx GiantCake_IMtx20 = IDENTITY;
 
-Gfx GiantCake_a_model15_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model15/a_model15.gfx.inc.c"
+Gfx GiantCake_StrawberryModel_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/StrawberryModel/StrawberryModel.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model16_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model16/a_model16.vtx.inc.c"
+Vtx GiantCake_Cream_8Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_8Oclock/Cream_8Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx21 = IDENTITY;
 
-Gfx GiantCake_a_model16_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model16/a_model16.gfx.inc.c"
+Gfx GiantCake_Cream_8Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_8Oclock/Cream_8Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model17_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model17/a_model17.vtx.inc.c"
+Vtx GiantCake_Cream_2Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_2Oclock/Cream_2Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx22 = IDENTITY;
 
-Gfx GiantCake_a_model17_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model17/a_model17.gfx.inc.c"
+Gfx GiantCake_Cream_2Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_2Oclock/Cream_2Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model18_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model18/a_model18.vtx.inc.c"
+Vtx GiantCake_Cream_4Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_4Oclock/Cream_4Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx23 = IDENTITY;
 
-Gfx GiantCake_a_model18_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model18/a_model18.gfx.inc.c"
+Gfx GiantCake_Cream_4Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_4Oclock/Cream_4Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model19_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model19/a_model19.vtx.inc.c"
+Vtx GiantCake_Cream_10Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_10Oclock/Cream_10Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx24 = IDENTITY;
 
-Gfx GiantCake_a_model19_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model19/a_model19.gfx.inc.c"
+Gfx GiantCake_Cream_10Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_10Oclock/Cream_10Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model20_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model20/a_model20.vtx.inc.c"
+Vtx GiantCake_Cream_6Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_6Oclock/Cream_6Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx25 = IDENTITY;
 
-Gfx GiantCake_a_model20_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model20/a_model20.gfx.inc.c"
+Gfx GiantCake_Cream_6Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_6Oclock/Cream_6Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model21_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model21/a_model21.vtx.inc.c"
+Vtx GiantCake_Cream_12Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_12Oclock/Cream_12Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx26 = IDENTITY;
 
-Gfx GiantCake_a_model21_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model21/a_model21.gfx.inc.c"
+Gfx GiantCake_Cream_12Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Cream_12Oclock/Cream_12Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model22_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model22/a_model22.vtx.inc.c"
+Vtx GiantCake_Frosting_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Frosting/Frosting.vtx.inc.c"
 };
 Mtx GiantCake_IMtx27 = IDENTITY;
 
-Gfx GiantCake_a_model22_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model22/a_model22.gfx.inc.c"
+Gfx GiantCake_Frosting_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Frosting/Frosting.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model23_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model23/a_model23.vtx.inc.c"
+Vtx GiantCake_BottomSponge_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/BottomSponge/BottomSponge.vtx.inc.c"
 };
 Mtx GiantCake_IMtx28 = IDENTITY;
 unsigned char GiantCake_Pad13[] = FILEPAD;
@@ -418,310 +418,310 @@ unsigned char GiantCake_color_ci4_PAL[] = {
 #include "build/assets/levelGroup/GiantCake/img/color.ci4.pal.inc.c"
 };
 
-Gfx GiantCake_a_model23_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model23/a_model23.gfx.inc.c"
+Gfx GiantCake_BottomSponge_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/BottomSponge/BottomSponge.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model24_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model24/a_model24.vtx.inc.c"
+Vtx GiantCake_SweepArmOne_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/SweepArmOne/SweepArmOne.vtx.inc.c"
 };
 Mtx GiantCake_IMtx29 = IDENTITY;
 
-Gfx GiantCake_a_model24_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model24/a_model24.gfx.inc.c"
+Gfx GiantCake_SweepArmOne_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/SweepArmOne/SweepArmOne.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model25_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model25/a_model25.vtx.inc.c"
+Vtx GiantCake_SweepArmTwo_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/SweepArmTwo/SweepArmTwo.vtx.inc.c"
 };
 Mtx GiantCake_IMtx30 = IDENTITY;
 
-Gfx GiantCake_a_model25_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model25/a_model25.gfx.inc.c"
+Gfx GiantCake_SweepArmTwo_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/SweepArmTwo/SweepArmTwo.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model26_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model26/a_model26.vtx.inc.c"
+Vtx GiantCake_Axle_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Axle/Axle.vtx.inc.c"
 };
 Mtx GiantCake_IMtx31 = IDENTITY;
 
-Gfx GiantCake_a_model26_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model26/a_model26.gfx.inc.c"
+Gfx GiantCake_Axle_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Axle/Axle.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model27_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model27/a_model27.vtx.inc.c"
+Vtx GiantCake_Strawberry_1Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_1Oclock/Strawberry_1Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx32 = IDENTITY;
 
-Gfx GiantCake_a_model27_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model27/a_model27.gfx.inc.c"
+Gfx GiantCake_Strawberry_1Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_1Oclock/Strawberry_1Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model28_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model28/a_model28.vtx.inc.c"
+Vtx GiantCake_Strawberry_3Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_3Oclock/Strawberry_3Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx33 = IDENTITY;
 
-Gfx GiantCake_a_model28_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model28/a_model28.gfx.inc.c"
+Gfx GiantCake_Strawberry_3Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_3Oclock/Strawberry_3Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model29_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model29/a_model29.vtx.inc.c"
+Vtx GiantCake_Strawberry_5Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_5Oclock/Strawberry_5Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx34 = IDENTITY;
 
-Gfx GiantCake_a_model29_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model29/a_model29.gfx.inc.c"
+Gfx GiantCake_Strawberry_5Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_5Oclock/Strawberry_5Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model30_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model30/a_model30.vtx.inc.c"
+Vtx GiantCake_Strawberry_7Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_7Oclock/Strawberry_7Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx35 = IDENTITY;
 
-Gfx GiantCake_a_model30_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model30/a_model30.gfx.inc.c"
+Gfx GiantCake_Strawberry_7Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_7Oclock/Strawberry_7Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model31_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model31/a_model31.vtx.inc.c"
+Vtx GiantCake_Strawberry_9Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_9Oclock/Strawberry_9Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx36 = IDENTITY;
 
-Gfx GiantCake_a_model31_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model31/a_model31.gfx.inc.c"
+Gfx GiantCake_Strawberry_9Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_9Oclock/Strawberry_9Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model32_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model32/a_model32.vtx.inc.c"
+Vtx GiantCake_Strawberry_11Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_11Oclock/Strawberry_11Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx37 = IDENTITY;
 
-Gfx GiantCake_a_model32_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model32/a_model32.gfx.inc.c"
+Gfx GiantCake_Strawberry_11Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/Strawberry_11Oclock/Strawberry_11Oclock.gfx.inc.c"
 };
 Mtx GiantCake_IMtx38 = IDENTITY;
 
-Gfx GiantCake_a_model33_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model33/a_model33.gfx.inc.c"
+Gfx GiantCake_CakeModel_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/CakeModel/CakeModel.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model34_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model34/a_model34.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_8Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_8Oclock/DestroyedCake_Cream_8Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx39 = IDENTITY;
 
-Gfx GiantCake_a_model34_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model34/a_model34.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_8Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_8Oclock/DestroyedCake_Cream_8Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model35_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model35/a_model35.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_2Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_2Oclock/DestroyedCake_Cream_2Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx40 = IDENTITY;
 
-Gfx GiantCake_a_model35_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model35/a_model35.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_2Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_2Oclock/DestroyedCake_Cream_2Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model36_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model36/a_model36.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_4Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_4Oclock/DestroyedCake_Cream_4Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx41 = IDENTITY;
 
-Gfx GiantCake_a_model36_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model36/a_model36.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_4Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_4Oclock/DestroyedCake_Cream_4Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model37_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model37/a_model37.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_10Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_10Oclock/DestroyedCake_Cream_10Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx42 = IDENTITY;
 
-Gfx GiantCake_a_model37_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model37/a_model37.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_10Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_10Oclock/DestroyedCake_Cream_10Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model38_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model38/a_model38.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_6Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_6Oclock/DestroyedCake_Cream_6Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx43 = IDENTITY;
 
-Gfx GiantCake_a_model38_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model38/a_model38.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_6Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_6Oclock/DestroyedCake_Cream_6Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model39_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model39/a_model39.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Cream_12Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_12Oclock/DestroyedCake_Cream_12Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx44 = IDENTITY;
 
-Gfx GiantCake_a_model39_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model39/a_model39.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Cream_12Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Cream_12Oclock/DestroyedCake_Cream_12Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model40_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model40/a_model40.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Frosting_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Frosting/DestroyedCake_Frosting.vtx.inc.c"
 };
 Mtx GiantCake_IMtx45 = IDENTITY;
 
-Gfx GiantCake_a_model40_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model40/a_model40.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Frosting_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Frosting/DestroyedCake_Frosting.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model41_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model41/a_model41.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_BottomSponge_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_BottomSponge/DestroyedCake_BottomSponge.vtx.inc.c"
 };
 Mtx GiantCake_IMtx46 = IDENTITY;
 
-Gfx GiantCake_a_model41_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model41/a_model41.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_BottomSponge_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_BottomSponge/DestroyedCake_BottomSponge.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model42_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model42/a_model42.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_SweepArmOne_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_SweepArmOne/DestroyedCake_SweepArmOne.vtx.inc.c"
 };
 Mtx GiantCake_IMtx47 = IDENTITY;
 
-Gfx GiantCake_a_model42_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model42/a_model42.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_SweepArmOne_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_SweepArmOne/DestroyedCake_SweepArmOne.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model43_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model43/a_model43.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_SweepArmTwo_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_SweepArmTwo/DestroyedCake_SweepArmTwo.vtx.inc.c"
 };
 Mtx GiantCake_IMtx48 = IDENTITY;
 
-Gfx GiantCake_a_model43_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model43/a_model43.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_SweepArmTwo_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_SweepArmTwo/DestroyedCake_SweepArmTwo.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model44_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model44/a_model44.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Axle_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Axle/DestroyedCake_Axle.vtx.inc.c"
 };
 Mtx GiantCake_IMtx49 = IDENTITY;
 
-Gfx GiantCake_a_model44_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model44/a_model44.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Axle_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Axle/DestroyedCake_Axle.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model45_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model45/a_model45.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_1Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_1Oclock/DestroyedCake_Strawberry_1Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx50 = IDENTITY;
 
-Gfx GiantCake_a_model45_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model45/a_model45.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_1Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_1Oclock/DestroyedCake_Strawberry_1Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model46_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model46/a_model46.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_3Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_3Oclock/DestroyedCake_Strawberry_3Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx51 = IDENTITY;
 
-Gfx GiantCake_a_model46_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model46/a_model46.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_3Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_3Oclock/DestroyedCake_Strawberry_3Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model47_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model47/a_model47.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_5Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_5Oclock/DestroyedCake_Strawberry_5Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx52 = IDENTITY;
 
-Gfx GiantCake_a_model47_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model47/a_model47.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_5Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_5Oclock/DestroyedCake_Strawberry_5Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model48_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model48/a_model48.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_7Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_7Oclock/DestroyedCake_Strawberry_7Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx53 = IDENTITY;
 
-Gfx GiantCake_a_model48_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model48/a_model48.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_7Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_7Oclock/DestroyedCake_Strawberry_7Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model49_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model49/a_model49.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_9Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_9Oclock/DestroyedCake_Strawberry_9Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx54 = IDENTITY;
 
-Gfx GiantCake_a_model49_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model49/a_model49.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_9Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_9Oclock/DestroyedCake_Strawberry_9Oclock.gfx.inc.c"
 };
 
-Vtx GiantCake_a_model50_Vtx[] = {
-    #include "assets/levelGroup/GiantCake/a_model50/a_model50.vtx.inc.c"
+Vtx GiantCake_DestroyedCake_Strawberry_11Oclock_Vtx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_11Oclock/DestroyedCake_Strawberry_11Oclock.vtx.inc.c"
 };
 Mtx GiantCake_IMtx55 = IDENTITY;
 
-Gfx GiantCake_a_model50_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model50/a_model50.gfx.inc.c"
+Gfx GiantCake_DestroyedCake_Strawberry_11Oclock_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCake_Strawberry_11Oclock/DestroyedCake_Strawberry_11Oclock.gfx.inc.c"
 };
 Mtx GiantCake_IMtx56 = IDENTITY;
 
-Gfx GiantCake_a_model51_Gfx[] = {
-    #include "assets/levelGroup/GiantCake/a_model51/a_model51.gfx.inc.c"
+Gfx GiantCake_DestroyedCakeModel_Gfx[] = {
+    #include "assets/levelGroup/GiantCake/DestroyedCakeModel/DestroyedCakeModel.gfx.inc.c"
 };
 
-Anim GiantCake_unk1Header_Animh = {
-    #include "assets/levelGroup/GiantCake/anim/unk1Header.animH.inc.c"
+Anim GiantCake_CakeWithNoStrawberriesOpeningHeader_Animh = {
+    #include "assets/levelGroup/GiantCake/anim/CakeWithNoStrawberriesOpeningHeader.animH.inc.c"
 };
 
-Mtx GiantCake_unk1_Animarr[15][8] = {
-    #include "assets/levelGroup/GiantCake/anim/unk1.animArr.inc.c"
+Mtx GiantCake_CakeWithNoStrawberriesOpening_Animarr[15][8] = {
+    #include "assets/levelGroup/GiantCake/anim/CakeWithNoStrawberriesOpening.animArr.inc.c"
 };
 
-AnimPointer GiantCake_unk1Pointers_Animp[1] = {
-{&GiantCake_unk1Header_Animh.frames, &GiantCake_unk1Header_Animh.objects, GiantCake_unk1_Animarr[0]}
+AnimPointer GiantCake_CakeWithNoStrawberriesOpeningPointers_Animp[1] = {
+{&GiantCake_CakeWithNoStrawberriesOpeningHeader_Animh.frames, &GiantCake_CakeWithNoStrawberriesOpeningHeader_Animh.objects, GiantCake_CakeWithNoStrawberriesOpening_Animarr[0]}
 };
 
-Anim GiantCake_unk2Header_Animh = {
-    #include "assets/levelGroup/GiantCake/anim/unk2Header.animH.inc.c"
+Anim GiantCake_WalkingWheelIdleHeader_Animh = {
+    #include "assets/levelGroup/GiantCake/anim/WalkingWheelIdleHeader.animH.inc.c"
 };
 
-Mtx GiantCake_unk2_Animarr[2][3] = {
-    #include "assets/levelGroup/GiantCake/anim/unk2.animArr.inc.c"
+Mtx GiantCake_WalkingWheelIdle_Animarr[2][3] = {
+    #include "assets/levelGroup/GiantCake/anim/WalkingWheelIdle.animArr.inc.c"
 };
 
-AnimPointer GiantCake_unk2Pointers_Animp[1] = {
-{&GiantCake_unk2Header_Animh.frames, &GiantCake_unk2Header_Animh.objects, GiantCake_unk2_Animarr[0]}
+AnimPointer GiantCake_WalkingWheelIdlePointers_Animp[1] = {
+{&GiantCake_WalkingWheelIdleHeader_Animh.frames, &GiantCake_WalkingWheelIdleHeader_Animh.objects, GiantCake_WalkingWheelIdle_Animarr[0]}
 };
 
-Anim GiantCake_unk3Header_Animh = {
-    #include "assets/levelGroup/GiantCake/anim/unk3Header.animH.inc.c"
+Anim GiantCake_StrawberryIdleHeader_Animh = {
+    #include "assets/levelGroup/GiantCake/anim/StrawberryIdleHeader.animH.inc.c"
 };
 
-Mtx GiantCake_unk3_Animarr[1][1] = {
-    #include "assets/levelGroup/GiantCake/anim/unk3.animArr.inc.c"
+Mtx GiantCake_StrawberryIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/GiantCake/anim/StrawberryIdle.animArr.inc.c"
 };
 
-AnimPointer GiantCake_unk3Pointers_Animp[1] = {
-{&GiantCake_unk3Header_Animh.frames, &GiantCake_unk3Header_Animh.objects, GiantCake_unk3_Animarr[0]}
+AnimPointer GiantCake_StrawberryIdlePointers_Animp[1] = {
+{&GiantCake_StrawberryIdleHeader_Animh.frames, &GiantCake_StrawberryIdleHeader_Animh.objects, GiantCake_StrawberryIdle_Animarr[0]}
 };
 
-Anim GiantCake_unk4Header_Animh = {
-    #include "assets/levelGroup/GiantCake/anim/unk4Header.animH.inc.c"
+Anim GiantCake_CakeOpeningHeader_Animh = {
+    #include "assets/levelGroup/GiantCake/anim/CakeOpeningHeader.animH.inc.c"
 };
 
-Mtx GiantCake_unk4_Animarr[15][17] = {
-    #include "assets/levelGroup/GiantCake/anim/unk4.animArr.inc.c"
+Mtx GiantCake_CakeOpening_Animarr[15][17] = {
+    #include "assets/levelGroup/GiantCake/anim/CakeOpening.animArr.inc.c"
 };
 
-AnimPointer GiantCake_unk4Pointers_Animp[1] = {
-{&GiantCake_unk4Header_Animh.frames, &GiantCake_unk4Header_Animh.objects, GiantCake_unk4_Animarr[0]}
+AnimPointer GiantCake_CakeOpeningPointers_Animp[1] = {
+{&GiantCake_CakeOpeningHeader_Animh.frames, &GiantCake_CakeOpeningHeader_Animh.objects, GiantCake_CakeOpening_Animarr[0]}
 };
 
-Anim GiantCake_unk5Header_Animh = {
-    #include "assets/levelGroup/GiantCake/anim/unk5Header.animH.inc.c"
+Anim GiantCake_DestroyedCakeIdleHeader_Animh = {
+    #include "assets/levelGroup/GiantCake/anim/DestroyedCakeIdleHeader.animH.inc.c"
 };
 
-Mtx GiantCake_unk5_Animarr[2][17] = {
-    #include "assets/levelGroup/GiantCake/anim/unk5.animArr.inc.c"
+Mtx GiantCake_DestroyedCakeIdle_Animarr[2][17] = {
+    #include "assets/levelGroup/GiantCake/anim/DestroyedCakeIdle.animArr.inc.c"
 };
 
-AnimPointer GiantCake_unk5Pointers_Animp[1] = {
-{&GiantCake_unk5Header_Animh.frames, &GiantCake_unk5Header_Animh.objects, GiantCake_unk5_Animarr[0]}
+AnimPointer GiantCake_DestroyedCakeIdlePointers_Animp[1] = {
+{&GiantCake_DestroyedCakeIdleHeader_Animh.frames, &GiantCake_DestroyedCakeIdleHeader_Animh.objects, GiantCake_DestroyedCakeIdle_Animarr[0]}
 };

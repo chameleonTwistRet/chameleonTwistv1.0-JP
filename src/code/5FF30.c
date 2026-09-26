@@ -447,17 +447,17 @@ typedef struct Unk800FF908 {
 extern Mtx static0_GetupFromKnockback_Animarr[];
 extern Anim static0_GetupFromKnockback_Animh;
 
-Unk_800FFB74 D_800FF908 = {
+AnimDef AnimDef_ChameleonGetupFromKnockback_31 = {
     static0_GetupFromKnockback_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_GetupFromKnockback_Animh.objects,
     &static0_GetupFromKnockback_Animh.frames,
     LIST_END,
 };
 
-Unk_800FFB74 D_800FF91C = {
+AnimDef AnimDef_ChameleonGetupFromKnockback_1 = {
     static0_GetupFromKnockback_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_GetupFromKnockback_Animh.objects,
     &static0_GetupFromKnockback_Animh.frames,
     LIST_END,
@@ -467,9 +467,9 @@ Unk_800FFB74 D_800FF91C = {
 extern Mtx static0_Idle_Animarr[];
 extern Anim static0_Idle_Animh;
 
-Unk_800FFB74 D_800FF930 = {
+AnimDef AnimDef_ChameleonIdle = {
     static0_Idle_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_Idle_Animh.objects,
     &static0_Idle_Animh.frames,
     0,
@@ -479,9 +479,9 @@ Unk_800FFB74 D_800FF930 = {
 extern Mtx static0_Walk_Animarr[];
 extern Anim static0_Walk_Animh;
 
-Unk_800FFB74 D_800FF944 = {
+AnimDef AnimDef_ChameleonWalk = {
     static0_Walk_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_Walk_Animh.objects,
     &static0_Walk_Animh.frames,
     0,
@@ -491,9 +491,9 @@ Unk_800FFB74 D_800FF944 = {
 extern Mtx static0_Run_Animarr[];
 extern Anim static0_Run_Animh;
 
-Unk_800FFB74 D_800FF958 = {
+AnimDef AnimDef_ChameleonRun = {
     static0_Run_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_Run_Animh.objects,
     &static0_Run_Animh.frames,
     0,
@@ -503,9 +503,9 @@ Unk_800FFB74 D_800FF958 = {
 extern Mtx static0_LandFromKnockback_Animarr[];
 extern Anim static0_LandFromKnockback_Animh;
 
-Unk_800FFB74 D_800FF96C = {
+AnimDef AnimDef_ChameleonLandFromKnockback = {
     static0_LandFromKnockback_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_LandFromKnockback_Animh.objects,
     &static0_LandFromKnockback_Animh.frames,
     LIST_END,
@@ -515,17 +515,17 @@ Unk_800FFB74 D_800FF96C = {
 extern Mtx static0_Jump_Animarr[];
 extern Anim static0_Jump_Animh;
 
-Unk_800FFB74 D_800FF980 = {
+AnimDef AnimDef_ChameleonJump_7 = {
     static0_Jump_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_Jump_Animh.objects,
     &static0_Jump_Animh.frames,
     LIST_END,
 };
 
-Unk_800FFB74 D_800FF994 = {
+AnimDef AnimDef_ChameleonJump_6 = {
     static0_Jump_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &static0_Jump_Animh.objects,
     &static0_Jump_Animh.frames,
     LIST_END,
@@ -535,9 +535,9 @@ Unk_800FFB74 D_800FF994 = {
 extern Mtx Animations_unk1_Animarr[];
 extern Anim Animations_unk1Header_Animh;
 
-Unk_800FFB74 D_800FF9A8 = {
+AnimDef D_800FF9A8 = {
     Animations_unk1_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &Animations_unk1Header_Animh.objects,
     &Animations_unk1Header_Animh.frames,
     LIST_END,
@@ -547,268 +547,268 @@ Unk_800FFB74 D_800FF9A8 = {
 extern Mtx Animations_unk2_Animarr[];
 extern Anim Animations_unk2Header_Animh;
 
-Unk_800FFB74 D_800FF9BC = {
+AnimDef D_800FF9BC = {
     Animations_unk2_Animarr,
-    Davy_restAssociate_Gfx,
+    Davy_Model_Gfx,
     &Animations_unk2Header_Animh.objects,
     &Animations_unk2Header_Animh.frames,
     LIST_END,
 };
 
 
-extern Gfx BombSnake_unkF_Gfx[];
-extern Mtx BombSnake_unk1_Animarr[];
-extern Anim BombSnake_unk1Header_Animh;
+extern Gfx BombSnake_HeadModel_Gfx[];
+extern Mtx BombSnake_HeadIdle_Animarr[];
+extern Anim BombSnake_HeadIdleHeader_Animh;
 
-Unk_800FFB74 D_800FF9D0 = {
-    BombSnake_unk1_Animarr,
-    BombSnake_unkF_Gfx,
-    &BombSnake_unk1Header_Animh.objects,
-    &BombSnake_unk1Header_Animh.frames,
+AnimDef AnimDef_BombSnakeHeadIdle = {
+    BombSnake_HeadIdle_Animarr,
+    BombSnake_HeadModel_Gfx,
+    &BombSnake_HeadIdleHeader_Animh.objects,
+    &BombSnake_HeadIdleHeader_Animh.frames,
     LIST_END,
 };
 
 
-extern Gfx BombSnake_unk11_Gfx[];
-extern Mtx BombSnake_unk2_Animarr[];
-extern Anim BombSnake_unk2Header_Animh;
+extern Gfx BombSnake_TailModel_Gfx[];
+extern Mtx BombSnake_TailIdle_Animarr[];
+extern Anim BombSnake_TailIdleHeader_Animh;
 
-Unk_800FFB74 D_800FF9E4 = {
-    BombSnake_unk2_Animarr,
-    BombSnake_unk11_Gfx,
-    &BombSnake_unk2Header_Animh.objects,
-    &BombSnake_unk2Header_Animh.frames,
+AnimDef AnimDef_BombSnakeTailIdle = {
+    BombSnake_TailIdle_Animarr,
+    BombSnake_TailModel_Gfx,
+    &BombSnake_TailIdleHeader_Animh.objects,
+    &BombSnake_TailIdleHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx BombSnake_unk3_Animarr[];
-extern Anim BombSnake_unk3Header_Animh;
+extern Mtx BombSnake_TailLightMove_Animarr[];
+extern Anim BombSnake_TailLightMoveHeader_Animh;
 
-Unk_800FFB74 D_800FF9F8 = {
-    BombSnake_unk3_Animarr,
-    BombSnake_unk11_Gfx,
-    &BombSnake_unk3Header_Animh.objects,
-    &BombSnake_unk3Header_Animh.frames,
+AnimDef AnimDef_BombSnakeTailLightMove = {
+    BombSnake_TailLightMove_Animarr,
+    BombSnake_TailModel_Gfx,
+    &BombSnake_TailLightMoveHeader_Animh.objects,
+    &BombSnake_TailLightMoveHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx BombSnake_unk4_Animarr[];
-extern Anim BombSnake_unk4Header_Animh;
+extern Mtx BombSnake_TailHeavyMove_Animarr[];
+extern Anim BombSnake_TailHeavyMoveHeader_Animh;
 
-Unk_800FFB74 D_800FFA0C = {
-    BombSnake_unk4_Animarr,
-    BombSnake_unk11_Gfx,
-    &BombSnake_unk4Header_Animh.objects,
-    &BombSnake_unk4Header_Animh.frames,
+AnimDef AnimDef_BombSnakeTailHeavyMove = {
+    BombSnake_TailHeavyMove_Animarr,
+    BombSnake_TailModel_Gfx,
+    &BombSnake_TailHeavyMoveHeader_Animh.objects,
+    &BombSnake_TailHeavyMoveHeader_Animh.frames,
     LIST_END,
 };
 
 
-extern Gfx Quintella_a_model18_Gfx[];
-extern Mtx Quintella_unk7_Animarr[];
-extern Anim Quintella_unk7Header_Animh;
+extern Gfx Quintella_Model_Gfx[];
+extern Mtx Quintella_StageClearJumpedOn_Animarr[];
+extern Anim Quintella_StageClearJumpedOnHeader_Animh;
 
-Unk_800FFB74 D_800FFA20 = {
-    Quintella_unk7_Animarr,
-    Quintella_a_model18_Gfx,
-    &Quintella_unk7Header_Animh.objects,
-    &Quintella_unk7Header_Animh.frames,
+AnimDef AnimDef_QuintellaStageClearJumpedOn = {
+    Quintella_StageClearJumpedOn_Animarr,
+    Quintella_Model_Gfx,
+    &Quintella_StageClearJumpedOnHeader_Animh.objects,
+    &Quintella_StageClearJumpedOnHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx Quintella_unk8_Animarr[];
-extern Anim Quintella_unk8Header_Animh;
+extern Mtx Quintella_StageClearAirborne_Animarr[];
+extern Anim Quintella_StageClearAirborneHeader_Animh;
 
-Unk_800FFB74 D_800FFA34 = {
-    Quintella_unk8_Animarr,
-    Quintella_a_model18_Gfx,
-    &Quintella_unk8Header_Animh.objects,
-    &Quintella_unk8Header_Animh.frames,
+AnimDef AnimDef_QuintellaStageClearAirborne = {
+    Quintella_StageClearAirborne_Animarr,
+    Quintella_Model_Gfx,
+    &Quintella_StageClearAirborneHeader_Animh.objects,
+    &Quintella_StageClearAirborneHeader_Animh.frames,
     0,
 };
 
-extern Mtx Quintella_unk9_Animarr[];
-extern Anim Quintella_unk9Header_Animh;
+extern Mtx Quintella_StageClearBounce_Animarr[];
+extern Anim Quintella_StageClearBounceHeader_Animh;
 
-Unk_800FFB74 D_800FFA48 = {
-    Quintella_unk9_Animarr,
-    Quintella_a_model18_Gfx,
-    &Quintella_unk9Header_Animh.objects,
-    &Quintella_unk9Header_Animh.frames,
+AnimDef AnimDef_QuintellaStageClearBounce = {
+    Quintella_StageClearBounce_Animarr,
+    Quintella_Model_Gfx,
+    &Quintella_StageClearBounceHeader_Animh.objects,
+    &Quintella_StageClearBounceHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx Quintella_unk10_Animarr[];
-extern Anim Quintella_unk10Header_Animh;
+extern Mtx Quintella_StageClearDeath_Animarr[];
+extern Anim Quintella_StageClearDeathHeader_Animh;
 
-Unk_800FFB74 D_800FFA5C = {
-    Quintella_unk10_Animarr,
-    Quintella_a_model18_Gfx,
-    &Quintella_unk10Header_Animh.objects,
-    &Quintella_unk10Header_Animh.frames,
+AnimDef AnimDef_QuintellaStageClearDeath = {
+    Quintella_StageClearDeath_Animarr,
+    Quintella_Model_Gfx,
+    &Quintella_StageClearDeathHeader_Animh.objects,
+    &Quintella_StageClearDeathHeader_Animh.frames,
     LIST_END,
 };
 
 extern Mtx Quintella_unk11_Animarr[];
 extern Anim Quintella_unk11Header_Animh;
 
-Unk_800FFB74 D_800FFA70 = {
+AnimDef D_800FFA70 = {
     Quintella_unk11_Animarr,
-    Quintella_a_model18_Gfx,
+    Quintella_Model_Gfx,
     &Quintella_unk11Header_Animh.objects,
     &Quintella_unk11Header_Animh.frames,
     LIST_END,
 };
 
 
-extern Gfx LizardKong_a_model12_Gfx[];
-extern Mtx LizardKong_unk5_Animarr[];
-extern Anim LizardKong_unk5Header_Animh;
+extern Gfx LizardKong_Model_Gfx[];
+extern Mtx LizardKong_StageClearFalling_Animarr[];
+extern Anim LizardKong_StageClearFallingHeader_Animh;
 
-Unk_800FFB74 D_800FFA84 = {
-    LizardKong_unk5_Animarr,
-    LizardKong_a_model12_Gfx,
-    &LizardKong_unk5Header_Animh.objects,
-    &LizardKong_unk5Header_Animh.frames,
+AnimDef AnimDef_LizardKongStageClearFalling = {
+    LizardKong_StageClearFalling_Animarr,
+    LizardKong_Model_Gfx,
+    &LizardKong_StageClearFallingHeader_Animh.objects,
+    &LizardKong_StageClearFallingHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx LizardKong_unk6_Animarr[];
-extern Anim LizardKong_unk6Header_Animh;
+extern Mtx LizardKong_StageClearSitUp_Animarr[];
+extern Anim LizardKong_StageClearSitUpHeader_Animh;
 
-Unk_800FFB74 D_800FFA98 = {
-    LizardKong_unk6_Animarr,
-    LizardKong_a_model12_Gfx,
-    &LizardKong_unk6Header_Animh.objects,
-    &LizardKong_unk6Header_Animh.frames,
+AnimDef AnimDef_LizardKongStageClearSitUp = {
+    LizardKong_StageClearSitUp_Animarr,
+    LizardKong_Model_Gfx,
+    &LizardKong_StageClearSitUpHeader_Animh.objects,
+    &LizardKong_StageClearSitUpHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx LizardKong_unk7_Animarr[];
-extern Anim LizardKong_unk7Header_Animh;
+extern Mtx LizardKong_StageClearFinishSitUp_Animarr[];
+extern Anim LizardKong_StageClearFinishSitUpHeader_Animh;
 
-Unk_800FFB74 D_800FFAAC = {
-    LizardKong_unk7_Animarr,
-    LizardKong_a_model12_Gfx,
-    &LizardKong_unk7Header_Animh.objects,
-    &LizardKong_unk7Header_Animh.frames,
+AnimDef AnimDef_LizardKongStageClearFinishSitUp = {
+    LizardKong_StageClearFinishSitUp_Animarr,
+    LizardKong_Model_Gfx,
+    &LizardKong_StageClearFinishSitUpHeader_Animh.objects,
+    &LizardKong_StageClearFinishSitUpHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx LizardKong_unk8_Animarr[];
-extern Anim LizardKong_unk8Header_Animh;
+extern Mtx LizardKong_StageClearKnockedOut_Animarr[];
+extern Anim LizardKong_StageClearKnockedOutHeader_Animh;
 
-Unk_800FFB74 D_800FFAC0 = {
-    LizardKong_unk8_Animarr,
-    LizardKong_a_model12_Gfx,
-    &LizardKong_unk8Header_Animh.objects,
-    &LizardKong_unk8Header_Animh.frames,
+AnimDef AnimDef_LizardKongStageClearKnockedOut = {
+    LizardKong_StageClearKnockedOut_Animarr,
+    LizardKong_Model_Gfx,
+    &LizardKong_StageClearKnockedOutHeader_Animh.objects,
+    &LizardKong_StageClearKnockedOutHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx LizardKong_unk9_Animarr[];
-extern Anim LizardKong_unk9Header_Animh;
+extern Mtx LizardKong_BoulderIdle_Animarr[];
+extern Anim LizardKong_BoulderIdleHeader_Animh;
 
-Unk_800FFB74 D_800FFAD4 = {
-    LizardKong_unk9_Animarr,
-    LizardKong_a_model14_Gfx,
-    &LizardKong_unk9Header_Animh.objects,
-    &LizardKong_unk9Header_Animh.frames,
-    LIST_END,
-};
-
-
-extern Gfx Armadillo_a_model21_Gfx[];
-extern Mtx Armadillo_unk3_Animarr[];
-extern Anim Armadillo_unk3Header_Animh;
-
-Unk_800FFB74 D_800FFAE8 = {
-    Armadillo_unk3_Animarr,
-    Armadillo_a_model21_Gfx,
-    &Armadillo_unk3Header_Animh.objects,
-    &Armadillo_unk3Header_Animh.frames,
-    LIST_END,
-};
-
-extern Mtx Armadillo_unk4_Animarr[];
-extern Anim Armadillo_unk4Header_Animh;
-
-Unk_800FFB74 D_800FFAFC = {
-    Armadillo_unk4_Animarr,
-    Armadillo_a_model21_Gfx,
-    &Armadillo_unk4Header_Animh.objects,
-    &Armadillo_unk4Header_Animh.frames,
-    LIST_END,
-};
-
-extern Mtx Armadillo_unk5_Animarr[];
-extern Anim Armadillo_unk5Header_Animh;
-
-Unk_800FFB74 D_800FFB10 = {
-    Armadillo_unk5_Animarr,
-    Armadillo_a_model21_Gfx,
-    &Armadillo_unk5Header_Animh.objects,
-    &Armadillo_unk5Header_Animh.frames,
-    LIST_END,
-};
-
-extern Mtx Armadillo_unk6_Animarr[];
-extern Anim Armadillo_unk6Header_Animh;
-
-Unk_800FFB74 D_800FFB24 = {
-    Armadillo_unk6_Animarr,
-    Armadillo_a_model21_Gfx,
-    &Armadillo_unk6Header_Animh.objects,
-    &Armadillo_unk6Header_Animh.frames,
-    LIST_END,
-};
-
-extern Mtx GiantCake_unk4_Animarr[];
-extern Gfx GiantCake_a_model33_Gfx[];
-extern Anim GiantCake_unk4Header_Animh;
-
-Unk_800FFB74 D_800FFB38 = {
-    GiantCake_unk4_Animarr,
-    GiantCake_a_model33_Gfx,
-    &GiantCake_unk4Header_Animh.objects,
-    &GiantCake_unk4Header_Animh.frames,
+AnimDef AnimDef_LizardKongBoulderIdle = {
+    LizardKong_BoulderIdle_Animarr,
+    LizardKong_BoulderModel_Gfx,
+    &LizardKong_BoulderIdleHeader_Animh.objects,
+    &LizardKong_BoulderIdleHeader_Animh.frames,
     LIST_END,
 };
 
 
-extern Gfx GiantCake_a_model15_Gfx[];
-extern Mtx GiantCake_unk3_Animarr[];
-extern Anim GiantCake_unk3Header_Animh;
+extern Gfx Armadillo_Model_Gfx[];
+extern Mtx Armadillo_Unroll_Animarr[];
+extern Anim Armadillo_UnrollHeader_Animh;
 
-Unk_800FFB74 D_800FFB4C = {
-    GiantCake_unk3_Animarr,
-    GiantCake_a_model15_Gfx,
-    &GiantCake_unk3Header_Animh.objects,
-    &GiantCake_unk3Header_Animh.frames,
+AnimDef AnimDef_ArmadilloUnroll = {
+    Armadillo_Unroll_Animarr,
+    Armadillo_Model_Gfx,
+    &Armadillo_UnrollHeader_Animh.objects,
+    &Armadillo_UnrollHeader_Animh.frames,
     LIST_END,
 };
 
-extern Mtx GiantCake_unk5_Animarr[];
-extern Gfx GiantCake_a_model51_Gfx[];
-extern Anim GiantCake_unk5Header_Animh;
+extern Mtx Armadillo_WiggleUpsideDown_Animarr[];
+extern Anim Armadillo_WiggleUpsideDownHeader_Animh;
 
-Unk_800FFB74 D_800FFB60 = {
-    GiantCake_unk5_Animarr,
-    GiantCake_a_model51_Gfx,
-    &GiantCake_unk5Header_Animh.objects,
-    &GiantCake_unk5Header_Animh.frames,
+AnimDef AnimDef_ArmadilloWiggleUpsideDown = {
+    Armadillo_WiggleUpsideDown_Animarr,
+    Armadillo_Model_Gfx,
+    &Armadillo_WiggleUpsideDownHeader_Animh.objects,
+    &Armadillo_WiggleUpsideDownHeader_Animh.frames,
     LIST_END,
 };
 
-Unk_800FFB74* D_800FFB74[] = {
-    NULL, &D_800FF91C, &D_800FF930, &D_800FF944,
-    &D_800FF958, &D_800FF96C, &D_800FF994, &D_800FF980,
-    &D_800FF9A8, &D_800FF9BC, &D_800FFA20, &D_800FFA34,
-    &D_800FFA48, &D_800FFA5C, &D_800FFA70, &D_800FF9D0,
-    &D_800FF9E4, &D_800FF9F8, &D_800FFA0C, &D_800FFA84,
-    &D_800FFA98, &D_800FFAAC, &D_800FFAC0, &D_800FFAD4,
-    &D_800FFAE8, &D_800FFAFC, &D_800FFB10, &D_800FFB24,
-    &D_800FFB38, &D_800FFB4C, &D_800FFB60, &D_800FF908,
+extern Mtx Armadillo_TryGetUp_Animarr[];
+extern Anim Armadillo_TryGetUpHeader_Animh;
+
+AnimDef AnimDef_ArmadilloTryGetUp = {
+    Armadillo_TryGetUp_Animarr,
+    Armadillo_Model_Gfx,
+    &Armadillo_TryGetUpHeader_Animh.objects,
+    &Armadillo_TryGetUpHeader_Animh.frames,
+    LIST_END,
+};
+
+extern Mtx Armadillo_GetUp_Animarr[];
+extern Anim Armadillo_GetUpHeader_Animh;
+
+AnimDef AnimDef_ArmadilloGetUp = {
+    Armadillo_GetUp_Animarr,
+    Armadillo_Model_Gfx,
+    &Armadillo_GetUpHeader_Animh.objects,
+    &Armadillo_GetUpHeader_Animh.frames,
+    LIST_END,
+};
+
+extern Mtx GiantCake_CakeOpening_Animarr[];
+extern Gfx GiantCake_CakeModel_Gfx[];
+extern Anim GiantCake_CakeOpeningHeader_Animh;
+
+AnimDef AnimDef_GiantCakeCakeOpening = {
+    GiantCake_CakeOpening_Animarr,
+    GiantCake_CakeModel_Gfx,
+    &GiantCake_CakeOpeningHeader_Animh.objects,
+    &GiantCake_CakeOpeningHeader_Animh.frames,
+    LIST_END,
+};
+
+
+extern Gfx GiantCake_StrawberryModel_Gfx[];
+extern Mtx GiantCake_StrawberryIdle_Animarr[];
+extern Anim GiantCake_StrawberryIdleHeader_Animh;
+
+AnimDef AnimDef_GiantCakeStrawberryIdle = {
+    GiantCake_StrawberryIdle_Animarr,
+    GiantCake_StrawberryModel_Gfx,
+    &GiantCake_StrawberryIdleHeader_Animh.objects,
+    &GiantCake_StrawberryIdleHeader_Animh.frames,
+    LIST_END,
+};
+
+extern Mtx GiantCake_DestroyedCakeIdle_Animarr[];
+extern Gfx GiantCake_DestroyedCakeModel_Gfx[];
+extern Anim GiantCake_DestroyedCakeIdleHeader_Animh;
+
+AnimDef AnimDef_GiantCakeDestroyedCakeIdle = {
+    GiantCake_DestroyedCakeIdle_Animarr,
+    GiantCake_DestroyedCakeModel_Gfx,
+    &GiantCake_DestroyedCakeIdleHeader_Animh.objects,
+    &GiantCake_DestroyedCakeIdleHeader_Animh.frames,
+    LIST_END,
+};
+
+AnimDef* gAnimDefs[] = {
+    NULL, &AnimDef_ChameleonGetupFromKnockback_1, &AnimDef_ChameleonIdle, &AnimDef_ChameleonWalk,
+    &AnimDef_ChameleonRun, &AnimDef_ChameleonLandFromKnockback, &AnimDef_ChameleonJump_6, &AnimDef_ChameleonJump_7,
+    &D_800FF9A8, &D_800FF9BC, &AnimDef_QuintellaStageClearJumpedOn, &AnimDef_QuintellaStageClearAirborne,
+    &AnimDef_QuintellaStageClearBounce, &AnimDef_QuintellaStageClearDeath, &D_800FFA70, &AnimDef_BombSnakeHeadIdle,
+    &AnimDef_BombSnakeTailIdle, &AnimDef_BombSnakeTailLightMove, &AnimDef_BombSnakeTailHeavyMove, &AnimDef_LizardKongStageClearFalling,
+    &AnimDef_LizardKongStageClearSitUp, &AnimDef_LizardKongStageClearFinishSitUp, &AnimDef_LizardKongStageClearKnockedOut, &AnimDef_LizardKongBoulderIdle,
+    &AnimDef_ArmadilloUnroll, &AnimDef_ArmadilloWiggleUpsideDown, &AnimDef_ArmadilloTryGetUp, &AnimDef_ArmadilloGetUp,
+    &AnimDef_GiantCakeCakeOpening, &AnimDef_GiantCakeStrawberryIdle, &AnimDef_GiantCakeDestroyedCakeIdle, &AnimDef_ChameleonGetupFromKnockback_31,
     NULL
 };
 //unknown what these are supposed to be
@@ -3418,15 +3418,15 @@ void CTTask_Run(CTTask* task) {
     void (*temp)(CTTask*); //?
     void (*taskFunc)(CTTask*);
 
-    temp = taskFunc = task->function;
+    temp = taskFunc = task->update;
     if (taskFunc == 0) {
         DummiedPrintf("NULL POINTER %d\n", task->priority);
-        taskFunc = task->function;
+        taskFunc = task->update;
     }
     // If function ptr is not in virtual memory space
     else if ((u32)taskFunc < 0x80000000) {
-        DummiedPrintf("BAD POINTER %d, %X\n", task->priority, (u32)task->function);
-        taskFunc = task->function;
+        DummiedPrintf("BAD POINTER %d, %X\n", task->priority, (u32)task->update);
+        taskFunc = task->update;
     }
 
     if ((u32)taskFunc & 1) {
@@ -3693,12 +3693,58 @@ u16 func_8008D6E4(CTTask* task, ContMain* cont) {
 #endif
 
 s32 func_8008D7B0(CTTask* task) {
-    s32 funcResult = func_8008D7FC(task);
+    s32 funcResult = CTTask_StepAnim(task);
     task->dlist = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
     return funcResult;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D7FC.s")
+s32 CTTask_StepAnim(CTTask* task) {
+    AnimDef* anim;
+    s32* numFramesPtr;
+    s32 frames;
+    s32 finished = 0;
+    s32 restarted = 0;
+    s16 req = task->animReq;
+
+    if (req != task->animPrev) {
+        task->animPrev = req;
+        restarted = 1;
+        task->animFrame = 0.0f;
+    }
+    if (req <= 0) {
+        return -2;
+    }
+    task->animCur = req;
+    anim = gAnimDefs[task->animCur];
+    task->dlist = anim->dlist;
+    if (!IS_SEGMENTED(anim->numFrames)) {
+        numFramesPtr = anim->numFrames;
+    } else {
+        numFramesPtr = SEGMENTED_TO_VIRTUAL(anim->numFrames);
+    }
+    frames = *numFramesPtr;
+    if (restarted) {
+        task->animFrame = 0.0f;
+    } else {
+        task->animFrame += task->animSpeed;
+    }
+    if (task->animFrame >= (f32)frames) {
+        if (anim->loopFrame != -1) {
+            task->animFrame = (f32)anim->loopFrame;
+        } else {
+            task->animFrame = (f32)(frames - 1);
+            finished = 1;
+        }
+    } else if (task->animFrame < 0.0f) {
+        if (anim->loopFrame != -1) {
+            task->animFrame += (f32)frames;
+        } else {
+            task->animFrame = 0.0f;
+            finished = 1;
+        }
+    }
+    return finished;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008D950.s")
 
@@ -3725,7 +3771,7 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     Mtx* mtxScale;
     u32 mtxCount;
     Mtx* s4;
-    Unk_800FFB74* v1;
+    AnimDef* v1;
 
     gMatrixBufPtr = arg1->mtxBuffer;
 
@@ -3734,18 +3780,18 @@ void func_8008DB90(Gfx** pGfxPos, GraphicStruct* arg1) {
     task = gCTTaskHead->next;
     while (task->next != NULL) {
         if ((task->drawFlags & 1) && task->animCur > 0) {
-            v1 = D_800FFB74[task->animCur];
+            v1 = gAnimDefs[task->animCur];
 
-            if (!IS_SEGMENTED(v1->unk_00)) {
-                var_a0 = v1->unk_00;
+            if (!IS_SEGMENTED(v1->animation)) {
+                var_a0 = v1->animation;
             } else {
-                var_a0 = SEGMENTED_TO_VIRTUAL(v1->unk_00);
+                var_a0 = SEGMENTED_TO_VIRTUAL(v1->animation);
             }
 
-            if (!IS_SEGMENTED(v1->unk_08)) {
-                var_t0 = v1->unk_08;
+            if (!IS_SEGMENTED(v1->numObjects)) {
+                var_t0 = v1->numObjects;
             } else {
-                var_t0 = SEGMENTED_TO_VIRTUAL(v1->unk_08);
+                var_t0 = SEGMENTED_TO_VIRTUAL(v1->numObjects);
             }
             v12 = *var_t0;
             for (i = 0; i < v12; i++) {
@@ -3924,33 +3970,69 @@ void func_8008E698(CTTask* task) {
     }
 }
 
-void func_8008E7B8(CTTask* arg0) {
+void TaskFade_Finish(CTTask* task) {
     //more research needed? is it just getting the lower half???
-    setPrimColor(arg0->unk5E, arg0->unk60, arg0->unk_62, arg0->unk66);
+    setPrimColor(task->unk5E, task->unk60, task->unk_62, task->unk66);
     printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
-    CTTask_Unlink(arg0);
+    CTTask_Unlink(task);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008E840.s")
+void TaskFade_Update(CTTask* task) {
+    CTTask* savedTask;
+    u8 alpha;
+    s16 offsetX;
+    s16 offsetY;
 
-CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
+    savedTask = task;
+    if (D_801FC9AC == 1) {
+        offsetX = 160;
+        offsetY = -120;
+    } else {
+        offsetX = 0;
+        offsetY = 0;
+    }
+    if (task->unk_64 >= 255) {
+        alpha = 255;
+    } else if (task->unk_64 <= 0) {
+        alpha = 1;
+    } else {
+        alpha = task->unk_64;
+    }
+    task->unk66 = alpha;
+    task->unk_64 += task->unk_5C;
+    setPrimColor(task->unk5E, task->unk60, task->unk_62, task->unk66);
+    printUISprite(offsetX + 2, offsetY + 2, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
+    if (savedTask != task) {
+        DummiedPrintf("崩れた(%X->%X)\n", savedTask, task);
+    }
+    if ((task->unk_64 < -23) && (task->unk_5C < 0)) {
+        task->update = &TaskFade_Finish;
+        gFadeActive = 0;
+    }
+    if ((task->unk_64 >= 280) && (task->unk_5C > 0)) {
+        task->update = &TaskFade_Finish;
+        gFadeActive = 0;
+    }
+}
+
+CTTask* TaskFade_Create(s16 step, s16 r, s16 g, s16 b, s16* doneFlag) {
     CTTask* task = CTTask_Alloc(1, 0xF0, 0);
 
     if (task == NULL) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->unk_5C = arg0;
-    task->unk_64 = -24 - arg0;
-    task->unk5E = arg1;
-    task->unk60 = arg2;
-    task->unk_62 = arg3;
-    task->function = func_8008E840;
+    task->unk_5C = step;
+    task->unk_64 = -24 - step;
+    task->unk5E = r;
+    task->unk60 = g;
+    task->unk_62 = b;
+    task->update = &TaskFade_Update;
     task->pos.x = 0.0f;
     task->pos.y = 0.0f;
     task->pos.z = 0.0f;
-    task->unk58.doneFlag = arg4;
-    D_801B3540 = 1;
+    task->unk58.doneFlag = doneFlag;
+    gFadeActive = 1;
 
     return task;
 }
@@ -3967,11 +4049,11 @@ CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     task->unk5E = arg1;
     task->unk60 = arg2;
     task->unk_62 = arg3;
-    task->function = func_8008E840;
+    task->update = &TaskFade_Update;
     task->pos.x = 0;
     task->pos.y = 0;
     task->pos.z = 0;
-    D_801B3540 = 1;
+    gFadeActive = 1;
     return task;
 }
 
@@ -3994,7 +4076,7 @@ CTTask* func_8008EB08(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4, f32 arg
     newTask->pos.x = arg5;
     newTask->pos.y = arg6;
     newTask->pos.z = 0;
-    newTask->function = func_8008E698;
+    newTask->update = &func_8008E698;
     newTask->unk58.doneFlag = arg4;
     return newTask;
 }
@@ -4018,14 +4100,14 @@ CTTask* func_8008EBCC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, CTTask* arg4, f32 
     newTask->pos.x = arg5;
     newTask->pos.y = arg6;
     newTask->pos.z = 0;
-    newTask->function = func_8008E698;
+    newTask->update = &func_8008E698;
     newTask->unk58.parent = arg4;
     arg4->runType = 0;
     return newTask;
 }
 
-s32 func_8008EC90(void) {
-    if (D_801B3540 == 1) {
+s32 TaskFade_IsIdle(void) {
+    if (gFadeActive == 1) {
         return FALSE;
     }
     return TRUE;
@@ -4056,7 +4138,7 @@ void func_8008EFA0(CTTask* arg0) {
     func_8008ECB8();
     if (arg0->unk_64 == 0) {
         *arg0->unk58.doneFlag = 1;
-        arg0->function = func_8008EF78;
+        arg0->update = &func_8008EF78;
     }
 }
 
@@ -4073,7 +4155,7 @@ CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4) {
     task->unk5E = arg1;
     task->unk60 = arg2;
     task->unk_62 = arg3;
-    task->function = func_8008EFA0;
+    task->update = &func_8008EFA0;
     task->unk58.doneFlag = arg4;
     task->pos.x = 160;
     task->pos.y = 120;
@@ -4191,7 +4273,7 @@ CTTask* func_8008F7A4(s16 arg0, s16 arg1) {
         DummiedPrintf("Ｂｇ表示タスク作製エラー\n");
         while (1) {}
     }
-    newTask->function = func_8008F710;
+    newTask->update = &func_8008F710;
     newTask->spriteID = arg0;
     D_800FFDF4 = 1;
     return newTask;
@@ -4699,7 +4781,7 @@ void MainLoop(void) {
             Process_JSSLogo();
             continue;
         case 11:
-            Process_PreCredits();
+            Process_StageClear();
             continue;
         case 12:
             Process_NewGameMenu();
@@ -4824,14 +4906,14 @@ void func_80090E2C(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->function = func_80090E78;
+    task->update = &func_80090E78;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80090E78.s")
 
 void func_800910E4(CTTask* task) {
     task->animReq = 6;
-    task->function = func_800911D0;
+    task->update = &func_800911D0;
     task->scale.z = 0.4f;
     task->scale.y = 0.4f;
     task->scale.x = 0.4f;
@@ -4864,7 +4946,7 @@ void func_800911D0(CTTask* task) {
     CTTask* temp_v0 = task->unk58.parent;
 
     if (((gCurrentStage == STAGE_ANTBOSS) && (temp_v0->unk54 == 1)) || (temp_v0->unk54 == 7)) {
-        task->function = func_8009131C;
+        task->update = &func_8009131C;
         task->drawFlags = 1;
         task->unk88 = 110;
         task->pos.x = 320;
@@ -4876,7 +4958,7 @@ void func_800911D0(CTTask* task) {
         PLAY_SFX(SFX_ChameleonJump, 0, 16);
     } else if (temp_v0->unk54 == 7) {
         task->drawFlags = 1;
-        task->function = func_80091694;
+        task->update = &func_80091694;
         task->unk60 = 8;
         task->animReq = 1;
         task->unk88 = 150;
@@ -4891,7 +4973,7 @@ void func_8009131C(CTTask* task) {
 
     if (func_80090D28(task) != 0) {
         temp_v0 = task->unk58.parent;
-        task->function = func_80091390;
+        task->update = &func_80091390;
         task->animReq = 1;
         temp_v0->unk54 = 2;
         PLAY_SFX(SFX_ChameleonLand, 0, 16);
@@ -4909,7 +4991,7 @@ void func_80091390(CTTask* task) {
         return;
     }
     task->unk_5C = 30;
-    task->function = func_80091420;
+    task->update = &func_80091420;
     task->unk80 = -5.0f;
     task->unk7C = -20.0f;
     task->unk88 = 80.0f;
@@ -4934,7 +5016,7 @@ void func_80091420(CTTask* task) {
         task->unk_5C--;
         return;
     }
-    task->function = func_80091694;
+    task->update = &func_80091694;
     task->rotAngle = 0.0f;
     task->unk88 = 150.0f;
     task->unk7C = -15.0f;
@@ -4950,7 +5032,7 @@ void func_800914CC(CTTask* task) {
     }
     if (func_80090D28(task) != 0) {
         task->unk60 = 4;
-        task->function = func_80091548;
+        task->update = &func_80091548;
         task->unk_5C = 2;
         task->unk80 = 0;
         task->unk7C = -15;
@@ -4963,7 +5045,7 @@ void func_80091548(CTTask* task) {
     while (func_8008D7B0(task) == 0) {}
     task->unk60 -= 1;
     if (task->unk60 <= 0) {
-        task->function = func_800915C0;
+        task->update = &func_800915C0;
         task->unk84 = 1.5f;
     }
 }
@@ -4972,7 +5054,7 @@ void func_800915C0(CTTask* arg0) {
     if (func_80090D28(arg0) != 0) {
         arg0->unk_5C--;
         if (arg0->unk_5C <= 0) {
-            arg0->function = func_80091694;
+            arg0->update = &func_80091694;
             arg0->unk60 = 8;
             arg0->animReq = 1;
             arg0->unk88 = 150.0f;
@@ -4982,7 +5064,7 @@ void func_800915C0(CTTask* arg0) {
         } else {
             arg0->unk7C = -15.0f;
             arg0->unk60 = 4;
-            arg0->function = func_80091548;
+            arg0->update = &func_80091548;
             goto func; //shared tail required for match
         }
     } else {
@@ -5004,7 +5086,7 @@ void func_80091694(CTTask* task) {
         task->scale.z += 0.04;
         task->pos.z = 10.0f;
         if (func_80090D28(task)) {
-            task->function = func_80091758;
+            task->update = &func_80091758;
             task->unk60 = 4;
         }
         func_8008D7B0(task);
@@ -5033,7 +5115,7 @@ void func_800919D8(s32 arg0, s32 arg1) {
 
     if ((arg0 >= 0) || (arg1 != 0)) {
         task = CTTask_Alloc(1, 100, NULL);
-        task->function = func_800917A8;
+        task->update = &func_800917A8;
         task->unk_62 = 128;
         task->unk_5C = arg0;
         task->unk_64 = arg1;
@@ -5043,8 +5125,8 @@ void func_800919D8(s32 arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091A38.s")
 
 void func_80092208(CTTask* arg0) {
-    if ((func_8008EC90() != 0) && (arg0->unk54 == 8)) {
-        arg0->function = &func_80092254;
+    if ((TaskFade_IsIdle() != 0) && (arg0->unk54 == 8)) {
+        arg0->update = &func_80092254;
         arg0->unk60 = 0;
         arg0->unk_5C = 4;
     }
@@ -5065,13 +5147,13 @@ void func_80092254(CTTask* arg0) {
     }
     if (arg0->unk60 >= 0x10) {
         arg0->unk_64 = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
-        arg0->function = func_80092324;
+        TaskFade_Create(0x20, 0, 0, 0, &arg0->unk_64);
+        arg0->update = &func_80092324;
     }
 }
 
 void func_80092324(CTTask* arg0) {              // Cy
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         SetProcessType(GAME_MODE_LEVEL_INTRO_MENU);
         return;
     }
@@ -5088,7 +5170,7 @@ CTTask* func_8009236C(CTTask* arg0) {
     task->animPrev = -1;
     task->unk_5C = 0;
     task->unk60 = 0;
-    task->function = func_8009244C;
+    task->update = &func_8009244C;
     task->scale.z = 0.5f;
     task->scale.y = 0.5f;
     task->scale.x = 0.5f;
@@ -5105,7 +5187,7 @@ CTTask* func_8009236C(CTTask* arg0) {
     task->unk84 = 3.0f;
     task->unk88 = -4.0f;
     task->unk58.parent = arg0;
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     return task;
 }
 
@@ -5113,7 +5195,7 @@ void func_8009244C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
     } else {
-        task->function = &func_80092474;
+        task->update = &func_80092474;
     }
 }
 
@@ -5151,11 +5233,11 @@ void func_800925A8(CTTask* task) {
     task->animReq = 19;
     task->drawFlags = 1;
     task->animPrev = -1;
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->rotAxis.z = -0.0f;
     task->unk_5C = 0;
     task->unk5E = 0;
-    task->function = func_80092690;
+    task->update = &func_80092690;
     task->scale.z = 0.7f;
     task->scale.y = 0.7f;
     task->scale.x = 0.7f;
@@ -5174,7 +5256,7 @@ void func_800925A8(CTTask* task) {
 
 void func_80092690(CTTask* task) {
     if (task->unk5E != 0) {
-        func_8008D7FC(task);
+        CTTask_StepAnim(task);
     }
     if (func_80090CB0(task) != 0) {
         task->unk5E = 1;
@@ -5183,7 +5265,7 @@ void func_80092690(CTTask* task) {
             task->unk7C *= 0.7;
             task->unk_5C++;
         } else {
-            task->function = func_8009273C;
+            task->update = &func_8009273C;
             task->animReq = 20;
             task->unk60 = 30;
         }
@@ -5193,17 +5275,17 @@ void func_80092690(CTTask* task) {
 void func_8009273C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
-    } else if (func_8008D7FC(task) != 0) {
+    } else if (CTTask_StepAnim(task) != 0) {
         task->animReq = 21;
-        task->function = func_800927A8;
+        task->update = &func_800927A8;
         func_8009236C(task);
         task->animSpeed = 1;
     }
 }
 
 void func_800927A8(CTTask* task) {
-    if (func_8008D7FC(task) != 0) {
-        task->function = func_800927E8;
+    if (CTTask_StepAnim(task) != 0) {
+        task->update = &func_800927E8;
         task->animSpeed = 1;
     }
 }
@@ -5211,27 +5293,27 @@ void func_800927A8(CTTask* task) {
 void func_800927E8(CTTask* task) {
     //why not just check for 1??
     if ((task->unk54 != 0) && (task->unk54 == 1)) {
-        task->function = func_80092864;
+        task->update = &func_80092864;
         task->animReq = 22;
         PLAY_SFX(SFX_Lizard_Kong_Hit, 0, 16);
         task->unk60 = 15;
-        func_8008D7FC(task);
+        CTTask_StepAnim(task);
     }
 }
 
 void func_80092864(CTTask* task) {
-    task->function = &func_8009288C;
-    func_8008D7FC(task);
+    task->update = &func_8009288C;
+    CTTask_StepAnim(task);
 }
 
 void func_8009288C(CTTask* task) {
     if (task->unk60 != 0) {
         task->unk60--;
-    } else if (func_8008D7FC(task) != 0) {
+    } else if (CTTask_StepAnim(task) != 0) {
         if (task->unk58.parent->unk54 < 7) {
             task->unk58.parent->unk54 = 7;
         }
-        task->function = func_800928F0;
+        task->update = &func_800928F0;
     }
 }
 
@@ -5249,7 +5331,7 @@ void func_800928F8(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     task->unk7C = arg3;
     task->spriteID = 74;
     task->animReq = 4;
-    task->function = func_80092990;
+    task->update = &func_80092990;
     task->scale.x = 0.1f;
     task->scale.y = 0.1f;
     task->scale.z = 0.1f;
@@ -5289,12 +5371,12 @@ CTTask* func_80092C54(s32 task) {
     newTask->animReq = 16;
     newTask->animPrev = -1;
     newTask->animSpeed = 1;
-    func_8008D7FC(newTask);
+    CTTask_StepAnim(newTask);
     newTask->unk80 = 4;
     newTask->rotAxis.y = 1;
     newTask->rotAngle = 80;
     newTask->pos.x = -80 - (task * 30);
-    newTask->function = func_80092D68;
+    newTask->update = &func_80092D68;
     newTask->unk_62 = task + 1;
     newTask->scale.z = 1.5f;
     newTask->scale.y = 1.5f;
@@ -5312,7 +5394,7 @@ CTTask* func_80092C54(s32 task) {
 
 void func_80092D68(CTTask* task) {
     if (func_80092C0C(task) != 0) {
-        task->function = func_80092E10;
+        task->update = &func_80092E10;
         task->unk90 = 90;
     } else {
         //must be like this
@@ -5331,12 +5413,12 @@ void func_80092E10(CTTask* arg0) {
 
     func_80092A64(arg0, temp_v0->unk8C);
     if (temp_v0->unk54 == 5) {
-        arg0->function = func_80092E9C;
+        arg0->update = &func_80092E9C;
         arg0->unk_5C = 3;
         arg0->animReq = 17;
         arg0->unk80 = 0.0f;
         arg0->rotAngle = 80.0f;
-        func_8008D7FC(arg0);
+        CTTask_StepAnim(arg0);
         arg0->pos.z = -50.0f;
     }
 }
@@ -5348,7 +5430,7 @@ void func_80092E9C(CTTask* task) {
             task->unk_5C--;
             task->unk7C *= -0.6;
         } else {
-            task->function = func_80092F44;
+            task->update = &func_80092F44;
             task->animReq = 0x11;
             task->unk_5C = 3;
         }
@@ -5357,13 +5439,13 @@ void func_80092E9C(CTTask* task) {
 }
 
 void func_80092F44(CTTask* task) {
-    if (func_8008D7FC(task) != 0) {
+    if (CTTask_StepAnim(task) != 0) {
         if (task->unk_5C) {
             task->unk_5C--;
             task->unk7C *= -0.6;
         } else {
             task->animReq = 18;
-            task->function = func_80092FB8;
+            task->update = &func_80092FB8;
             task->animFrame = 0;
         }
     }
@@ -5372,7 +5454,7 @@ void func_80092F44(CTTask* task) {
 void func_80092FB8(CTTask* task) {
     CTTask* taskNext = task->unk58.parent;
 
-    if (func_8008D7FC(task)) {
+    if (CTTask_StepAnim(task)) {
         taskNext->unk54 = 6;
     }
 }
@@ -5385,7 +5467,7 @@ CTTask* func_80092FEC(s32 arg0) {
     temp_v0->unk55 = 255;
     temp_v0->spriteID = 43;
     temp_v0->pos.x = -90 - (arg0 * 40);
-    temp_v0->function = func_80093110;
+    temp_v0->update = &func_80093110;
     temp_v0->scale.z = 1.1f;
     temp_v0->scale.y = 1.1f;
     temp_v0->scale.x = 1.1f;
@@ -5411,7 +5493,7 @@ CTTask* func_80092FEC(s32 arg0) {
 void func_80093110(CTTask* task) {
     func_8008DAB8(task->pos.x, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.x * 40.0, task->unk55, 0, task->spriteID);
     if (func_80092C0C(task) != 0) {
-        task->function = func_8009319C;
+        task->update = &func_8009319C;
         task->unk90 = 90;
     }
 }
@@ -5422,7 +5504,7 @@ void func_8009319C(CTTask* task) {
     func_8008DAB8(task->pos.x + D_800FFEE8, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.x * 40.0, (s32) task->unk55, 0, (s32) task->spriteID);
     func_80092A64(task, newTask->unk8C);
     if (newTask->unk54 == 5) {
-        task->function = func_80093260;
+        task->update = &func_80093260;
         task->unk_5C = 4;
         task->unk80 = 0;
         task->pos.z = -50;
@@ -5438,7 +5520,7 @@ void func_80093260(CTTask* task) {
             task->unk_5C--;
             task->unk7C *= -0.6;
         } else {
-            task->function = func_8009336C;
+            task->update = &func_8009336C;
             task->animReq = 17;
             task->unk_5C = 3;
         }
@@ -5457,7 +5539,7 @@ void func_8009336C(CTTask* task) {
 
 void func_80093500(CTTask* task) {
     if (func_80092C0C(task) != 0) {
-        task->function = func_80093600;
+        task->update = &func_80093600;
         task->unk60 = 45;
         task->unk_5C = 30;
         task->unk_62 = 30;
@@ -5486,7 +5568,7 @@ void func_800937FC(CTTask* arg0) {
     if (arg0->unk60 != 0) {
         arg0->unk60--;
     }
-    arg0->function = func_8009384C;
+    arg0->update = &func_8009384C;
     arg0->unk54 = 5;
     arg0->unk_5C = 3;
     arg0->pos.x = 208.0f;
@@ -5500,7 +5582,7 @@ void func_8009384C(CTTask* task) {
             task->unk_5C--;
             task->unk7C *= -0.6;
         } else {
-            task->function = func_800938B0;
+            task->update = &func_800938B0;
         }
     }
 }
@@ -5516,7 +5598,7 @@ void func_800938B0(CTTask* task) {
 CTTask* func_800938E4(s32 xMult) {
     CTTask* task = CTTask_Alloc(1, 100, 0);
 
-    task->function = func_800939B0;
+    task->update = &func_800939B0;
     task->scale.x = 0.8f;
     task->animSpeed = 1.0f;
     task->animPrev = -1;
@@ -5546,7 +5628,7 @@ void func_800939B0(CTTask* task) {
         CTTask* other = task->unk58.parent;
 
         if (other->unk54 >= 2) {
-            task->function = func_80093A98;
+            task->update = &func_80093A98;
             task->unk80 = 0.0f;
         }
     }
@@ -5563,7 +5645,7 @@ void func_80093A98(CTTask* task) {
         CTTask* other = task->unk58.parent;
 
         if ((other->unk54 >= 3) && (func_80090CB0(task) != 0)) {
-            task->function = func_80093B7C;
+            task->update = &func_80093B7C;
             task->unk80 = -8.0f;
         }
     }
@@ -5581,8 +5663,8 @@ void func_80093CD8(CTTask* task) {
     task->drawFlags = 1;
     task->animReq = 10;
     task->animPrev = -1;
-    func_8008D7FC(task);
-    task->function = func_80093DE4;
+    CTTask_StepAnim(task);
+    task->update = &func_80093DE4;
     parent = task;
     task->unk54 = 0;
     task->scale.z = 0.75f;
@@ -5616,7 +5698,7 @@ void func_80093DE4(CTTask* task) {
     if (20.0f < task->pos.x) {
         CTTask* other = task->unk58.parent;
         task->unk54 = 1;
-        task->function = func_80093ECC;
+        task->update = &func_80093ECC;
         other->unk54 = 1;
     }
     if ((gTimer % 12) == 0) {
@@ -5641,7 +5723,7 @@ void func_80093ECC(CTTask* task) {
     if (other->unk54 == 2) {
         task->unk54 = 2;
         task->unk60 = 20;
-        task->function = func_80093FC8;
+        task->update = &func_80093FC8;
         task->unk80 = 0.0f;
         task->unk7C = -20.0f;
         task->unk88 = 96.0f;
@@ -5653,14 +5735,14 @@ void func_80093FC8(CTTask* task) {
         task->unk60--;
     } else {
         task->unk54 = 3;
-        task->function = func_8009403C;
+        task->update = &func_8009403C;
         task->unk60 = 30;
         PLAY_SFX(SFX_Yellow_Ant_Fall, 0, 16);
     }
 }
 
 void func_8009403C(CTTask* task) {
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     if (task->unk7C < 0) {
         func_80090CB0(task);
     } else {
@@ -5669,25 +5751,25 @@ void func_8009403C(CTTask* task) {
             task->unk60--;
 
         } else {
-            task->function = func_800940B8;
+            task->update = &func_800940B8;
             task->unk_5C = 3;
         }
     }
 }
 
 void func_800940B8(CTTask* task) {
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     if (func_80090CB0(task) != 0) {
-        task->function = func_80094120;
+        task->update = &func_80094120;
         PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->animReq = 12;
     }
 }
 
 void func_80094120(CTTask* task) {
-    if (func_8008D7FC(task) != 0) {
+    if (CTTask_StepAnim(task) != 0) {
         task->unk60 = 15;
-        task->function = func_800941C0;
+        task->update = &func_800941C0;
         task->animReq = 13;
         PLAY_SFX(SFX_Standard_Bounce, 0, 16);
     }
@@ -5701,13 +5783,13 @@ void func_800941C0(CTTask* task) {
         task->unk60 -= 1;
         return;
     }
-    if (func_8008D7FC(task) != 0) {
+    if (CTTask_StepAnim(task) != 0) {
         CTTask* other = task->unk58.parent;
 
         task->unk_5C = 2;
         task->unk60 = 0;
         other->unk54 = 7;
-        task->function = func_80094220;
+        task->update = &func_80094220;
     }
 }
 
@@ -5720,10 +5802,10 @@ void func_80094228(CTTask* task) {
     task->drawFlags = 1;
     task->animReq = 24;
     task->animPrev = -1;
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->animSpeed = 1;
     task->rotAxis.z = 1;
-    task->function = func_8009430C;
+    task->update = &func_8009430C;
     task->unk54 = 0;
     task->unk84 = 1;
     task->unk_5C = 30;
@@ -5754,7 +5836,7 @@ void func_8009430C(CTTask* task) {
         } else {
             task->unk7C *= 1.2;
         }
-        task->function = func_80094410;
+        task->update = &func_80094410;
         task->unk60 = 4;
         task->unk7C = -10;
     }
@@ -5769,7 +5851,7 @@ void func_80094410(CTTask* task) {
         if (task->unk60 != 0) {
             task->unk60--;
         } else {
-            task->function = func_80094540;
+            task->update = &func_80094540;
             task->rotAngle = 0;
         }
     }
@@ -5780,7 +5862,7 @@ void func_800944C0(CTTask* task) {
     if (func_80090CB0(task) != 0) {
         PLAY_SFX(SFX_Standard_Bounce, 0, 16);
         task->unk60 = 0;
-        task->function = func_80094540;
+        task->update = &func_80094540;
         task->rotAngle = 0;
     }
 }
@@ -5792,10 +5874,10 @@ void func_80094540(CTTask* task) {
         task->unk5E = 0;
         task->unk60--;
         task->animReq = D_800FFEEC[task->unk5E];
-    } else if (func_8008D7FC(task) != 0) {
+    } else if (CTTask_StepAnim(task) != 0) {
         task->unk5E += 1;
         if (D_800FFEEC[task->unk5E] == -1) {
-            task->function = func_800945E4;
+            task->update = &func_800945E4;
             newTask = task->unk58.parent;
             newTask->unk54 = 7;
         } else {
@@ -5819,7 +5901,7 @@ void func_800947B0(CTTask* task) {
     task->pos.x += task->unk80;
     func_800946F4(task);
     if (task->pos.x < -120) {
-        task->function = func_8009483C;
+        task->update = &func_8009483C;
         task->scale.z = 1;
         task->scale.y = 1;
         task->scale.x = 1;
@@ -5833,7 +5915,7 @@ void func_8009483C(CTTask* task) {
     task->pos.x += task->unk80;
     func_800946F4(task);
     if (task->pos.x > 100) {
-        task->function = func_8009489C;
+        task->update = &func_8009489C;
     }
     task->drawFlags = 1;
 }
@@ -5849,7 +5931,7 @@ void func_8009489C(CTTask* task) {
         task->unk80 -= 0.5;
     } else {
         task->unk80 = 0;
-        task->function = func_80094958;
+        task->update = &func_80094958;
     }
     task->drawFlags = 1;
 }
@@ -5859,7 +5941,7 @@ void func_80094958(CTTask* task) {
     func_800946F4(task);
     if (task->rotAngle > 0.0f) {
         task->rotAngle = 0.0f;
-        task->function = func_800949D8;
+        task->update = &func_800949D8;
     } else {
         task->unk80 += 2.0;
     }
@@ -5868,11 +5950,11 @@ void func_80094958(CTTask* task) {
 void func_800949D8(CTTask* task) {
     CTTask* parent;
 
-    task->function = func_80094D64;
+    task->update = &func_80094D64;
     parent = task;
 
     task = CTTask_Alloc(1, 100, 0);
-    task->function = func_80094ABC;
+    task->update = &func_80094ABC;
     task->unk58.parent = parent;
     task->pos.x = parent->pos.x + 10.0f;
     task->unk80 = 3.0f;
@@ -5880,7 +5962,7 @@ void func_800949D8(CTTask* task) {
     task->scale.x = -0.75f;
 
     task = CTTask_Alloc(1, 100, 0);
-    task->function = func_80094ABC;
+    task->update = &func_80094ABC;
     task->unk58.parent = parent;
     task->pos.x = parent->pos.x - 10.0f;
     task->unk80 = -3.0f;
@@ -5902,7 +5984,7 @@ void func_80094ABC(CTTask* task) {
     task->unk84 = 1;
     task->unk7C = -6;
     task->scale.y = 0.75f;
-    task->function = func_80094B2C;
+    task->update = &func_80094B2C;
 }
 
 void func_80094B2C(CTTask* task) {
@@ -5912,7 +5994,7 @@ void func_80094B2C(CTTask* task) {
     if (task->unk_5C != 0) {
         task->unk_5C--;
     } else {
-        task->function = func_80094BDC;
+        task->update = &func_80094BDC;
     }
 }
 
@@ -5921,7 +6003,7 @@ void func_80094BDC(CTTask* task) {
     func_80090C54(task);
     func_8008DAB8(task->pos.x, task->pos.y, task->pos.z, task->scale.x * 40.0, task->scale.y * 40.0, task->unk55, task->spriteFrame, task->spriteID);
     if (func_80090CB0(task) != 0) {
-        task->function = func_80094C84;
+        task->update = &func_80094C84;
     }
 }
 
@@ -5937,27 +6019,27 @@ void func_80094C84(CTTask* task) {
 
 void func_80094D64(CTTask* arg0) {
     if (arg0->unk54 == 1) {
-        arg0->function = func_80094DBC;
+        arg0->update = &func_80094DBC;
         arg0->animReq = 30;
         arg0->animPrev = -1;
         arg0->unk_5C = 8;
         return;
     }
     arg0->animReq = 28;
-    func_8008D7FC(arg0);
+    CTTask_StepAnim(arg0);
 }
 
 void func_80094DBC(CTTask* task) {
     CTTask* taskUnk;
 
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     if (task->unk_5C != 0) {
         task->unk_5C--;
         return;
     }
     taskUnk = task->unk58.parent;
     taskUnk->unk54 = 7;
-    task->function = &func_80094E0C;
+    task->update = &func_80094E0C;
 }
 
 void func_80094E0C(CTTask* arg0) {
@@ -5972,7 +6054,7 @@ CTTask* func_80094FC8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s16 arg5
     if (task == NULL) {
         return NULL;
     }
-    task->function = func_80094E14;
+    task->update = &func_80094E14;
     task->pos.x = arg0;
     task->pos.y = arg1;
     task->pos.z = arg2;
@@ -5991,10 +6073,10 @@ void func_800950C0(CTTask* task) {
     task->drawFlags = 1;
     task->animReq = 29;
     task->animPrev = -1;
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->animSpeed = 1;
     task->rotAxis.z = 1;
-    task->function = func_80095184;
+    task->update = &func_80095184;
     task->unk54 = 0;
     task->unk84 = 1;
     task->scale.z = 2.7f;
@@ -6015,7 +6097,7 @@ void func_80095184(CTTask* task) {
     task->pos.x += task->unk80;
     if (task->pos.x < -200) {
         task->unk80 = 6;
-        task->function = func_80095264;
+        task->update = &func_80095264;
         task->scale.z = 3;
         task->scale.y = 3;
         task->rotAngle *= -1;
@@ -6041,7 +6123,7 @@ void func_80095500(CTTask* task) {
     CTTask_Unlink(task);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_PreCredits.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Process_StageClear.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095780.s")
 
@@ -6298,7 +6380,7 @@ f32 func_80096898(u16 arg0) {
 void func_80096964(CTTask* task) {
     task->animReq = 3;
     task->drawFlags = 1;
-    task->function = Stage_Select_ChameleonWalk;
+    task->update = &Stage_Select_ChameleonWalk;
     task->scale.x = 0.6f;
     task->scale.y = 0.6f;
     task->scale.z = 0.6f;
@@ -6313,7 +6395,7 @@ void func_80096964(CTTask* task) {
     task->rotAxis.y = 1.0f;
     task->animSpeed = 1.0f;
     task->rotAngle = 50.0f;
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->dlist = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
@@ -6326,10 +6408,10 @@ void func_80096CA0(CTTask* task) {
     task->pos.x += task->unk7C;
     task->pos.y += task->unk80;
     if (task->unk_64 == 0) {
-        task->function = Stage_Select_ChameleonWalk;
+        task->update = &Stage_Select_ChameleonWalk;
         task->unk7A = other->unk7A;
     }
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->dlist = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
@@ -6370,7 +6452,7 @@ CTTask* func_80097498(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    temp_v0->function = func_80097508;
+    temp_v0->update = &func_80097508;
     temp_v0->unk66 = 0;
     temp_v0->pos.x = 64.0f;
     temp_v0->pos.y = 64.0f;
@@ -6380,7 +6462,7 @@ CTTask* func_80097498(void) {
 
 void func_80097508(CTTask* task) {
     func_8008F7A4(3, 8);
-    task->function = &func_80097540;
+    task->update = &func_80097540;
 }
 
 void func_80097540(CTTask* task) {
@@ -6393,7 +6475,7 @@ void func_80097540(CTTask* task) {
     task->unk6E = 0;
     task->unk6C = 0;
     task->unk_62 = D_800FF8E8;
-    task->function = &func_80097624;
+    task->update = &func_80097624;
     stage = GetBaseStage(gCurrentStage);
     if (stage < 0) {
         task->unk7A = 0;
@@ -6403,11 +6485,11 @@ void func_80097540(CTTask* task) {
     master = task;
     DummiedPrintf("/* リスト表示用タスク */\n");
     newTask = CTTask_Alloc(1, 0x6E, NULL);
-    newTask->function = &func_80097CF8;
+    newTask->update = &func_80097CF8;
     newTask->unk58.parent = master;
     DummiedPrintf("/* ダミーカメレオンタスク */\n");
     newTask = CTTask_Alloc(1, 0x78, NULL);
-    newTask->function = &func_80096964;
+    newTask->update = &func_80096964;
     newTask->unk7A = master->unk7A;
     newTask->unk58.parent = master;
 }
@@ -6620,11 +6702,11 @@ void func_80099570(CTTask* task) {
 void func_80099598(CTTask* arg0) {
     _bzero(&gSaveFiles[arg0->unk_62], sizeof(SaveFile));
     SaveData_LoadFile(arg0->unk_62, &gSaveFiles[arg0->unk_62]);
-    arg0->function = Task_LoadSaveFileAt;
+    arg0->update = &Task_LoadSaveFileAt;
 }
 
 void func_8009960C(CTTask* arg0) {
-    arg0->function = &Task_LoadSaveFileAt;
+    arg0->update = &Task_LoadSaveFileAt;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/Task_LoadSaveFileAt.s")
@@ -6640,13 +6722,13 @@ void func_80099870(CTTask* arg0) {
     arg0->unk_68 -= 32;
     func_80099570(arg0);
     if (arg0->unk_68 <= 0) {
-        arg0->function = func_80099598;
+        arg0->update = &func_80099598;
         sp1C->unk5E = 1;
     }
 }
 
 void func_800998CC(CTTask* arg0) {
-    arg0->function = &func_8009984C;
+    arg0->update = &func_8009984C;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800998DC.s")
@@ -6657,7 +6739,7 @@ void func_8009A57C(CTTask* task) {
     CTTask* temp_v1 = task->unk58.parent;
 
     if (temp_v1->unk54 == 1) {
-        task->function = func_8009A64C;
+        task->update = &func_8009A64C;
     } else if (temp_v1->unk54 == 0) {
         if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
             temp_v1->unk54 = 1;
@@ -6675,14 +6757,14 @@ void func_8009A64C(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
 
     if (newTask->unk54 != 1) {
-        task->function = func_8009A57C;
+        task->update = &func_8009A57C;
     } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 2;
-        task->function = func_8009A57C;
+        task->update = &func_8009A57C;
         PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 0;
-        task->function = func_8009A57C;
+        task->update = &func_8009A57C;
         PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
@@ -6735,14 +6817,14 @@ CTTask* MakeSaveMaster(void) {
         task->unk6A = 3;
         gGameRecords.savedStageData.index = 3;
     }
-    task->function = func_8009ABF4;
+    task->update = &func_8009ABF4;
     master = task;
     master->unk54 = 0;
     master->unk66 = 0;
     master->unk5E = 1;
 
     task = CTTask_Alloc(1, 0x46, NULL);
-    task->function = func_80097D1C;
+    task->update = &func_80097D1C;
     task->unk58.parent = master;
 
     for (i = 0; i < 4; i++) {
@@ -6752,7 +6834,7 @@ CTTask* MakeSaveMaster(void) {
             while (1) {}
         }
         task->unk_62 = i;
-        task->function = func_8009960C;
+        task->update = &func_8009960C;
         task->unk58.parent = master;
     }
 
@@ -6762,7 +6844,7 @@ CTTask* MakeSaveMaster(void) {
         task->unk6E = 0;
         task->unk_70 = 0;
         task->unk_62 = D_800FF8E8;
-        task->function = func_8009A57C;
+        task->update = &func_8009A57C;
     }
 
     lastTask = CTTask_Alloc(1, 0xF0, NULL);
@@ -6771,18 +6853,18 @@ CTTask* MakeSaveMaster(void) {
         while (1) {}
     }
     lastTask->unk58.parent = master;
-    lastTask->function = func_8009A988;
+    lastTask->update = &func_8009A988;
     return lastTask;
 }
 
 void func_8009ABF4(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (arg0->unk54 == 1) {
-            arg0->function = func_8009AC74;
+            arg0->update = &func_8009AC74;
         } else if (arg0->unk54 == 3) {
-            arg0->function = func_8009AFFC;
+            arg0->update = &func_8009AFFC;
             arg0->unk5E = 0;
-            func_8008E9AC(0x20, 0, 0, 0, &arg0->unk5E);
+            TaskFade_Create(0x20, 0, 0, 0, &arg0->unk5E);
         }
     }
 }
@@ -6790,9 +6872,9 @@ void func_8009ABF4(CTTask* arg0) {
 void func_8009AC74(CTTask* arg0) {
     func_80099AF4(arg0);
     if (arg0->unk54 == 2) {
-        arg0->function = func_8009ACC8;
+        arg0->update = &func_8009ACC8;
     } else if (arg0->unk54 == 0) {
-        arg0->function = func_8009ABF4;
+        arg0->update = &func_8009ABF4;
     }
 }
 
@@ -6803,10 +6885,10 @@ void func_8009ACC8(CTTask* task) {
     gGameState.checksum = SaveData_FileChecksum(&gGameState.checksum);
     task->unk_68 = 4;
     if (SaveData_UpdateFile(task->unk6A, &gGameState) != 0) {
-        task->function = func_8009AE38;
+        task->update = &func_8009AE38;
         task->unk_68 = 0x3C;
     } else {
-        task->function = func_8009ADDC;
+        task->update = &func_8009ADDC;
         gGameRecords.savedStageData.index = task->unk6A;
         D_801FC9A4 = 0;
     }
@@ -6819,13 +6901,13 @@ void func_8009AD74(CTTask* task) {
     while (var_v1 != NULL) {
         if ((var_v0->runType == 3) && (task->unk6A == var_v0->unk_62)) {
             var_v1 = var_v0->next;
-            var_v0->function = func_80099598;
+            var_v0->update = &func_80099598;
         }
         var_v0 = var_v1;
         var_v1 = var_v1->next;
     }
     task->unk_68 = 4;
-    task->function = func_8009AF98;
+    task->update = &func_8009AF98;
 }
 
 void func_8009ADDC(CTTask* task) {
@@ -6835,7 +6917,7 @@ void func_8009ADDC(CTTask* task) {
     task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n", task);
-        task->function = func_8009AD74;
+        task->update = &func_8009AD74;
         gGameRecords.flags[0] = SaveData_RecordChecksum();
         SaveData_UpdateRecords();
     }
@@ -6845,16 +6927,16 @@ void func_8009ADDC(CTTask* task) {
 
 void func_8009AF98(CTTask* task) {
     DummiedPrintf("元に戻る\n");
-    if (func_8008EC90() != 0) {
-        task->function = func_8009AFFC;
+    if (TaskFade_IsIdle() != 0) {
+        task->update = &func_8009AFFC;
         task->unk5E = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &task->unk5E);
+        TaskFade_Create(0x20, 0, 0, 0, &task->unk5E);
     }
 }
 
 void func_8009AFFC(CTTask* task) {
-    if (func_8008EC90() != 0) {
-        task->function = func_8009B08C;
+    if (TaskFade_IsIdle() != 0) {
+        task->update = &func_8009B08C;
         setPrimColor(0, 0, 0, 255);
         printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
     }
@@ -6864,7 +6946,7 @@ void func_8009B08C(CTTask* task) {
     setPrimColor(0, 0, 0, 255);
     printUISprite(2, 2, 0, 0, 1, 316, 236, 0, SPRITE_BLANK);
     gGameModeState = 3;
-    task->function = func_8009B120;
+    task->update = &func_8009B120;
 }
 
 void func_8009B120(CTTask* task) {
@@ -6881,7 +6963,7 @@ void func_8009B464(CTTask* task) {
     if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         if (gSaveFiles[newTask->unk6A].flags & 2) {
             newTask->unk54 = 6;
-            task->function = func_8009B45C;
+            task->update = &func_8009B45C;
             PLAY_SFX(SFX_Select, 0, 80);
             return;
         } else {
@@ -6890,14 +6972,14 @@ void func_8009B464(CTTask* task) {
     }
     if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 7;
-        task->function = func_8009B45C;
+        task->update = &func_8009B45C;
         PLAY_SFX(SFX_Decline, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & L_TRIG) {
         if (!(gSaveFiles[newTask->unk6A].flags & 2)) {
             PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         } else {
             newTask->unk54 = 9;
-            task->function = func_8009BEC4;
+            task->update = &func_8009BEC4;
             PLAY_SFX(SFX_Select, 0, 80);
         }
     } else if (gContMain[task->unk_62].buttons2 & R_TRIG) {
@@ -6905,7 +6987,7 @@ void func_8009B464(CTTask* task) {
             PLAY_SFX(SFX_Save_Delete_Decline, 0, 80);
         } else {
             newTask->unk54 = 0xD;
-            task->function = func_8009C74C;
+            task->update = &func_8009C74C;
             newTask->unk_64 = newTask->unk6A;
             PLAY_SFX(SFX_Select, 0, 80);
         }
@@ -6919,24 +7001,24 @@ void func_8009B464(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009B914.s")
 
 void func_8009BA38(CTTask* task) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (task->unk54 == 6) {
-            task->function = func_8009BAF4;
+            task->update = &func_8009BAF4;
             return;
         }
         if (task->unk54 == 7) {
-            task->function = func_8009BC60;
+            task->update = &func_8009BC60;
             task->unk5E = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk5E);
+            TaskFade_Create(32, 0, 0, 0, &task->unk5E);
             return;
         }
         if (task->unk54 == 9) {
-            task->function = func_8009BC98;
+            task->update = &func_8009BC98;
             return;
         }
         if (task->unk54 == 13) {
             task->unk54 = 13;
-            task->function = func_8009C2FC;
+            task->update = &func_8009C2FC;
         }
     }
 }
@@ -6946,7 +7028,7 @@ void func_8009BAF4(CTTask* task) {
     gGameRecords.savedStageData.index = task->unk6A;
     D_800FF8EC = task->unk6A;
     task->unk_68 = 8;
-    task->function = func_8009BB54;
+    task->update = &func_8009BB54;
 }
 
 void func_8009BB54(CTTask* task) {
@@ -6956,19 +7038,19 @@ void func_8009BB54(CTTask* task) {
     task->unk_68 = temp_v0 - 1;
     if (temp_v0 == 0) {
         DummiedPrintf("元に戻る\n");
-        task->function = func_8009BBD8;
+        task->update = &func_8009BBD8;
         task->unk5E = 0;
-        func_8008E9AC(32, 255, 255, 255, &task->unk5E);
+        TaskFade_Create(32, 255, 255, 255, &task->unk5E);
         gGameRecords.flags[0] = SaveData_RecordChecksum();
         D_801FC9A4 = 0;
     }
 }
 
 void func_8009BBD8(CTTask* task) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         //has to be like this
         D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 255;
-        task->function = func_8009BC30;
+        task->update = &func_8009BC30;
     }
 }
 
@@ -6979,7 +7061,7 @@ void func_8009BC30(CTTask* arg0) {
 }
 
 void func_8009BC60(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         gGameModeState += 2;
     }
 }
@@ -6988,9 +7070,9 @@ void func_8009BC98(CTTask* arg0) {
     func_80099AF4(arg0);
 
     if (arg0->unk54 == 0xA) {
-        arg0->function = func_8009BCF0;
+        arg0->update = &func_8009BCF0;
     } else if (arg0->unk54 == 4) {
-        arg0->function = func_8009BA38;
+        arg0->update = &func_8009BA38;
     }
 }
 
@@ -7004,25 +7086,25 @@ void func_8009BCF0(CTTask* arg0) {
             continue;
         }
         if (arg0->unk6A == task->unk_62) {
-            task->function = func_80099870;
+            task->update = &func_80099870;
         }
     }
     func_800A87D4(arg0->unk6A);
     func_800A878C(&gSaveFiles[arg0->unk6A]);
     arg0->unk_68 = 4;
-    arg0->function = func_8009BDC0;
+    arg0->update = &func_8009BDC0;
 }
 
 void func_8009BDA8(CTTask* arg0) {
     arg0->unk_68 = 4;
-    arg0->function = &func_8009BDE4;
+    arg0->update = &func_8009BDE4;
 }
 
 void func_8009BDC0(CTTask* arg0) {
     if (arg0->unk_68--) {
         return;
     }
-    arg0->function = &func_8009BDA8;
+    arg0->update = &func_8009BDA8;
 }
 
 void func_8009BDE4(CTTask* task) {
@@ -7032,7 +7114,7 @@ void func_8009BDE4(CTTask* task) {
     if (task->unk_68--) {
         return;
     }
-    if (func_8008EC90() == 0) {
+    if (TaskFade_IsIdle() == 0) {
         return;
     }
     gGameRecords.flags[1] &= ~4;
@@ -7047,7 +7129,7 @@ void func_8009BDE4(CTTask* task) {
     rec->flags[1] = (files[3].flags & 0xC) | gGameRecords.flags[1];
     SaveData_UpdateRecords();
     DummiedPrintf("元に戻る\n");
-    task->function = func_8009BA38;
+    task->update = &func_8009BA38;
     task->unk54 = 4;
 }
 
@@ -7055,14 +7137,14 @@ void func_8009BEC4(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
 
     if (newTask->unk54 != 9) {
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
     } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 10;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
@@ -7070,16 +7152,16 @@ void func_8009BEC4(CTTask* task) {
 void func_8009BFA0(CTTask* arg0) {
     func_80099AF4(arg0);
     if (arg0->unk54 == 19) {
-        arg0->function = func_8009BFF8;
+        arg0->update = &func_8009BFF8;
     } else if (arg0->unk54 == 4) {
-        arg0->function = func_8009BA38;
+        arg0->update = &func_8009BA38;
     }
 }
 
 void func_8009BFF8(CTTask* arg0) {
     func_80099AF4(arg0);
     SaveData_ClearRecords();
-    arg0->function = &func_8009C038;
+    arg0->update = &func_8009C038;
     arg0->unk_68 = 4;
 }
 
@@ -7089,14 +7171,14 @@ void func_8009C19C(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
 
     if (newTask->unk54 != 18) {
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
     } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 19;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
@@ -7105,24 +7187,24 @@ void func_8009C278(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
 
     if (newTask->unk54 == 4) {
-        task->function = func_8009B464;
+        task->update = &func_8009B464;
     } else if (newTask->unk54 == 0) {
-        task->function = func_8009A57C;
+        task->update = &func_8009A57C;
     } else if (newTask->unk54 == 9) {
-        task->function = func_8009BEC4;
+        task->update = &func_8009BEC4;
     } else if (newTask->unk54 == 13) {
-        task->function = func_8009C74C;
+        task->update = &func_8009C74C;
     } else if (newTask->unk54 == 18) {
-        task->function = func_8009C19C;
+        task->update = &func_8009C19C;
     }
 }
 
 void func_8009C2FC(CTTask* arg0) {
     if (arg0->unk54 == 0xF) {
-        arg0->function = &func_8009C33C;
+        arg0->update = &func_8009C33C;
     } else if (arg0->unk54 == 0xE) {
         arg0->unk54 = 4;
-        arg0->function = &func_8009BA38;
+        arg0->update = &func_8009BA38;
     }
 }
 
@@ -7130,9 +7212,9 @@ void func_8009C2FC(CTTask* arg0) {
 void func_8009C33C(CTTask* task) {
     func_80099AF4(task);
     if (task->unk54 == 16) {
-        task->function = func_8009C394;
+        task->update = &func_8009C394;
     } else if (task->unk54 == 4) {
-        task->function = func_8009BA38;
+        task->update = &func_8009BA38;
     }
 }
 
@@ -7143,11 +7225,11 @@ void func_8009C394(CTTask* task) {
     for (newTask = gCTTaskHead, next = newTask->next; next != NULL; newTask = next, next = next->next) {
         if (newTask->runType == 3) {
             if (task->unk_64 == newTask->unk_62) {
-                newTask->function = func_800998CC;
+                newTask->update = &func_800998CC;
                 newTask->unk74 = task->unk6A;
             }
             if (task->unk6A == newTask->unk_62) {
-                newTask->function = func_80099870;
+                newTask->update = &func_80099870;
             }
             next = newTask->next;
         }
@@ -7156,10 +7238,10 @@ void func_8009C394(CTTask* task) {
     gSaveFiles[task->unk_64].checksum = SaveData_FileChecksum(&gSaveFiles[task->unk_64].checksum);
     if (SaveData_UpdateFile(task->unk6A, &gSaveFiles[task->unk_64]) != 0) {
         task->unk_68 = 0x3C;
-        task->function = func_8009C4E0;
+        task->update = &func_8009C4E0;
     } else {
         task->unk_68 = 8;
-        task->function = func_8009C700;
+        task->update = &func_8009C700;
     }
 }
 
@@ -7174,11 +7256,11 @@ void func_8009C644(CTTask* task) {
         at = next, next = next->next) {
         if ((at->runType == 3) && (task->unk6A == at->unk_62)) {
             next = at->next;
-            at->function = func_80099598;
+            at->update = &func_80099598;
         }
     }
     task->unk_68 = 8;
-    task->function = func_8009C6AC;
+    task->update = &func_8009C6AC;
 }
 
 void func_8009C6AC(CTTask* arg0) {
@@ -7187,7 +7269,7 @@ void func_8009C6AC(CTTask* arg0) {
     arg0->unk_68 = save-1;
     if (save == 0) {
         DummiedPrintf("元に戻る\n", arg0);
-        arg0->function = func_8009BA38;
+        arg0->update = &func_8009BA38;
         arg0->unk54 = 4;
     }
 }
@@ -7197,7 +7279,7 @@ void func_8009C700(CTTask* task) {
         //return;
     } else {
         DummiedPrintf("元に戻る\n", task);
-        task->function = &func_8009C644;
+        task->update = &func_8009C644;
     }
 }
 
@@ -7207,11 +7289,11 @@ void func_8009C74C(CTTask* task) {
     if (newTask->unk54 == 0xD) {
         if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
             newTask->unk54 = 15;
-            task->function = func_8009C828;
+            task->update = &func_8009C828;
             PLAY_SFX(SFX_Select, 0, 80);
         } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
             newTask->unk54 = 14;
-            task->function = func_8009B464;
+            task->update = &func_8009B464;
             PLAY_SFX(SFX_Decline, 0, 80);
         } else {
             func_800998DC(task);
@@ -7223,14 +7305,14 @@ void func_8009C828(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
 
     if (newTask->unk54 != 15) {
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
     } else if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         newTask->unk54 = 16;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Select, 0, 80);
     } else if (gContMain[task->unk_62].buttons2 & B_BUTTON) {
         newTask->unk54 = 4;
-        task->function = func_8009C278;
+        task->update = &func_8009C278;
         PLAY_SFX(SFX_Decline, 0, 80);
     }
 }
@@ -7336,19 +7418,19 @@ CTTask* func_8009D0EC(void) {
 
     ASSERT_MSG(sp20 != NULL, "エラー\n");
 
-    sp20->function = func_8009D1CC;
+    sp20->update = &func_8009D1CC;
     temp_v0 = sp20;
     sp20 = CTTask_Alloc(1, 0x63, NULL);
 
     ASSERT_MSG(sp20 != NULL, "エラー\n");
 
-    sp20->function = func_8009D08C;
+    sp20->update = &func_8009D08C;
     sp20->unk58.parent = temp_v0;
     return sp20;
 }
 
 void func_8009D19C(CTTask* task) {
-    if (func_8008EC90()) {
+    if (TaskFade_IsIdle()) {
         SetProcessType(GAME_MODE_TITLE_SCREEN);
     }
 }
@@ -7359,7 +7441,7 @@ void func_8009D1CC(CTTask* arg0) {
     s32 i;
 
     temp_v0->spriteID = 0;
-    temp_v0->function = func_8009DA20;
+    temp_v0->update = &func_8009DA20;
     temp_v0->unk54 = 2;
     temp_v0->unk_64 = 0;
     temp_v0->unk_5C = 0;
@@ -7401,11 +7483,11 @@ void func_8009D1CC(CTTask* arg0) {
         temp_v0->animSpeed = 1.0f;
 
         if (gContPortMap[i] != -1) {
-            temp_v0->function = func_8009DE1C;
+            temp_v0->update = &func_8009DE1C;
             temp_v0->animReq = 3;
             temp_v0->unk72 = 1;
         } else {
-            temp_v0->function = func_8009E784;
+            temp_v0->update = &func_8009E784;
             temp_v0->animReq = 1;
             temp_v0->unk72 = 0;
         }
@@ -7439,13 +7521,13 @@ void func_8009DA20(CTTask* task) {
     u8 var_a3;
     s32 i;
 
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         var_a3 = task->unk54;
         var_a0 = 0;
         if (var_a3 == 0xF) {
             task->unk_64 = 0;
-            func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
-            task->function = func_8009D19C;
+            TaskFade_Create(0x20, 0, 0, 0, &task->unk_64);
+            task->update = &func_8009D19C;
             return;
         }
 
@@ -7478,9 +7560,9 @@ void func_8009DA20(CTTask* task) {
                 return;
             }
             if (var_a3 == 6) {
-                task->function = func_8009DB98;
+                task->update = &func_8009DB98;
                 task->unk_64 = 0;
-                func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
+                TaskFade_Create(0x20, 0, 0, 0, &task->unk_64);
                 return;
             }
             task->unk54 = 2;
@@ -7492,20 +7574,20 @@ void func_8009DB98(CTTask* arg0) {
     CTTask* head;
     CTTask* next;
 
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         head = gCTTaskHead;
         next = head->next;
         while (next != NULL) {
             if (head->runType == 2) {
                 head->drawFlags = 0;
-                head->function = func_8009F314;
+                head->update = &func_8009F314;
                 next = head->next;
             }
             head = next;
             next = next->next;
         }
         arg0->unk54 = 7;
-        arg0->function = func_8009F0C8;
+        arg0->update = &func_8009F0C8;
         arg0->unk5E = 0;
         arg0->unk_64 = 0;
         func_8008EA60(32, 0, 0, 0, &arg0->unk_64);
@@ -7534,14 +7616,14 @@ void func_8009DC40(CTTask* arg0) {
         var_a1 = 1;
     }
     if (var_a1 == 0) {
-        temp_v0 = arg0->function;
+        temp_v0 = arg0->update;
         if (temp_v0 == NULL) {
             DummiedPrintf("NULL POINTER %X\n", arg0);
         } else {
             temp_v0(arg0);
         }
     }
-    func_8008D7FC(arg0);
+    CTTask_StepAnim(arg0);
     arg0->dlist = ChameleonGfxs[arg0->unk_5C];
     temp_v1 = temp_t6->unk54;
     if ((temp_v1 == 0xF) || (temp_v1 < 7)) {
@@ -7578,7 +7660,7 @@ void func_8009DE1C(CTTask* task) {
     temp_t1 = task->unk58.parent;
     if (gContMain[task->unk_62].buttons2 & A_BUTTON) {
         task->unk72 = 2;
-        task->function = func_8009E24C;
+        task->update = &func_8009E24C;
         task->unk60 = 8;
         temp_t1->unk94[task->unk_5C] = task->unk_62;
         PLAY_SFX(SFX_Select, 0, 0x10);
@@ -7648,7 +7730,7 @@ void func_8009E24C(CTTask* task) {
     task->pos.y -= 4;
     if (task->pos.y <= 96) {
         task->pos.y = 96;
-        task->function = func_8009E504;
+        task->update = &func_8009E504;
         gSelectedCharacters[task->unk_62] = task->unk_5C;
     }
 }
@@ -7658,7 +7740,7 @@ void func_8009E2B0(CTTask* arg0) {
     arg0->pos.y += 4.0f;
     if (arg0->pos.y >= 128.0f) {
         arg0->pos.y = 128.0f;
-        arg0->function = func_8009DE1C;
+        arg0->update = &func_8009DE1C;
     }
 }
 
@@ -7705,20 +7787,20 @@ void func_8009E784(CTTask* task) {
 
 void func_8009F0C8(CTTask* task) {
     func_8009E82C(task);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (task->unk54 == 14) {
             task->unk_64 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-            task->function = func_8009F5B0;
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+            task->update = &func_8009F5B0;
             D_80200B18 = task->unk5E;
         } else if (task->unk54 == 9) {
             task->unk_64 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-            task->function = func_8009F7F4;
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+            task->update = &func_8009F7F4;
         } else if (task->unk54 == 8) {
             task->unk_64 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-            task->function = func_8009F1B4;
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+            task->update = &func_8009F1B4;
         }
     }
 }
@@ -7730,9 +7812,9 @@ void func_8009F314(CTTask* task) {
     CTTask* newTask = task->unk58.parent;
     u16 funcResult;
 
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (newTask->unk54 == 11) {
-            task->function = func_800A03B8;
+            task->update = &func_800A03B8;
         } else if (newTask->unk54 >= 14) {
             CTTask_Unlink(task);
         } else if (newTask->unk54 < 9) {
@@ -7779,9 +7861,9 @@ void func_8009F314(CTTask* task) {
 
 void func_8009F7F4(CTTask* task) {
     func_8009E82C(task);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         task->unk54 = 11;
-        task->function = func_800A02C4;
+        task->update = &func_800A02C4;
         task->unk66 = gSelectedBattleBGM + 1;
         task->unk_62 = D_80200B1A;
         task->unk_68 = D_80200B1C;
@@ -7813,15 +7895,15 @@ void func_800A02C4(CTTask* task) {
         gSelectedBattleBGM = task->unk66 - 1;
         D_80200B1C = task->unk_68;
         D_801003DC.unk0[0] = task->unk6A;
-        func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-        task->function = func_800A0354;
+        TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+        task->update = &func_800A0354;
     }
 }
 
 void func_800A0354(CTTask* arg0) {
     func_8009F890();
-    if (func_8008EC90() != 0) {
-        arg0->function = func_8009F0C8;
+    if (TaskFade_IsIdle() != 0) {
+        arg0->update = &func_8009F0C8;
         func_8008EA60(0x20, 0, 0, 0, &arg0->unk_64);
         arg0->unk54 = 7;
     }
@@ -7833,13 +7915,13 @@ void func_800A03B8(CTTask* task) {
 
     funcResult = func_8009DDEC(task);
     if (newTask->unk54 == 12) {
-        task->function = func_8009F314;
+        task->update = &func_8009F314;
     } else if (newTask->unk54 == 11) {
         if ((gContMain[task->unk_62].buttons2 & START_BUTTON) || (gContMain[task->unk_62].buttons2 & A_BUTTON)) {
             if (newTask->unk60 == 4) {
                 newTask->unk54 = 12;
                 PLAY_SFX(SFX_Select, 0, 0x10);
-                task->function = func_8009F314;
+                task->update = &func_8009F314;
             }
         } else if (funcResult != 0) {
             if (funcResult & 0x400) {
@@ -7943,13 +8025,13 @@ void func_800A0E3C(CTTask* task) {
     void (*taskFunc)(CTTask*);
     CTTask* sp20 = task->unk58.parent;
 
-    taskFunc = task->function;
+    taskFunc = task->update;
     if (taskFunc == NULL) {
         DummiedPrintf("NULL POINTER %d\n", task->priority);
     } else {
         taskFunc(task);
     }
-    func_8008D7FC(task);
+    CTTask_StepAnim(task);
     task->dlist = ChameleonGfxs[sp20->unk5E];
 }
 
@@ -8006,7 +8088,7 @@ CTTask* func_800A18C8(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->function = func_800A1944;
+    task->update = &func_800A1944;
     return task;
 }
 
@@ -8023,7 +8105,7 @@ void func_800A191C(CTTask* task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1B34.s")
 
 void func_800A1CCC(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (arg0->unk60 == 1) {
             D_800FF8DC = D_800FF8E0 = D_800FF8E4 = 0xFF;
         }
@@ -8102,7 +8184,7 @@ CTTask* func_800A20CC(void) {
         DummiedPrintf("エラー\n"); // error
         while (1) {}
     }
-    task->function = func_800A2164;
+    task->update = &func_800A2164;
     task->pos.x = 64.0f;
     task->pos.y = 64.0f;
     task->pos.z = 0;
@@ -8142,14 +8224,14 @@ void func_800A272C(CTTask* task) {
     s16 dontNeed;
 
     func_800A25F0(task, 162);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         dontNeed = task->unk_5C;
         task->unk_5C = dontNeed - 1;
         if (dontNeed < 0) {
-            task->function = func_800A2B9C;
+            task->update = &func_800A2B9C;
             D_80200058 = 4;
             task->unk_64 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
         }
     }
 }
@@ -8160,7 +8242,7 @@ void func_800A272C(CTTask* task) {
 
 void func_800A2B9C(CTTask* task) {
     func_800A25F0(task, 162.0f);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         gGameModeState++;
     }
 }
@@ -8222,7 +8304,7 @@ CTTask* func_800A2D84(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    temp_v0->function = func_800A2E18;
+    temp_v0->update = &func_800A2E18;
     temp_v0->rotAxis.y = 1;
     temp_v0->scale.z = 1;
     temp_v0->scale.y = 1;
@@ -8249,7 +8331,7 @@ void func_800A2E18(CTTask* task) {
 
     DummiedPrintf("オプションマスタ最初\n");
     task->spriteID = 0;
-    task->function = func_800A38B8;
+    task->update = &func_800A38B8;
     strcpy(task->unk94, " TITLE");
     task->unk_64 = 0;
     task->unk66 = 0;
@@ -8264,7 +8346,7 @@ void func_800A2E18(CTTask* task) {
         task->unk58.parent = master;
         task->unk_70 = 0;
         task->unk6E = 0;
-        task->function = func_800A39EC;
+        task->update = &func_800A39EC;
     }
 }
 
@@ -8278,19 +8360,19 @@ const char sText_Exit_SoundTest[] = "　　　　　　　ＥＸＩＴ　　　�
 
 void func_800A38B8(CTTask* task) {
     func_800A2EF4(task);
-    if ((func_8008EC90() != 0) && (task->unk66 == 5)) {
+    if ((TaskFade_IsIdle() != 0) && (task->unk66 == 5)) {
         task->unk_64 = 0;
-        func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-        task->function = func_800A3928;
+        TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+        task->update = &func_800A3928;
     }
 }
 
 void func_800A3928(CTTask* task) {
     func_800A2EF4(task);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         task->unk_62 = 15;
         if (gIsStereo != (gGameRecords.flags[1] & 1)) {
-            task->function = func_800A3990;
+            task->update = &func_800A3990;
         } else {
             SetProcessType(GAME_MODE_TITLE_SCREEN);
         }
@@ -8313,7 +8395,7 @@ void func_800A3DC0(CTTask* arg0) {
     CTTask* temp_v0 = CTTask_Alloc(1, 0x64, NULL);
 
     temp_v0->unk58.parent = arg0;
-    temp_v0->function = func_800A4074;
+    temp_v0->update = &func_800A4074;
     temp_v0->unk_62 = 0;
 
 }
@@ -8400,7 +8482,7 @@ CTTask* func_800A4484(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->function = &GameOverMaster;
+    task->update = &GameOverMaster;
     return task;
 }
 
@@ -8435,7 +8517,7 @@ const char sText_Exit_Continue[] = "ＥＸＩＴ";
 void func_800A4820(CTTask* task) {
     task->unk_5C--;
     if (task->unk_5C == 0) {
-        task->function = &func_800A4868;
+        task->update = &func_800A4868;
         task->unk_5C = 30;
         func_800A4BCC(task);
     }
@@ -8444,7 +8526,7 @@ void func_800A4820(CTTask* task) {
 void func_800A4868(CTTask* task) {
     task->unk_5C--;
     if (task->unk_5C == 0) {
-        task->function = &func_800A4904;
+        task->update = &func_800A4904;
         task->unk60 = 0;
         func_8008EB08(32, 0, 0, 0, &task->unk_64, 10.0f, 120.0f, 168.0f, 55.0f, 240);
     }
@@ -8457,29 +8539,29 @@ void func_800A4904(CTTask* task) {
     func_800A44D8(task);
     if (task->unk_64 != 0) {
         master = task;
-        task->function = &func_800A49B0;
+        task->update = &func_800A49B0;
         for (i = 0; i < 1; i++) {
             task = CTTask_Alloc(1, 0x69, NULL);
             task->unk58.parent = master;
             task->unk_70 = 0;
             task->unk6E = 0;
             task->unk_62 = D_800FF8E8;
-            task->function = func_800A4D58;
+            task->update = &func_800A4D58;
         }
     }
 }
 
 void func_800A49B0(CTTask* task) {
     if (task->unk5E != -1) {
-        func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-        task->function = func_800A4A10;
+        TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+        task->update = &func_800A4A10;
     }
     func_800A44D8(task);
 }
 
 void func_800A4A10(CTTask* task) {
     func_800A44D8(task);
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         SetProcessType((s32) task->unk5E);
         if (task->unk5E == 0) {
             gGameModeState = 7;
@@ -8507,7 +8589,7 @@ CTTask* func_800A4BCC(CTTask* task) {
 
     newTask->drawFlags = 1;
     newTask->animReq = 5;
-    newTask->function = func_800A4D0C;
+    newTask->update = &func_800A4D0C;
     newTask->scale.z = 1;
     newTask->scale.y = 1;
     newTask->scale.x = 1;
@@ -8520,13 +8602,13 @@ CTTask* func_800A4BCC(CTTask* task) {
     newTask->rotAxis.y = -45;
     newTask->unk58.parent = task;
     newTask->animSpeed = 1;
-    while (func_8008D7FC(newTask) == 0) {}
+    while (CTTask_StepAnim(newTask) == 0) {}
     func_8008EB08(32, 0, 0, 0, &newTask->unk_64, newTask->pos.x - 58, newTask->pos.y - 38, newTask->pos.x + 64, newTask->pos.y + 60, 121);
     return newTask;
 }
 
 void func_800A4D0C(CTTask* arg0) {
-    func_8008D7FC(arg0);
+    CTTask_StepAnim(arg0);
     arg0->dlist = ChameleonGfxs[gSelectedCharacters[D_800FF8E8]];
 }
 
@@ -8580,7 +8662,7 @@ CTTask* func_800A5060(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->function = func_800A50B4;
+    task->update = &func_800A50B4;
     return task;
 }
 
@@ -8589,8 +8671,8 @@ CTTask* func_800A5060(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A51DC.s")
 
 void func_800A5444(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
-        arg0->function = func_800A5488;
+    if (TaskFade_IsIdle() != 0) {
+        arg0->update = &func_800A5488;
         arg0->unk54 = 1;
         arg0->unk60 = 0x96;
     }
@@ -8599,8 +8681,8 @@ void func_800A5444(CTTask* arg0) {
 void func_800A5488(CTTask* task) {
     if (task->unk_62 != -1) {
         task->unk_64 = 0;
-        func_8008E9AC(0x20, 0, 0, 0, &task->unk_64);
-        task->function = &func_800A54F4;
+        TaskFade_Create(0x20, 0, 0, 0, &task->unk_64);
+        task->update = &func_800A54F4;
         task->unk54 = 2;
     }
 }
@@ -8609,7 +8691,7 @@ void func_800A54EC(CTTask* arg0) { //probably CTTask*
 }
 
 void func_800A54F4(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         SetProcessType(arg0->unk_62);
     }
 }
@@ -8721,25 +8803,25 @@ void func_800A6B34(void) {
         DummiedPrintf("エラー\n");
         while (1) {}
     }
-    task->function = &func_800A6B80;
+    task->update = &func_800A6B80;
 }
 
 void func_800A6B80(CTTask* task) {
     task->spriteID = 0;
-    task->function = func_800A6C04;
+    task->update = &func_800A6C04;
     task->unk_62 = D_800FF8E8;
     task->unk_5C = 1;
     task->unk_64 = 0;
 
     func_8008EA60(32, 0, 0, 0, &task->unk_64);
-    CTTask_Alloc(1, 0x62, NULL)->function = PrintSelectedStageInfo;
+    CTTask_Alloc(1, 0x62, NULL)->update = &PrintSelectedStageInfo;
 }
 
 void func_800A6C04(CTTask* task) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if ((D_801FC9BC[task->unk_62].unk_00 & 0x1000) || (D_801FC9BC[task->unk_62].unk_00 & 0x8000)) {
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-            task->function = &func_800A6CF4;
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+            task->update = &func_800A6CF4;
         } else if (task->unk_5C != 0) {
             task->unk_5C--;
             if (task->unk_5C == 0) {
@@ -8750,14 +8832,14 @@ void func_800A6C04(CTTask* task) {
         }
         if (gCurrentDemoTimer < 3) {
             task->unk_64 = 0;
-            func_8008E9AC(32, 0, 0, 0, &task->unk_64);
-            task->function = &func_800A6CF4;
+            TaskFade_Create(32, 0, 0, 0, &task->unk_64);
+            task->update = &func_800A6CF4;
         }
     }
 }
 
 void func_800A6CF4(CTTask* task) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         if (D_800F0704 != 0) {
             gGameModeState = 3;
         } else {
@@ -9500,12 +9582,12 @@ void func_800A9690(void) {
         DummiedPrintf("エラー\n");
         while (1);
     }
-    task->function = &func_800A96DC;
+    task->update = &func_800A96DC;
 }
 
 void func_800A96DC(CTTask* task) {
     task->spriteID = 0;
-    task->function = func_800A9728;
+    task->update = &func_800A9728;
     task->unk_62 = (s16) D_800FF8E8;
     task->unk_5C = 1;
     task->unk_64 = 0;
@@ -9525,15 +9607,15 @@ void func_800A9728(CTTask* arg0) {
     if ((D_80100D64[gCurrentDemo] + 0xA) >= gCurrentDemoTimer) {
         arg0->unk_64 = 0;
         if (gGameModeCurrent != GAME_MODE_CREDITS_DEMO) {
-            func_8008E9AC(0x20, 0, 0, 0, &arg0->unk_64);
+            TaskFade_Create(0x20, 0, 0, 0, &arg0->unk_64);
         }
-        arg0->function = &func_800A97E4;
+        arg0->update = &func_800A97E4;
     }
 }
 
 //ending_goto_endinglevel
 void func_800A97E4(CTTask* arg0) {
-    if (func_8008EC90() != 0) {
+    if (TaskFade_IsIdle() != 0) {
         setPrimColor(0, 0, 0, 0xFF);
         printUISprite(2.0f, 2.0f, 0.0f, 0.0f, 1.0f, 316.0f, 236.0f, 0.0f, SPRITE_BLANK);
         if (D_800F0704 != 0) {

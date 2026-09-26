@@ -5,26 +5,26 @@
 Lights1 Rabbit_grouplight_Light = 
     #include "assets/img/Rabbit/grouplight.light.inc.c"
 
-Vtx Rabbit_ear_Vtx[] = {
-    #include "assets/img/Rabbit/ear/ear.vtx.inc.c"
+Vtx Rabbit_R_Ear_Vtx[] = {
+    #include "assets/img/Rabbit/R_Ear/R_Ear.vtx.inc.c"
 };
 Mtx Rabbit_IMtx1 = IDENTITY;
 
-Gfx Rabbit_ear_Gfx[] = {
-    #include "assets/img/Rabbit/ear/ear.gfx.inc.c"
+Gfx Rabbit_R_Ear_Gfx[] = {
+    #include "assets/img/Rabbit/R_Ear/R_Ear.gfx.inc.c"
 };
 
-Vtx Rabbit_earL_Vtx[] = {
-    #include "assets/img/Rabbit/earL/earL.vtx.inc.c"
+Vtx Rabbit_L_Ear_Vtx[] = {
+    #include "assets/img/Rabbit/L_Ear/L_Ear.vtx.inc.c"
 };
 Mtx Rabbit_IMtx2 = IDENTITY;
 
-Gfx Rabbit_earL_Gfx[] = {
-    #include "assets/img/Rabbit/earL/earL.gfx.inc.c"
+Gfx Rabbit_L_Ear_Gfx[] = {
+    #include "assets/img/Rabbit/L_Ear/L_Ear.gfx.inc.c"
 };
 
-Vtx Rabbit_head_Vtx[] = {
-    #include "assets/img/Rabbit/head/head.vtx.inc.c"
+Vtx Rabbit_Head_Vtx[] = {
+    #include "assets/img/Rabbit/Head/Head.vtx.inc.c"
 };
 Mtx Rabbit_IMtx3 = IDENTITY;
 unsigned char Rabbit_Pad1[] = FILEPAD;
@@ -44,39 +44,39 @@ unsigned char Rabbit_mouth_ci4_PAL[] = {
 #include "build/assets/img/Rabbit/head/mouth.ci4.pal.inc.c"
 };
 
-Gfx Rabbit_head_Gfx[] = {
-    #include "assets/img/Rabbit/head/head.gfx.inc.c"
+Gfx Rabbit_Head_Gfx[] = {
+    #include "assets/img/Rabbit/Head/Head.gfx.inc.c"
 };
 
-Vtx Rabbit_foot_Vtx[] = {
-    #include "assets/img/Rabbit/foot/foot.vtx.inc.c"
+Vtx Rabbit_R_Foot_Vtx[] = {
+    #include "assets/img/Rabbit/R_Foot/R_Foot.vtx.inc.c"
 };
 Mtx Rabbit_IMtx4 = IDENTITY;
 
-Gfx Rabbit_foot_Gfx[] = {
-    #include "assets/img/Rabbit/foot/foot.gfx.inc.c"
+Gfx Rabbit_R_Foot_Gfx[] = {
+    #include "assets/img/Rabbit/R_Foot/R_Foot.gfx.inc.c"
 };
 
-Vtx Rabbit_footL_Vtx[] = {
-    #include "assets/img/Rabbit/footL/footL.vtx.inc.c"
+Vtx Rabbit_L_Foot_Vtx[] = {
+    #include "assets/img/Rabbit/L_Foot/L_Foot.vtx.inc.c"
 };
 Mtx Rabbit_IMtx5 = IDENTITY;
 
-Gfx Rabbit_footL_Gfx[] = {
-    #include "assets/img/Rabbit/footL/footL.gfx.inc.c"
+Gfx Rabbit_L_Foot_Gfx[] = {
+    #include "assets/img/Rabbit/L_Foot/L_Foot.gfx.inc.c"
 };
 
-Vtx Rabbit_leg_Vtx[] = {
-    #include "assets/img/Rabbit/leg/leg.vtx.inc.c"
+Vtx Rabbit_L_Leg_Vtx[] = {
+    #include "assets/img/Rabbit/L_Leg/L_Leg.vtx.inc.c"
 };
 Mtx Rabbit_IMtx6 = IDENTITY;
 
-Gfx Rabbit_leg_Gfx[] = {
-    #include "assets/img/Rabbit/leg/leg.gfx.inc.c"
+Gfx Rabbit_L_Leg_Gfx[] = {
+    #include "assets/img/Rabbit/L_Leg/L_Leg.gfx.inc.c"
 };
 
-Vtx Rabbit_body_Vtx[] = {
-    #include "assets/img/Rabbit/body/body.vtx.inc.c"
+Vtx Rabbit_Torso_Vtx[] = {
+    #include "assets/img/Rabbit/Torso/Torso.vtx.inc.c"
 };
 Mtx Rabbit_IMtx7 = IDENTITY;
 unsigned char Rabbit_Pad5[] = FILEPAD;
@@ -96,30 +96,30 @@ unsigned char Rabbit_tuxedoTop_ci4_PAL[] = {
 #include "build/assets/img/Rabbit/body/tuxedoTop.ci4.pal.inc.c"
 };
 
-Gfx Rabbit_body_Gfx[] = {
-    #include "assets/img/Rabbit/body/body.gfx.inc.c"
+Gfx Rabbit_Torso_Gfx[] = {
+    #include "assets/img/Rabbit/Torso/Torso.gfx.inc.c"
 };
 
-Vtx Rabbit_legL_Vtx[] = {
-    #include "assets/img/Rabbit/legL/legL.vtx.inc.c"
+Vtx Rabbit_R_Leg_Vtx[] = {
+    #include "assets/img/Rabbit/R_Leg/R_Leg.vtx.inc.c"
 };
 Mtx Rabbit_IMtx8 = IDENTITY;
 
-Gfx Rabbit_legL_Gfx[] = {
-    #include "assets/img/Rabbit/legL/legL.gfx.inc.c"
+Gfx Rabbit_R_Leg_Gfx[] = {
+    #include "assets/img/Rabbit/R_Leg/R_Leg.gfx.inc.c"
 };
 
-Vtx Rabbit_tail_Vtx[] = {
-    #include "assets/img/Rabbit/tail/tail.vtx.inc.c"
+Vtx Rabbit_Tail_Vtx[] = {
+    #include "assets/img/Rabbit/Tail/Tail.vtx.inc.c"
 };
 Mtx Rabbit_IMtx9 = IDENTITY;
 
-Gfx Rabbit_tail_Gfx[] = {
-    #include "assets/img/Rabbit/tail/tail.gfx.inc.c"
+Gfx Rabbit_Tail_Gfx[] = {
+    #include "assets/img/Rabbit/Tail/Tail.gfx.inc.c"
 };
 
-Vtx Rabbit_watch_Vtx[] = {
-    #include "assets/img/Rabbit/watch/watch.vtx.inc.c"
+Vtx Rabbit_Watch_Vtx[] = {
+    #include "assets/img/Rabbit/Watch/Watch.vtx.inc.c"
 };
 Mtx Rabbit_IMtx10 = IDENTITY;
 unsigned char Rabbit_Pad9[] = FILEPAD;
@@ -139,24 +139,24 @@ unsigned char Rabbit_watchColor_ci4_PAL[] = {
 #include "build/assets/img/Rabbit/watch/watchColor.ci4.pal.inc.c"
 };
 
-Gfx Rabbit_watch_Gfx[] = {
-    #include "assets/img/Rabbit/watch/watch.gfx.inc.c"
+Gfx Rabbit_Watch_Gfx[] = {
+    #include "assets/img/Rabbit/Watch/Watch.gfx.inc.c"
 };
 
-#include "assets/img/Rabbit/restassociate/restassociate.mtx.inc.c"
+#include "assets/img/Rabbit/Model/Model.mtx.inc.c"
 
-Gfx Rabbit_restassociate_Gfx[] = {
-    #include "assets/img/Rabbit/restassociate/restassociate.gfx.inc.c"
+Gfx Rabbit_Model_Gfx[] = {
+    #include "assets/img/Rabbit/Model/Model.gfx.inc.c"
 };
 
-Anim Rabbit_unk1Header_Animh = {
-    #include "assets/img/Rabbit/anim/unk1Header.animH.inc.c"
+Anim Rabbit_HoppingHeader_Animh = {
+    #include "assets/img/Rabbit/anim/HoppingHeader.animH.inc.c"
 };
 
-Mtx Rabbit_unk1_Animarr[15][10] = {
-    #include "assets/img/Rabbit/anim/unk1.animArr.inc.c"
+Mtx Rabbit_Hopping_Animarr[15][10] = {
+    #include "assets/img/Rabbit/anim/Hopping.animArr.inc.c"
 };
 
-AnimPointer Rabbit_unk1Pointers_Animp[1] = {
-{&Rabbit_unk1Header_Animh.frames, &Rabbit_unk1Header_Animh.objects, Rabbit_unk1_Animarr[0]}
+AnimPointer Rabbit_HoppingPointers_Animp[1] = {
+{&Rabbit_HoppingHeader_Animh.frames, &Rabbit_HoppingHeader_Animh.objects, Rabbit_Hopping_Animarr[0]}
 };

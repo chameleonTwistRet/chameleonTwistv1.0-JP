@@ -3257,94 +3257,94 @@ Mtx DesertCastle_IMtx93 = IDENTITY;
 Lights1 DesertCastle_klScope2_Light =
     #include "assets/levelGroup/DesertCastle/dcScope2.light.inc.c"
 
-Vtx DesertCastle_actorModel1_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel1/actorModel1.vtx.inc.c"
+Vtx DesertCastle_Arrow_Fletching_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Fletching/Arrow_Fletching.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx94 = IDENTITY;
 
-Gfx DesertCastle_actorModel1_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel1/actorModel1.gfx.inc.c"
+Gfx DesertCastle_Arrow_Fletching_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Fletching/Arrow_Fletching.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel2_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel2/actorModel2.vtx.inc.c"
+Vtx DesertCastle_Arrow_Head_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Head/Arrow_Head.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx95 = IDENTITY;
 
-Gfx DesertCastle_actorModel2_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel2/actorModel2.gfx.inc.c"
+Gfx DesertCastle_Arrow_Head_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Head/Arrow_Head.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel3_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel3/actorModel3.vtx.inc.c"
+Vtx DesertCastle_Arrow_Shaft_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Shaft/Arrow_Shaft.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx96 = IDENTITY;
 
-Gfx DesertCastle_actorModel3_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel3/actorModel3.gfx.inc.c"
+Gfx DesertCastle_Arrow_Shaft_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Arrow_Shaft/Arrow_Shaft.gfx.inc.c"
 };
 Mtx DesertCastle_IMtx97 = IDENTITY;
 
-Gfx DesertCastle_actorModel4_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel4/actorModel4.gfx.inc.c"
+Gfx DesertCastle_ArrowModel_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/ArrowModel/ArrowModel.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel5_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel5/actorModel5.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothOne_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothOne/Chomper_BottomToothOne.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx98 = IDENTITY;
 
-Gfx DesertCastle_actorModel5_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel5/actorModel5.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothOne_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothOne/Chomper_BottomToothOne.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel6_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel6/actorModel6.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothTwo_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothTwo/Chomper_BottomToothTwo.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx99 = IDENTITY;
 
-Gfx DesertCastle_actorModel6_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel6/actorModel6.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothTwo_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothTwo/Chomper_BottomToothTwo.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel7_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel7/actorModel7.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothThree_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothThree/Chomper_BottomToothThree.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx100 = IDENTITY;
 
-Gfx DesertCastle_actorModel7_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel7/actorModel7.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothThree_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothThree/Chomper_BottomToothThree.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel8_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel8/actorModel8.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothFour_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothFour/Chomper_BottomToothFour.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx101 = IDENTITY;
 
-Gfx DesertCastle_actorModel8_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel8/actorModel8.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothFour_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothFour/Chomper_BottomToothFour.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel9_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel9/actorModel9.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothFive_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothFive/Chomper_BottomToothFive.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx102 = IDENTITY;
 
-Gfx DesertCastle_actorModel9_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel9/actorModel9.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothFive_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothFive/Chomper_BottomToothFive.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel10_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel10/actorModel10.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomToothSix_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothSix/Chomper_BottomToothSix.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx103 = IDENTITY;
 
-Gfx DesertCastle_actorModel10_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel10/actorModel10.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomToothSix_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomToothSix/Chomper_BottomToothSix.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel11_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel11/actorModel11.vtx.inc.c"
+Vtx DesertCastle_Chomper_BottomFace_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomFace/Chomper_BottomFace.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx104 = IDENTITY;
 unsigned char DesertCastle_Pad15[] = FILEPAD;
@@ -3356,12 +3356,12 @@ unsigned char DesertCastle_red_ci4_PAL[] = {
 #include "build/assets/levelGroup/DesertCastle/actorModel11/red.ci4.pal.inc.c"
 };
 
-Gfx DesertCastle_actorModel11_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel11/actorModel11.gfx.inc.c"
+Gfx DesertCastle_Chomper_BottomFace_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_BottomFace/Chomper_BottomFace.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel12_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel12/actorModel12.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopFace_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopFace/Chomper_TopFace.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx105 = IDENTITY;
 unsigned char DesertCastle_Pad17[] = FILEPAD;
@@ -3373,71 +3373,71 @@ unsigned char DesertCastle_chomperEye_ci4_PAL[] = {
 #include "build/assets/levelGroup/DesertCastle/actorModel12/chomperEye.ci4.pal.inc.c"
 };
 
-Gfx DesertCastle_actorModel12_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel12/actorModel12.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopFace_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopFace/Chomper_TopFace.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel13_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel13/actorModel13.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothOne_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothOne/Chomper_TopToothOne.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx106 = IDENTITY;
 
-Gfx DesertCastle_actorModel13_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel13/actorModel13.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothOne_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothOne/Chomper_TopToothOne.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel14_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel14/actorModel14.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothTwo_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothTwo/Chomper_TopToothTwo.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx107 = IDENTITY;
 
-Gfx DesertCastle_actorModel14_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel14/actorModel14.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothTwo_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothTwo/Chomper_TopToothTwo.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel15_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel15/actorModel15.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothThree_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothThree/Chomper_TopToothThree.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx108 = IDENTITY;
 
-Gfx DesertCastle_actorModel15_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel15/actorModel15.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothThree_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothThree/Chomper_TopToothThree.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel16_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel16/actorModel16.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothFour_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothFour/Chomper_TopToothFour.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx109 = IDENTITY;
 
-Gfx DesertCastle_actorModel16_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel16/actorModel16.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothFour_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothFour/Chomper_TopToothFour.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel17_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel17/actorModel17.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothFive_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothFive/Chomper_TopToothFive.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx110 = IDENTITY;
 
-Gfx DesertCastle_actorModel17_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel17/actorModel17.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothFive_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothFive/Chomper_TopToothFive.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel18_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel18/actorModel18.vtx.inc.c"
+Vtx DesertCastle_Chomper_TopToothSix_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothSix/Chomper_TopToothSix.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx111 = IDENTITY;
 
-Gfx DesertCastle_actorModel18_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel18/actorModel18.gfx.inc.c"
+Gfx DesertCastle_Chomper_TopToothSix_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Chomper_TopToothSix/Chomper_TopToothSix.gfx.inc.c"
 };
 Mtx DesertCastle_IMtx112 = IDENTITY;
 
-Gfx DesertCastle_actorModel19_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel19/actorModel19.gfx.inc.c"
+Gfx DesertCastle_ChomperModel_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/ChomperModel/ChomperModel.gfx.inc.c"
 };
 
-Vtx DesertCastle_actorModel20_Vtx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel20/actorModel20.vtx.inc.c"
+Vtx DesertCastle_Boulder_Vtx[] = {
+    #include "assets/levelGroup/DesertCastle/Boulder/Boulder.vtx.inc.c"
 };
 Mtx DesertCastle_IMtx113 = IDENTITY;
 unsigned char DesertCastle_Pad19[] = FILEPAD;
@@ -3457,47 +3457,47 @@ unsigned char DesertCastle_boulder2_ci8_PAL[] = {
 #include "build/assets/levelGroup/DesertCastle/actorModel12/boulder2.ci8.pal.inc.c"
 };
 
-Gfx DesertCastle_actorModel20_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel20/actorModel20.gfx.inc.c"
+Gfx DesertCastle_Boulder_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/Boulder/Boulder.gfx.inc.c"
 };
 Mtx DesertCastle_IMtx114 = IDENTITY;
 
-Gfx DesertCastle_actorModel21_Gfx[] = {
-    #include "assets/levelGroup/DesertCastle/actorModel21/actorModel21.gfx.inc.c"
+Gfx DesertCastle_BoulderModel_Gfx[] = {
+    #include "assets/levelGroup/DesertCastle/BoulderModel/BoulderModel.gfx.inc.c"
 };
 
-Anim DesertCastle_unk1Header_Animh = {
-    #include "assets/levelGroup/DesertCastle/anim/unk1Header.animH.inc.c"
+Anim DesertCastle_ArrowIdleHeader_Animh = {
+    #include "assets/levelGroup/DesertCastle/anim/ArrowIdleHeader.animH.inc.c"
 };
 
-Mtx DesertCastle_unk1_Animarr[2][3] = {
-    #include "assets/levelGroup/DesertCastle/anim/unk1.animArr.inc.c"
+Mtx DesertCastle_ArrowIdle_Animarr[2][3] = {
+    #include "assets/levelGroup/DesertCastle/anim/ArrowIdle.animArr.inc.c"
 };
 
-AnimPointer DesertCastle_unk1Pointers_Animp[1] = {
-{&DesertCastle_unk1Header_Animh.frames, &DesertCastle_unk1Header_Animh.objects, DesertCastle_unk1_Animarr[0]}
+AnimPointer DesertCastle_ArrowIdlePointers_Animp[1] = {
+{&DesertCastle_ArrowIdleHeader_Animh.frames, &DesertCastle_ArrowIdleHeader_Animh.objects, DesertCastle_ArrowIdle_Animarr[0]}
 };
 
-Anim DesertCastle_unk2Header_Animh = {
-    #include "assets/levelGroup/DesertCastle/anim/unk2Header.animH.inc.c"
+Anim DesertCastle_ChomperChompHeader_Animh = {
+    #include "assets/levelGroup/DesertCastle/anim/ChomperChompHeader.animH.inc.c"
 };
 
-Mtx DesertCastle_unk2_Animarr[5][14] = {
-    #include "assets/levelGroup/DesertCastle/anim/unk2.animArr.inc.c"
+Mtx DesertCastle_ChomperChomp_Animarr[5][14] = {
+    #include "assets/levelGroup/DesertCastle/anim/ChomperChomp.animArr.inc.c"
 };
 
-AnimPointer DesertCastle_unk2Pointers_Animp[1] = {
-{&DesertCastle_unk2Header_Animh.frames, &DesertCastle_unk2Header_Animh.objects, DesertCastle_unk2_Animarr[0]}
+AnimPointer DesertCastle_ChomperChompPointers_Animp[1] = {
+{&DesertCastle_ChomperChompHeader_Animh.frames, &DesertCastle_ChomperChompHeader_Animh.objects, DesertCastle_ChomperChomp_Animarr[0]}
 };
 
-Anim DesertCastle_unk3Header_Animh = {
-    #include "assets/levelGroup/DesertCastle/anim/unk3Header.animH.inc.c"
+Anim DesertCastle_BoulderIdleHeader_Animh = {
+    #include "assets/levelGroup/DesertCastle/anim/BoulderIdleHeader.animH.inc.c"
 };
 
-Mtx DesertCastle_unk3_Animarr[1][1] = {
-    #include "assets/levelGroup/DesertCastle/anim/unk3.animArr.inc.c"
+Mtx DesertCastle_BoulderIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/DesertCastle/anim/BoulderIdle.animArr.inc.c"
 };
 
-AnimPointer DesertCastle_unk3Pointers_Animp[1] = {
-{&DesertCastle_unk3Header_Animh.frames, &DesertCastle_unk3Header_Animh.objects, DesertCastle_unk3_Animarr[0]}
+AnimPointer DesertCastle_BoulderIdlePointers_Animp[1] = {
+{&DesertCastle_BoulderIdleHeader_Animh.frames, &DesertCastle_BoulderIdleHeader_Animh.objects, DesertCastle_BoulderIdle_Animarr[0]}
 };

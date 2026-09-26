@@ -120,11 +120,11 @@ OSTask D_800F04E0[2] = {
 
 s32 Chameleon_StepBool = FALSE;
 
-extern AnimPointer Armadillo_unk1Pointers_Animp[];
-extern AnimPointer Armadillo_unk2Pointers_Animp[];
+extern AnimPointer Armadillo_IdlePointers_Animp[];
+extern AnimPointer Armadillo_Idle2Pointers_Animp[];
 AnimPointer* D_800F0564[2] = {
-    Armadillo_unk1Pointers_Animp,
-    Armadillo_unk2Pointers_Animp
+    Armadillo_IdlePointers_Animp,
+    Armadillo_Idle2Pointers_Animp
 };
 
 s32 D_800F056C[6] = {7, 170, 5, 135, 180, 98};
@@ -137,21 +137,21 @@ f32 D_800F060C[11] = {90, 65, -40, 10, -10, -73, 0, 45, -35, -73, -50};
 
 
 Gfx* ChameleonGfxs[6] = {
-    Davy_restAssociate_Gfx,
-    Jack_restAssociate_Gfx,
-    Fred_restAssociate_Gfx,
-    Linda_restAssociate_Gfx,
-    Black_restAssociate_Gfx,
-    White_restAssociate_Gfx
+    Davy_Model_Gfx,
+    Jack_Model_Gfx,
+    Fred_Model_Gfx,
+    Linda_Model_Gfx,
+    Black_Model_Gfx,
+    White_Model_Gfx
 };
 
 Gfx* Battle_ChameleonGfxs[6] = {
-    Battle_Chameleons_Davy_restAssociate_Gfx,
-    Battle_Chameleons_Jack_restAssociate_Gfx,
-    Battle_Chameleons_Fred_restAssociate_Gfx,
-    Battle_Chameleons_Linda_restAssociate_Gfx,
-    Battle_Chameleons_Black_restAssociate_Gfx,
-    Battle_Chameleons_White_restAssociate_Gfx
+    Battle_Chameleons_Davy_Model_Gfx,
+    Battle_Chameleons_Jack_Model_Gfx,
+    Battle_Chameleons_Fred_Model_Gfx,
+    Battle_Chameleons_Linda_Model_Gfx,
+    Battle_Chameleons_Black_Model_Gfx,
+    Battle_Chameleons_White_Model_Gfx
 };
 
 s32 gFramebufferIndex = 0;
@@ -589,7 +589,7 @@ Gfx* Player_DrawBody(GraphicStruct* arg0, Gfx* gfxPos, PlayerActor* player, Tong
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerRotate[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->playerScale[playerIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (player->playerHurtState != PLAYER_HURT_INVULN || gTimer % 2 == 0) {
-        Gfx* dlist = Davy_restAssociate_Gfx;
+        Gfx* dlist = Davy_Model_Gfx;
         //in what situation is it NOT in 0-6 inclusive???
         if (gSelectedCharacters[playerIndex] <= CHARA_WHITE) {
             //load normal
@@ -893,40 +893,40 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
         switch (gActors[i].actorID) {
         case YELLOW_ANT:
             gActors[i].unk_E8 = gActors[i].unk_134[5] - 40.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, AntLand_yellowAnt_gfx14_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, AntLand_YellowAntModel_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case ANT_QUEEN:
             gActors[i].unk_E8 = gActors[i].unk_134[5];
-            gfxPos = Actor_DrawModel(arg0, gfxPos, Quintella_a_model18_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, Quintella_Model_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
             break;
         case BL_BOSS_SEGMENT:
             if (gActors[i].globalTimer >= 100) {
                 if (gActors[i].userVariables[3] == 0) {
                     gActors[i].unk_E8 = 0.0f;
-                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unkF_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
+                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_HeadModel_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
                 } else if (gActors[i].userVariables[3] == 10) {
                     gActors[i].unk_E8 = 0;
-                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_unk11_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
+                    gfxPos = Actor_DrawModel(arg0, gfxPos, BombSnake_TailModel_Gfx, &gActors[i], 10.0f, 0, &mtxIndex);
                 }
             }
             break;
         case CANNON:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, BombLand_unk74_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BombLand_CannonModel_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
             break;
         case UNK_1F:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_PopcornBucket_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case POGO:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, KidsLand_actorModel9_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, KidsLand_PogoModel_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case CAKE_BOSS:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model9_Gfx, &gActors[i], 8.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_CakeWithNoStrawberriesModel_Gfx, &gActors[i], 8.0f, 0, &mtxIndex);
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model13_Gfx, &gActors[i], 8.0f, 1, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_WalkingWheelModel_Gfx, &gActors[i], 8.0f, 1, &mtxIndex);
             break;
         case CAKE_BOSS_STRAWBERRY:
             if (gActors[i].unk_128 == 6) {
@@ -935,78 +935,78 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
                 actorScale  = 8.0f;
             }
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_a_model15_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GiantCake_StrawberryModel_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
             break;
         case BOWLING_PINS:
             if (D_800FE400 == 0) {
-                bowlingPinsGfx  = KidsLand_actorModel10_Gfx;
+                bowlingPinsGfx  = KidsLand_BowlingPin_Gfx;
             } else {
-                bowlingPinsGfx  = KidsLand_actorModel12_Gfx;
+                bowlingPinsGfx  = KidsLand_DavyBowlingPinModel_Gfx;
             }
             gActors[i].unk_E8 = 0.0f;
             gfxPos = Actor_DrawModel(arg0, gfxPos, bowlingPinsGfx , &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case ARROWS:
             gActors[i].unk_E8 = 50.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel4_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_ArrowModel_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case CHOMPER:
             actorScale  = gActors[i].unk_164 * 6.0f;
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel19_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_ChomperModel_Gfx, &gActors[i], actorScale , 0, &mtxIndex);
             break;
         case BOULDER:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_actorModel21_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, DesertCastle_BoulderModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case ARMADILLO:
             gActors[i].unk_E8 = gActors[i].unk_134[4];
-            gfxPos = Actor_DrawModel(arg0, gfxPos, Armadillo_a_model21_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, Armadillo_Model_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case SANDAL:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model78_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_GetaShoeModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
-        case METAL_SHEET:
+        case FOLDING_SCREEN:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model80_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_FoldingScreenModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case SCROLL:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model88_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_WallScrollModel_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case FIRE_SPITTER:
             gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_model83_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, GhostCastle_FireShooterModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case PILE_OF_BOOKS:
             gActors[i].unk_E8 = -60.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model15_Gfx, &gActors[i], 6.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_Model_Gfx, &gActors[i], 6.0f, 0, &mtxIndex);
             break;
         case PILE_OF_BOOKS_ARM_SPITTER:
             gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_a_model18_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, PileOfBooks_HandModel_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             break;
         case GOLEM:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_GolemModel_Gfx, &gActors[i], 4.0f, 0, &mtxIndex);
             break;
         case SPIDER_SPAWNER:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk2_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_SpiderRockModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case FISH:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk3_Gfx, &gActors[i], 1.4f, 0, &mtxIndex);
-            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_unkunk4_Gfx, &gActors[i], 1.4f, 1, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_FishBodyModel_Gfx, &gActors[i], 1.4f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, JungleLand_FishTailModel_Gfx, &gActors[i], 1.4f, 1, &mtxIndex);
             break;
         case LIZARD_KONG_BOULDER:
             gActors[i].unk_E8 = gActors[i].unknownPositionThings[0].unk_10 / 2;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model14_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_BoulderModel_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         case LIZARD_KONG:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_a_model12_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, LizardKong_Model_Gfx, &gActors[i], 3.0f, 0, &mtxIndex);
             if (gActors[i].unk_EC == 1 && gActors[i].unk_F0 > 25 && gActors[i].unk_F0 < 62) {
                 s32 unused;
                 Mtx* animMtxPtr;
@@ -1020,7 +1020,7 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
 
                 animMtxPtr = NULL;
                 guRotate(&rotMtx, gActors[i].unk_90 + 90.0f, 0, 1.0f, 0);
-                Anim_LoadPointer(&LizardKong_unk2Pointers_Animp, &numObjects, &numFrames, &animMtxPtr);
+                Anim_LoadPointer(&LizardKong_ThrowBoulderPointers_Animp, &numObjects, &numFrames, &animMtxPtr);
 
                 tempMtx = animMtxPtr[6 + (gActors[i].unk_F0 / 2) * numObjects];
                 guMtxCatL(&tempMtx, &rotMtx, &combinedMtx);
@@ -1037,13 +1037,13 @@ Gfx* Actors_DrawAll(GraphicStruct* arg0, Gfx* gfxPos) {
                 gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorTranslate[mtxIndex]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorRotate[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 gSPMatrix(gfxPos++, OS_K0_TO_PHYSICAL(&arg0->actorScale[mtxIndex]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                PutDList(&gMatrixBufPtr, &gfxPos, LizardKong_a_model14_Gfx);
+                PutDList(&gMatrixBufPtr, &gfxPos, LizardKong_BoulderModel_Gfx);
                 gSPPopMatrix(gfxPos++, G_MTX_MODELVIEW);
             }
             break;
         case POPCORN_BUCKET:
             gActors[i].unk_E8 = 0.0f;
-            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_a_model1_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
+            gfxPos = Actor_DrawModel(arg0, gfxPos, BattleMode_PopcornBucket_Gfx, &gActors[i], 2.0f, 0, &mtxIndex);
             break;
         }
     }

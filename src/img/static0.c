@@ -237,36 +237,36 @@ Mtx static0_Jump_Animarr[15][13] = {
     #include "assets/img/static0/anim/chameleon/Jump.animArr.inc.c"
 };
 
-Anim static0_Tongue_Animh = {
-    #include "assets/img/static0/anim/chameleon/Tongue.animH.inc.c"
+Anim static0_TonguePull_Animh = {
+    #include "assets/img/static0/anim/chameleon/TonguePull.animH.inc.c"
 };
 
-Mtx static0_Tongue_Animarr[16][13] = {
-    #include "assets/img/static0/anim/chameleon/Tongue.animArr.inc.c"
+Mtx static0_TonguePull_Animarr[16][13] = {
+    #include "assets/img/static0/anim/chameleon/TonguePull.animArr.inc.c"
 };
 
-Anim static0_Vault_Animh = {
-    #include "assets/img/static0/anim/chameleon/Vault.animH.inc.c"
+Anim static0_PoleSpin_Animh = {
+    #include "assets/img/static0/anim/chameleon/PoleSpin.animH.inc.c"
 };
 
-Mtx static0_Vault_Animarr[20][13] = {
-    #include "assets/img/static0/anim/chameleon/Vault.animArr.inc.c"
+Mtx static0_PoleSpin_Animarr[20][13] = {
+    #include "assets/img/static0/anim/chameleon/PoleSpin.animArr.inc.c"
 };
 
-Anim static0_Spin_Animh = {
-    #include "assets/img/static0/anim/chameleon/Spin.animH.inc.c"
+Anim static0_PoleSpinPowered_Animh = {
+    #include "assets/img/static0/anim/chameleon/PoleSpinPowered.animH.inc.c"
 };
 
-Mtx static0_Spin_Animarr[14][13] = {
-    #include "assets/img/static0/anim/chameleon/Spin.animArr.inc.c"
+Mtx static0_PoleSpinPowered_Animarr[14][13] = {
+    #include "assets/img/static0/anim/chameleon/PoleSpinPowered.animArr.inc.c"
 };
 
-Anim static0_unk2_Animh = {
-    #include "assets/img/static0/anim/chameleon/unk2.animH.inc.c"
+Anim static0_Hit_Animh = {
+    #include "assets/img/static0/anim/chameleon/Hit.animH.inc.c"
 };
 
-Mtx static0_unk2_Animarr[14][13] = {
-    #include "assets/img/static0/anim/chameleon/unk2.animArr.inc.c"
+Mtx static0_Hit_Animarr[14][13] = {
+    #include "assets/img/static0/anim/chameleon/Hit.animArr.inc.c"
 };
 
 Anim static0_LandFromKnockback_Animh = {
@@ -285,12 +285,12 @@ Mtx static0_GetupFromKnockback_Animarr[20][13] = {
     #include "assets/img/static0/anim/chameleon/GetupFromKnockback.animArr.inc.c"
 };
 
-Anim static0_unk3_Animh = {
-    #include "assets/img/static0/anim/chameleon/unk3.animH.inc.c"
+Anim static0_GameOverFallOver_Animh = {
+    #include "assets/img/static0/anim/chameleon/GameOverFallOver.animH.inc.c"
 };
 
-Mtx static0_unk3_Animarr[45][13] = {
-    #include "assets/img/static0/anim/chameleon/unk3.animArr.inc.c"
+Mtx static0_GameOverFallOver_Animarr[45][13] = {
+    #include "assets/img/static0/anim/chameleon/GameOverFallOver.animArr.inc.c"
 };
 
 AnimPointer static0_chameleonAnims[12] = {
@@ -299,11 +299,11 @@ AnimPointer static0_chameleonAnims[12] = {
 {&static0_Run_Animh.frames, &static0_Run_Animh.objects, static0_Run_Animarr[0]},
 {&static0_unk_Animh.frames, &static0_unk_Animh.objects, static0_unk_Animarr[0]},
 {&static0_Jump_Animh.frames, &static0_Jump_Animh.objects, static0_Jump_Animarr[0]},
-{&static0_Tongue_Animh.frames, &static0_Tongue_Animh.objects, static0_Tongue_Animarr[0]},
-{&static0_Vault_Animh.frames, &static0_Vault_Animh.objects, static0_Vault_Animarr[0]},
-{&static0_Spin_Animh.frames, &static0_Spin_Animh.objects, static0_Spin_Animarr[0]},
-{&static0_unk2_Animh.frames, &static0_unk2_Animh.objects, static0_unk2_Animarr[0]},
+{&static0_TonguePull_Animh.frames, &static0_TonguePull_Animh.objects, static0_TonguePull_Animarr[0]},
+{&static0_PoleSpin_Animh.frames, &static0_PoleSpin_Animh.objects, static0_PoleSpin_Animarr[0]},
+{&static0_PoleSpinPowered_Animh.frames, &static0_PoleSpinPowered_Animh.objects, static0_PoleSpinPowered_Animarr[0]},
+{&static0_Hit_Animh.frames, &static0_Hit_Animh.objects, static0_Hit_Animarr[0]},
 {&static0_LandFromKnockback_Animh.frames, &static0_LandFromKnockback_Animh.objects, static0_LandFromKnockback_Animarr[0]},
 {&static0_GetupFromKnockback_Animh.frames, &static0_GetupFromKnockback_Animh.objects, static0_GetupFromKnockback_Animarr[0]},
-{&static0_unk3_Animh.frames, &static0_unk3_Animh.objects, static0_unk3_Animarr[0]}
+{&static0_GameOverFallOver_Animh.frames, &static0_GameOverFallOver_Animh.objects, static0_GameOverFallOver_Animarr[0]}
 };

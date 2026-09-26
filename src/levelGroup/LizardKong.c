@@ -176,8 +176,8 @@ Mtx LizardKong_IMtx5 = IDENTITY;
 Lights1 LizardKong_lkScope2_Light =
     #include "assets/levelGroup/LizardKong/lkScope2/lkScope2.light.inc.c"
 
-Vtx LizardKong_a_model1_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model1/a_model1.vtx.inc.c"
+Vtx LizardKong_Head_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/Head/Head.vtx.inc.c"
 };
 Mtx LizardKong_IMtx6 = IDENTITY;
 unsigned char LizardKong_Pad3[] = FILEPAD;
@@ -221,12 +221,12 @@ unsigned char LizardKong_face_ci4_PAL[] = {
 #include "build/assets/levelGroup/LizardKong/img/face.ci4.pal.inc.c"
 };
 
-Gfx LizardKong_a_model1_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model1/a_model1.gfx.inc.c"
+Gfx LizardKong_Head_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/Head/Head.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model2_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model2/a_model2.vtx.inc.c"
+Vtx LizardKong_Torso_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/Torso/Torso.vtx.inc.c"
 };
 Mtx LizardKong_IMtx7 = IDENTITY;
 unsigned char LizardKong_Pad13[] = FILEPAD;
@@ -246,48 +246,48 @@ unsigned char LizardKong_arm_ci4_PAL[] = {
 #include "build/assets/levelGroup/LizardKong/img/arm.ci4.pal.inc.c"
 };
 
-Gfx LizardKong_a_model2_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model2/a_model2.gfx.inc.c"
+Gfx LizardKong_Torso_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/Torso/Torso.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model3_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model3/a_model3.vtx.inc.c"
+Vtx LizardKong_LowerBody_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/LowerBody/LowerBody.vtx.inc.c"
 };
 Mtx LizardKong_IMtx8 = IDENTITY;
 
-Gfx LizardKong_a_model3_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model3/a_model3.gfx.inc.c"
+Gfx LizardKong_LowerBody_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/LowerBody/LowerBody.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model4_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model4/a_model4.vtx.inc.c"
+Vtx LizardKong_L_Thigh_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/L_Thigh/L_Thigh.vtx.inc.c"
 };
 Mtx LizardKong_IMtx9 = IDENTITY;
 
-Gfx LizardKong_a_model4_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model4/a_model4.gfx.inc.c"
+Gfx LizardKong_L_Thigh_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/L_Thigh/L_Thigh.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model5_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model5/a_model5.vtx.inc.c"
+Vtx LizardKong_R_Thigh_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/R_Thigh/R_Thigh.vtx.inc.c"
 };
 Mtx LizardKong_IMtx10 = IDENTITY;
 
-Gfx LizardKong_a_model5_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model5/a_model5.gfx.inc.c"
+Gfx LizardKong_R_Thigh_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/R_Thigh/R_Thigh.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model6_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model6/a_model6.vtx.inc.c"
+Vtx LizardKong_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/L_Leg/L_Leg.vtx.inc.c"
 };
 Mtx LizardKong_IMtx11 = IDENTITY;
 
-Gfx LizardKong_a_model6_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model6/a_model6.gfx.inc.c"
+Gfx LizardKong_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/L_Leg/L_Leg.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model7_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model7/a_model7.vtx.inc.c"
+Vtx LizardKong_L_Hand_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/L_Hand/L_Hand.vtx.inc.c"
 };
 Mtx LizardKong_IMtx12 = IDENTITY;
 unsigned char LizardKong_Pad17[] = FILEPAD;
@@ -323,53 +323,53 @@ unsigned char LizardKong_fist4_ci4_PAL[] = {
 #include "build/assets/levelGroup/LizardKong/img/fist4.ci4.pal.inc.c"
 };
 
-Gfx LizardKong_a_model7_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model7/a_model7.gfx.inc.c"
+Gfx LizardKong_L_Hand_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/L_Hand/L_Hand.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model8_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model8/a_model8.vtx.inc.c"
+Vtx LizardKong_L_Arm_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/L_Arm/L_Arm.vtx.inc.c"
 };
 Mtx LizardKong_IMtx13 = IDENTITY;
 
-Gfx LizardKong_a_model8_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model8/a_model8.gfx.inc.c"
+Gfx LizardKong_L_Arm_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/L_Arm/L_Arm.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model9_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model9/a_model9.vtx.inc.c"
+Vtx LizardKong_R_Hand_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/R_Hand/R_Hand.vtx.inc.c"
 };
 Mtx LizardKong_IMtx14 = IDENTITY;
 
-Gfx LizardKong_a_model9_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model9/a_model9.gfx.inc.c"
+Gfx LizardKong_R_Hand_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/R_Hand/R_Hand.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model10_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model10/a_model10.vtx.inc.c"
+Vtx LizardKong_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/R_Leg/R_Leg.vtx.inc.c"
 };
 Mtx LizardKong_IMtx15 = IDENTITY;
 
-Gfx LizardKong_a_model10_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model10/a_model10.gfx.inc.c"
+Gfx LizardKong_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/R_Leg/R_Leg.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model11_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model11/a_model11.vtx.inc.c"
+Vtx LizardKong_R_Arm_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/R_Arm/R_Arm.vtx.inc.c"
 };
 Mtx LizardKong_IMtx16 = IDENTITY;
 
-Gfx LizardKong_a_model11_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model11/a_model11.gfx.inc.c"
+Gfx LizardKong_R_Arm_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/R_Arm/R_Arm.gfx.inc.c"
 };
 Mtx LizardKong_IMtx17 = IDENTITY;
 
-Gfx LizardKong_a_model12_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model12/a_model12.gfx.inc.c"
+Gfx LizardKong_Model_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/Model/Model.gfx.inc.c"
 };
 
-Vtx LizardKong_a_model13_Vtx[] = {
-    #include "assets/levelGroup/LizardKong/a_model13/a_model13.vtx.inc.c"
+Vtx LizardKong_Boulder_Vtx[] = {
+    #include "assets/levelGroup/LizardKong/Boulder/Boulder.vtx.inc.c"
 };
 Mtx LizardKong_IMtx18 = IDENTITY;
 unsigned char LizardKong_Pad25[] = FILEPAD;
@@ -389,143 +389,143 @@ unsigned char LizardKong_boulder2_ci8_PAL[] = {
 #include "build/assets/levelGroup/LizardKong/img/boulder2.ci8.pal.inc.c"
 };
 
-Gfx LizardKong_a_model13_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model13/a_model13.gfx.inc.c"
+Gfx LizardKong_Boulder_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/Boulder/Boulder.gfx.inc.c"
 };
 Mtx LizardKong_IMtx19 = IDENTITY;
 
-Gfx LizardKong_a_model14_Gfx[] = {
-    #include "assets/levelGroup/LizardKong/a_model14/a_model14.gfx.inc.c"
+Gfx LizardKong_BoulderModel_Gfx[] = {
+    #include "assets/levelGroup/LizardKong/BoulderModel/BoulderModel.gfx.inc.c"
 };
 
-Anim LizardKong_unk1Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk1Header.animH.inc.c"
+Anim LizardKong_ChestBangHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/ChestBangHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk1_Animarr[80][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk1.animArr.inc.c"
+Mtx LizardKong_ChestBang_Animarr[80][11] = {
+    #include "assets/levelGroup/LizardKong/anim/ChestBang.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk1Pointers_Animp[1] = {
-{&LizardKong_unk1Header_Animh.frames, &LizardKong_unk1Header_Animh.objects, LizardKong_unk1_Animarr[0]}
+AnimPointer LizardKong_ChestBangPointers_Animp[1] = {
+{&LizardKong_ChestBangHeader_Animh.frames, &LizardKong_ChestBangHeader_Animh.objects, LizardKong_ChestBang_Animarr[0]}
 };
 
-Anim LizardKong_unk2Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk2Header.animH.inc.c"
+Anim LizardKong_ThrowBoulderHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/ThrowBoulderHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk2_Animarr[40][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk2.animArr.inc.c"
+Mtx LizardKong_ThrowBoulder_Animarr[40][11] = {
+    #include "assets/levelGroup/LizardKong/anim/ThrowBoulder.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk2Pointers_Animp[1] = {
-{&LizardKong_unk2Header_Animh.frames, &LizardKong_unk2Header_Animh.objects, LizardKong_unk2_Animarr[0]}
+AnimPointer LizardKong_ThrowBoulderPointers_Animp[1] = {
+{&LizardKong_ThrowBoulderHeader_Animh.frames, &LizardKong_ThrowBoulderHeader_Animh.objects, LizardKong_ThrowBoulder_Animarr[0]}
 };
 
-Anim LizardKong_unk3Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk3Header.animH.inc.c"
+Anim LizardKong_WalkHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/WalkHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk3_Animarr[30][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk3.animArr.inc.c"
+Mtx LizardKong_Walk_Animarr[30][11] = {
+    #include "assets/levelGroup/LizardKong/anim/Walk.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk3Pointers_Animp[1] = {
-{&LizardKong_unk3Header_Animh.frames, &LizardKong_unk3Header_Animh.objects, LizardKong_unk3_Animarr[0]}
+AnimPointer LizardKong_WalkPointers_Animp[1] = {
+{&LizardKong_WalkHeader_Animh.frames, &LizardKong_WalkHeader_Animh.objects, LizardKong_Walk_Animarr[0]}
 };
 
-Anim LizardKong_unk4Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk4Header.animH.inc.c"
+Anim LizardKong_KnockbackFromHitHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/KnockbackFromHitHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk4_Animarr[10][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk4.animArr.inc.c"
+Mtx LizardKong_KnockbackFromHit_Animarr[10][11] = {
+    #include "assets/levelGroup/LizardKong/anim/KnockbackFromHit.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk4Pointers_Animp[1] = {
-{&LizardKong_unk4Header_Animh.frames, &LizardKong_unk4Header_Animh.objects, LizardKong_unk4_Animarr[0]}
+AnimPointer LizardKong_KnockbackFromHitPointers_Animp[1] = {
+{&LizardKong_KnockbackFromHitHeader_Animh.frames, &LizardKong_KnockbackFromHitHeader_Animh.objects, LizardKong_KnockbackFromHit_Animarr[0]}
 };
 
-Anim LizardKong_unk5Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk5Header.animH.inc.c"
+Anim LizardKong_StageClearFallingHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearFallingHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk5_Animarr[5][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk5.animArr.inc.c"
+Mtx LizardKong_StageClearFalling_Animarr[5][11] = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearFalling.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk5Pointers_Animp[1] = {
-{&LizardKong_unk5Header_Animh.frames, &LizardKong_unk5Header_Animh.objects, LizardKong_unk5_Animarr[0]}
+AnimPointer LizardKong_StageClearFallingPointers_Animp[1] = {
+{&LizardKong_StageClearFallingHeader_Animh.frames, &LizardKong_StageClearFallingHeader_Animh.objects, LizardKong_StageClearFalling_Animarr[0]}
 };
 
-Anim LizardKong_unk6Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk6Header.animH.inc.c"
+Anim LizardKong_StageClearSitUpHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearSitUpHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk6_Animarr[15][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk6.animArr.inc.c"
+Mtx LizardKong_StageClearSitUp_Animarr[15][11] = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearSitUp.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk6Pointers_Animp[1] = {
-{&LizardKong_unk6Header_Animh.frames, &LizardKong_unk6Header_Animh.objects, LizardKong_unk6_Animarr[0]}
+AnimPointer LizardKong_StageClearSitUpPointers_Animp[1] = {
+{&LizardKong_StageClearSitUpHeader_Animh.frames, &LizardKong_StageClearSitUpHeader_Animh.objects, LizardKong_StageClearSitUp_Animarr[0]}
 };
 
-Anim LizardKong_unk7Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk7Header.animH.inc.c"
+Anim LizardKong_StageClearFinishSitUpHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearFinishSitUpHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk7_Animarr[5][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk7.animArr.inc.c"
+Mtx LizardKong_StageClearFinishSitUp_Animarr[5][11] = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearFinishSitUp.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk7Pointers_Animp[1] = {
-{&LizardKong_unk7Header_Animh.frames, &LizardKong_unk7Header_Animh.objects, LizardKong_unk7_Animarr[0]}
+AnimPointer LizardKong_StageClearFinishSitUpPointers_Animp[1] = {
+{&LizardKong_StageClearFinishSitUpHeader_Animh.frames, &LizardKong_StageClearFinishSitUpHeader_Animh.objects, LizardKong_StageClearFinishSitUp_Animarr[0]}
 };
 
-Anim LizardKong_unk8Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk8Header.animH.inc.c"
+Anim LizardKong_StageClearKnockedOutHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearKnockedOutHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk8_Animarr[20][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk8.animArr.inc.c"
+Mtx LizardKong_StageClearKnockedOut_Animarr[20][11] = {
+    #include "assets/levelGroup/LizardKong/anim/StageClearKnockedOut.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk8Pointers_Animp[1] = {
-{&LizardKong_unk8Header_Animh.frames, &LizardKong_unk8Header_Animh.objects, LizardKong_unk8_Animarr[0]}
+AnimPointer LizardKong_StageClearKnockedOutPointers_Animp[1] = {
+{&LizardKong_StageClearKnockedOutHeader_Animh.frames, &LizardKong_StageClearKnockedOutHeader_Animh.objects, LizardKong_StageClearKnockedOut_Animarr[0]}
 };
 
-Anim LizardKong_unk9Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk9Header.animH.inc.c"
+Anim LizardKong_BoulderIdleHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/BoulderIdleHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk9_Animarr[1][1] = {
-    #include "assets/levelGroup/LizardKong/anim/unk9.animArr.inc.c"
+Mtx LizardKong_BoulderIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/LizardKong/anim/BoulderIdle.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk9Pointers_Animp[1] = {
-{&LizardKong_unk9Header_Animh.frames, &LizardKong_unk9Header_Animh.objects, LizardKong_unk9_Animarr[0]}
+AnimPointer LizardKong_BoulderIdlePointers_Animp[1] = {
+{&LizardKong_BoulderIdleHeader_Animh.frames, &LizardKong_BoulderIdleHeader_Animh.objects, LizardKong_BoulderIdle_Animarr[0]}
 };
 
-Anim LizardKong_unk10Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk10Header.animH.inc.c"
+Anim LizardKong_FallingHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/FallingHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk10_Animarr[15][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk10.animArr.inc.c"
+Mtx LizardKong_Falling_Animarr[15][11] = {
+    #include "assets/levelGroup/LizardKong/anim/Falling.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk10Pointers_Animp[1] = {
-{&LizardKong_unk10Header_Animh.frames, &LizardKong_unk10Header_Animh.objects, LizardKong_unk10_Animarr[0]}
+AnimPointer LizardKong_FallingPointers_Animp[1] = {
+{&LizardKong_FallingHeader_Animh.frames, &LizardKong_FallingHeader_Animh.objects, LizardKong_Falling_Animarr[0]}
 };
 
-Anim LizardKong_unk11Header_Animh = {
-    #include "assets/levelGroup/LizardKong/anim/unk11Header.animH.inc.c"
+Anim LizardKong_FloorPoundHeader_Animh = {
+    #include "assets/levelGroup/LizardKong/anim/FloorPoundHeader.animH.inc.c"
 };
 
-Mtx LizardKong_unk11_Animarr[15][11] = {
-    #include "assets/levelGroup/LizardKong/anim/unk11.animArr.inc.c"
+Mtx LizardKong_FloorPound_Animarr[15][11] = {
+    #include "assets/levelGroup/LizardKong/anim/FloorPound.animArr.inc.c"
 };
 
-AnimPointer LizardKong_unk11Pointers_Animp[1] = {
-{&LizardKong_unk11Header_Animh.frames, &LizardKong_unk11Header_Animh.objects, LizardKong_unk11_Animarr[0]}
+AnimPointer LizardKong_FloorPoundPointers_Animp[1] = {
+{&LizardKong_FloorPoundHeader_Animh.frames, &LizardKong_FloorPoundHeader_Animh.objects, LizardKong_FloorPound_Animarr[0]}
 };

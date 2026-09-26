@@ -38,10 +38,10 @@ Gfx Battle_Chameleons_Davy_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Davy/body/Davy_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Davy/bodyAssociate/Davy_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Davy/BodyRoot/Davy_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_Davy_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Davy/bodyAssociate/Davy_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Davy_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Davy/BodyRoot/Davy_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Davy_head_Vtx[] = {
@@ -240,10 +240,10 @@ Gfx Battle_Chameleons_Davy_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Davy/Lfist/Davy_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Davy/restAssociate/Davy_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Davy/Model/Davy_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_Davy_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Davy/restAssociate/Davy_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Davy_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Davy/Model/Davy_Model.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Jack_body_Vtx[] = {
@@ -279,10 +279,10 @@ Gfx Battle_Chameleons_Jack_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Jack/body/Jack_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Jack/bodyAssociate/Jack_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Jack/BodyRoot/Jack_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_Jack_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Jack/bodyAssociate/Jack_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Jack_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Jack/BodyRoot/Jack_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Jack_head_Vtx[] = {
@@ -481,10 +481,10 @@ Gfx Battle_Chameleons_Jack_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Jack/Lfist/Jack_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Jack/restAssociate/Jack_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Jack/Model/Jack_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_Jack_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Jack/restAssociate/Jack_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Jack_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Jack/Model/Jack_Model.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Fred_body_Vtx[] = {
@@ -520,10 +520,10 @@ Gfx Battle_Chameleons_Fred_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Fred/body/Fred_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Fred/bodyAssociate/Fred_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Fred/BodyRoot/Fred_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_Fred_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Fred/bodyAssociate/Fred_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Fred_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Fred/BodyRoot/Fred_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Fred_head_Vtx[] = {
@@ -722,10 +722,10 @@ Gfx Battle_Chameleons_Fred_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Fred/Lfist/Fred_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Fred/restAssociate/Fred_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Fred/Model/Fred_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_Fred_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Fred/restAssociate/Fred_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Fred_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Fred/Model/Fred_Model.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Linda_body_Vtx[] = {
@@ -761,10 +761,10 @@ Gfx Battle_Chameleons_Linda_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Linda/body/Linda_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Linda/bodyAssociate/Linda_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Linda/BodyRoot/Linda_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_Linda_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Linda/bodyAssociate/Linda_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Linda_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Linda/BodyRoot/Linda_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Linda_head_Vtx[] = {
@@ -971,10 +971,10 @@ Gfx Battle_Chameleons_Linda_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Linda/Lfist/Linda_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Linda/restAssociate/Linda_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Linda/Model/Linda_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_Linda_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Linda/restAssociate/Linda_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Linda_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Linda/Model/Linda_Model.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Black_body_Vtx[] = {
@@ -1010,10 +1010,10 @@ Gfx Battle_Chameleons_Black_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Black/body/Black_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Black/bodyAssociate/Black_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Black/BodyRoot/Black_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_Black_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Black/bodyAssociate/Black_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Black_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Black/BodyRoot/Black_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_Black_head_Vtx[] = {
@@ -1212,10 +1212,10 @@ Gfx Battle_Chameleons_Black_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/Black/Lfist/Black_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/Black/restAssociate/Black_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/Black/Model/Black_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_Black_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/Black/restAssociate/Black_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_Black_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/Black/Model/Black_Model.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_White_body_Vtx[] = {
@@ -1251,10 +1251,10 @@ Gfx Battle_Chameleons_White_body_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/White/body/White_body.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/White/bodyAssociate/White_bodyAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/White/BodyRoot/White_BodyRoot.mtx.inc.c"
 
-Gfx Battle_Chameleons_White_bodyAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/White/bodyAssociate/White_bodyAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_White_BodyRoot_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/White/BodyRoot/White_BodyRoot.gfx.inc.c"
 };
 
 Vtx Battle_Chameleons_White_head_Vtx[] = {
@@ -1453,8 +1453,8 @@ Gfx Battle_Chameleons_White_Lfist_Gfx[] = {
     #include "assets/chameleons/Battle_Chameleons/White/Lfist/White_Lfist.gfx.inc.c"
 };
 
-#include "assets/chameleons/Battle_Chameleons/White/restAssociate/White_restAssociate.mtx.inc.c"
+#include "assets/chameleons/Battle_Chameleons/White/Model/White_Model.mtx.inc.c"
 
-Gfx Battle_Chameleons_White_restAssociate_Gfx[] = {
-    #include "assets/chameleons/Battle_Chameleons/White/restAssociate/White_restAssociate.gfx.inc.c"
+Gfx Battle_Chameleons_White_Model_Gfx[] = {
+    #include "assets/chameleons/Battle_Chameleons/White/Model/White_Model.gfx.inc.c"
 };

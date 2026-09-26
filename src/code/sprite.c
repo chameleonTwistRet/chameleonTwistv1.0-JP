@@ -2417,46 +2417,46 @@ f32 D_800FED2C = 0;
 s32 D_800FED30 = 0;
 s32 D_800FED34 = 0;
 
-extern Gfx IntroOutro_davyChameleon_Gfx[];
-extern Gfx IntroOutro_jackChameleon_Gfx[];
-extern Gfx IntroOutro_fredChameleon_Gfx[];
-extern Gfx IntroOutro_lindaChameleon_Gfx[];
-extern Gfx IntroOutro_davyChameleon_Gfx[];
-extern Gfx IntroOutro_whiteChameleon_Gfx[];
+extern Gfx IntroOutro_DavyChameleonModel_Gfx[];
+extern Gfx IntroOutro_JackChameleonModel_Gfx[];
+extern Gfx IntroOutro_FredChameleonModel_Gfx[];
+extern Gfx IntroOutro_LindaChameleonModel_Gfx[];
+extern Gfx IntroOutro_DavyChameleonModel_Gfx[];
+extern Gfx IntroOutro_WhiteChameleonModel_Gfx[];
 
 //real chameleon gfxs
 Gfx* D_800FED38[] = {
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_jackChameleon_Gfx,
-    IntroOutro_fredChameleon_Gfx,
-    IntroOutro_lindaChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_whiteChameleon_Gfx
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_JackChameleonModel_Gfx,
+    IntroOutro_FredChameleonModel_Gfx,
+    IntroOutro_LindaChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_WhiteChameleonModel_Gfx
 };
 //presumably leftovers, only used in func_80082714 the same way as ^
 Gfx* D_800FED50[] = {
-    IntroOutro_jackChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_jackChameleon_Gfx,
-    IntroOutro_jackChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_whiteChameleon_Gfx
+    IntroOutro_JackChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_JackChameleonModel_Gfx,
+    IntroOutro_JackChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_WhiteChameleonModel_Gfx
 };
 Gfx* D_800FED68[] = {
-    IntroOutro_lindaChameleon_Gfx,
-    IntroOutro_lindaChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_whiteChameleon_Gfx
+    IntroOutro_LindaChameleonModel_Gfx,
+    IntroOutro_LindaChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_WhiteChameleonModel_Gfx
 };
 Gfx* D_800FED80[] = {
-    IntroOutro_fredChameleon_Gfx,
-    IntroOutro_fredChameleon_Gfx,
-    IntroOutro_lindaChameleon_Gfx,
-    IntroOutro_fredChameleon_Gfx,
-    IntroOutro_davyChameleon_Gfx,
-    IntroOutro_whiteChameleon_Gfx
+    IntroOutro_FredChameleonModel_Gfx,
+    IntroOutro_FredChameleonModel_Gfx,
+    IntroOutro_LindaChameleonModel_Gfx,
+    IntroOutro_FredChameleonModel_Gfx,
+    IntroOutro_DavyChameleonModel_Gfx,
+    IntroOutro_WhiteChameleonModel_Gfx
 };
 
 s32 D_800FED98 = 0;

@@ -673,7 +673,7 @@ typedef struct CTTask {
 /* 0x00 */ s16 runType;                         // D_800FF8F0 index, 0 = dead
 /* 0x02 */ s16 priority;                        // list sort key, update + draw order
 /* 0x04 */ s16 spriteID;
-/* 0x08 */ void (*function)(struct CTTask*);
+/* 0x08 */ void (*update)(struct CTTask*);
 /* 0x0C */ struct CTTask* next;
 /* 0x10 */ struct CTTask* prev;
 /* 0x14 */ Vec3f pos;                           // +y is down

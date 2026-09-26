@@ -3374,26 +3374,26 @@ Mtx KidsLand_IMtx84 = IDENTITY;
 Lights1 KidsLand_klScope2_Light =
     #include "assets/levelGroup/KidsLand/klScope2.light.inc.c"
 
-Vtx KidsLand_actorModel1_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel1/actorModel1.vtx.inc.c"
+Vtx KidsLand_Pogo_Body_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Body/Pogo_Body.vtx.inc.c"
 };
 Mtx KidsLand_IMtx85 = IDENTITY;
 
-Gfx KidsLand_actorModel1_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel1/actorModel1.gfx.inc.c"
+Gfx KidsLand_Pogo_Body_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Body/Pogo_Body.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel2_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel2/actorModel2.vtx.inc.c"
+Vtx KidsLand_Pogo_Back_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Back/Pogo_Back.vtx.inc.c"
 };
 Mtx KidsLand_IMtx86 = IDENTITY;
 
-Gfx KidsLand_actorModel2_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel2/actorModel2.gfx.inc.c"
+Gfx KidsLand_Pogo_Back_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Back/Pogo_Back.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel3_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel3/actorModel3.vtx.inc.c"
+Vtx KidsLand_Pogo_R_Hand_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_R_Hand/Pogo_R_Hand.vtx.inc.c"
 };
 Mtx KidsLand_IMtx87 = IDENTITY;
 unsigned char KidsLand_Pad51[] = FILEPAD;
@@ -3413,21 +3413,21 @@ unsigned char KidsLand_hopperGlove2_ci4_PAL[] = {
 #include "build/assets/levelGroup/KidsLand/actorModel3/hopperGlove2.ci4.pal.inc.c"
 };
 
-Gfx KidsLand_actorModel3_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel3/actorModel3.gfx.inc.c"
+Gfx KidsLand_Pogo_R_Hand_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_R_Hand/Pogo_R_Hand.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel4_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel4/actorModel4.vtx.inc.c"
+Vtx KidsLand_Pogo_L_Hand_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_L_Hand/Pogo_L_Hand.vtx.inc.c"
 };
 Mtx KidsLand_IMtx88 = IDENTITY;
 
-Gfx KidsLand_actorModel4_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel4/actorModel4.gfx.inc.c"
+Gfx KidsLand_Pogo_L_Hand_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_L_Hand/Pogo_L_Hand.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel5_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel5/actorModel5.vtx.inc.c"
+Vtx KidsLand_Pogo_Head_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Head/Pogo_Head.vtx.inc.c"
 };
 Mtx KidsLand_IMtx89 = IDENTITY;
 unsigned char KidsLand_Pad55[] = FILEPAD;
@@ -3447,44 +3447,44 @@ unsigned char KidsLand_hopperCheek_ci4_PAL[] = {
 #include "build/assets/levelGroup/KidsLand/actorModel5/hopperCheek.ci4.pal.inc.c"
 };
 
-Gfx KidsLand_actorModel5_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel5/actorModel5.gfx.inc.c"
+Gfx KidsLand_Pogo_Head_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Head/Pogo_Head.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel6_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel6/actorModel6.vtx.inc.c"
+Vtx KidsLand_Pogo_Handles_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Handles/Pogo_Handles.vtx.inc.c"
 };
 Mtx KidsLand_IMtx90 = IDENTITY;
 
-Gfx KidsLand_actorModel6_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel6/actorModel6.gfx.inc.c"
+Gfx KidsLand_Pogo_Handles_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Handles/Pogo_Handles.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel7_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel7/actorModel7.vtx.inc.c"
+Vtx KidsLand_Pogo_Antenna_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Antenna/Pogo_Antenna.vtx.inc.c"
 };
 Mtx KidsLand_IMtx91 = IDENTITY;
 
-Gfx KidsLand_actorModel7_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel7/actorModel7.gfx.inc.c"
+Gfx KidsLand_Pogo_Antenna_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_Antenna/Pogo_Antenna.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel8_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel8/actorModel8.vtx.inc.c"
+Vtx KidsLand_Pogo_AntennaBeam_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_AntennaBeam/Pogo_AntennaBeam.vtx.inc.c"
 };
 Mtx KidsLand_IMtx92 = IDENTITY;
 
-Gfx KidsLand_actorModel8_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel8/actorModel8.gfx.inc.c"
+Gfx KidsLand_Pogo_AntennaBeam_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/Pogo_AntennaBeam/Pogo_AntennaBeam.gfx.inc.c"
 };
 Mtx KidsLand_IMtx93 = IDENTITY;
 
-Gfx KidsLand_actorModel9_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel8/actorModel9.gfx.inc.c"
+Gfx KidsLand_PogoModel_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/PogoModel/PogoModel.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel10_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel10/actorModel10.vtx.inc.c"
+Vtx KidsLand_BowlingPin_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/BowlingPin/BowlingPin.vtx.inc.c"
 };
 Mtx KidsLand_IMtx94 = IDENTITY;
 unsigned char KidsLand_Pad59[] = FILEPAD;
@@ -3496,12 +3496,12 @@ unsigned char KidsLand_bowlingPin_ci4_PAL[] = {
 #include "build/assets/levelGroup/KidsLand/actorModel10/bowlingPin.ci4.pal.inc.c"
 };
 
-Gfx KidsLand_actorModel10_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel10/actorModel10.gfx.inc.c"
+Gfx KidsLand_BowlingPin_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/BowlingPin/BowlingPin.gfx.inc.c"
 };
 
-Vtx KidsLand_actorModel11_Vtx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel11/actorModel11.vtx.inc.c"
+Vtx KidsLand_DavyBowlingPin_Vtx[] = {
+    #include "assets/levelGroup/KidsLand/DavyBowlingPin/DavyBowlingPin.vtx.inc.c"
 };
 Mtx KidsLand_IMtx95 = IDENTITY;
 unsigned char KidsLand_Pad61[] = FILEPAD;
@@ -3529,35 +3529,35 @@ unsigned char KidsLand_davyBowlingPin3_ci8_PAL[] = {
 #include "build/assets/levelGroup/KidsLand/actorModel11/davyBowlingPin3.ci8.pal.inc.c"
 };
 
-Gfx KidsLand_actorModel11_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel11/actorModel11.gfx.inc.c"
+Gfx KidsLand_DavyBowlingPin_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/DavyBowlingPin/DavyBowlingPin.gfx.inc.c"
 };
 Mtx KidsLand_IMtx96 = IDENTITY;
 
-Gfx KidsLand_actorModel12_Gfx[] = {
-    #include "assets/levelGroup/KidsLand/actorModel12/actorModel12.gfx.inc.c"
+Gfx KidsLand_DavyBowlingPinModel_Gfx[] = {
+    #include "assets/levelGroup/KidsLand/DavyBowlingPinModel/DavyBowlingPinModel.gfx.inc.c"
 };
 
-Anim KidsLand_unk1Header_Animh = {
-    #include "assets/levelGroup/KidsLand/anim/unk1Header.animH.inc.c"
+Anim KidsLand_PogoBounceHeader_Animh = {
+    #include "assets/levelGroup/KidsLand/anim/PogoBounceHeader.animH.inc.c"
 };
 
-Mtx KidsLand_unk1_Animarr[20][8] = {
-    #include "assets/levelGroup/KidsLand/anim/unk1.animArr.inc.c"
+Mtx KidsLand_PogoBounce_Animarr[20][8] = {
+    #include "assets/levelGroup/KidsLand/anim/PogoBounce.animArr.inc.c"
 };
 
-AnimPointer KidsLand_unk1Pointers_Animp[1] = {
-{&KidsLand_unk1Header_Animh.frames, &KidsLand_unk1Header_Animh.objects, KidsLand_unk1_Animarr[0]}
+AnimPointer KidsLand_PogoBouncePointers_Animp[1] = {
+{&KidsLand_PogoBounceHeader_Animh.frames, &KidsLand_PogoBounceHeader_Animh.objects, KidsLand_PogoBounce_Animarr[0]}
 };
 
-Anim KidsLand_unk2Header_Animh = {
-    #include "assets/levelGroup/KidsLand/anim/unk2Header.animH.inc.c"
+Anim KidsLand_BowlingPinIdleHeader_Animh = {
+    #include "assets/levelGroup/KidsLand/anim/BowlingPinIdleHeader.animH.inc.c"
 };
 
-Mtx KidsLand_unk2_Animarr[1][1] = {
-    #include "assets/levelGroup/KidsLand/anim/unk2.animArr.inc.c"
+Mtx KidsLand_BowlingPinIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/KidsLand/anim/BowlingPinIdle.animArr.inc.c"
 };
 
-AnimPointer KidsLand_unk2Pointers_Animp[1] = {
-{&KidsLand_unk2Header_Animh.frames, &KidsLand_unk2Header_Animh.objects, KidsLand_unk2_Animarr[0]}
+AnimPointer KidsLand_BowlingPinIdlePointers_Animp[1] = {
+{&KidsLand_BowlingPinIdleHeader_Animh.frames, &KidsLand_BowlingPinIdleHeader_Animh.objects, KidsLand_BowlingPinIdle_Animarr[0]}
 };

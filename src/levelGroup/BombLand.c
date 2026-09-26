@@ -3108,19 +3108,19 @@ ModelCollision BombLand_unk72_collision = {
 
 Mtx BombLand_unkMtx_Mtx = IDENTITY;
 
-Anim BombLand_unk_Animh = {
-    #include "assets/levelGroup/BombLand/anim/unk.animH.inc.c"
+Anim BombLand_CannonIdleHeader_Animh = {
+    #include "assets/levelGroup/BombLand/anim/CannonIdleHeader.animH.inc.c"
 };
 
-Mtx BombLand_unk_Animarr[1][1] = {
-    #include "assets/levelGroup/BombLand/anim/unk.animArr.inc.c"
+Mtx BombLand_CannonIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/BombLand/anim/CannonIdle.animArr.inc.c"
 };
 
 Lights1 BombLand_blScope2_Light =
     #include "assets/levelGroup/BombLand/blScope2.light.inc.c"
 
-Vtx BombLand_unk73_Vtx[] = {
-    #include "assets/levelGroup/BombLand/unk73/unk73.vtx.inc.c"
+Vtx BombLand_Cannon_Vtx[] = {
+    #include "assets/levelGroup/BombLand/Cannon/Cannon.vtx.inc.c"
 };
 Mtx BombLand_IMtx75 = IDENTITY;
 unsigned char BombLand_Pad32[] = FILEPAD;
@@ -3132,15 +3132,15 @@ unsigned char BombLand_cannonHole_rgba16_PNG[] = {
 #include "build/assets/levelGroup/BombLand/unk73/cannonHole.rgba16.png.inc.c"
 };
 
-Gfx BombLand_unk73_Gfx[] = {
-    #include "assets/levelGroup/BombLand/unk73/unk73.gfx.inc.c"
+Gfx BombLand_Cannon_Gfx[] = {
+    #include "assets/levelGroup/BombLand/Cannon/Cannon.gfx.inc.c"
 };
 Mtx BombLand_IMtx76 = IDENTITY;
 
-Gfx BombLand_unk74_Gfx[] = {
-    #include "assets/levelGroup/BombLand/unk74/unk74.gfx.inc.c"
+Gfx BombLand_CannonModel_Gfx[] = {
+    #include "assets/levelGroup/BombLand/CannonModel/CannonModel.gfx.inc.c"
 };
 
-AnimPointer BombLand_unkPointers_Animp[1] = {
-{&BombLand_unk_Animh.frames, &BombLand_unk_Animh.objects, BombLand_unk_Animarr[0]}
+AnimPointer BombLand_CannonIdlePointers_Animp[1] = {
+{&BombLand_CannonIdleHeader_Animh.frames, &BombLand_CannonIdleHeader_Animh.objects, BombLand_CannonIdle_Animarr[0]}
 };

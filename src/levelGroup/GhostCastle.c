@@ -623,12 +623,12 @@ RoomActor GhostCastle_room16_actors[] = {
     {           MIRROR, {1300.0,2400.0,-700.0},   0.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0, 1000000.0,   50.0,      0, 0, 0, 0,  3.0f,  4.0f,      0, 21.0f},
     {           SCROLL,    {1450.0,0.0,-500.0}, 180.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  700.0,  80.0f, 0, 0, 0,     0,  7.0f, 100.0f, 21.0f},
     {           SCROLL,     {1450.0,0.0,500.0}, 180.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  700.0,  80.0f, 0, 0, 0,  1.0f,  7.0f, 100.0f, 21.0f},
-    {      METAL_SHEET,   {1200.0,0.0,-1200.0}, 225.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  800.0,  80.0f, 0, 0, 0,  2.0f,  7.0f,  90.0f, 21.0f},
-    {      METAL_SHEET,    {1200.0,0.0,1200.0}, 135.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  800.0,  60.0f, 0, 0, 0,  3.0f,  7.0f,  90.0f, 21.0f},
+    {   FOLDING_SCREEN,   {1200.0,0.0,-1200.0}, 225.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  800.0,  80.0f, 0, 0, 0,  2.0f,  7.0f,  90.0f, 21.0f},
+    {   FOLDING_SCREEN,    {1200.0,0.0,1200.0}, 135.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  800.0,  60.0f, 0, 0, 0,  3.0f,  7.0f,  90.0f, 21.0f},
     {           SCROLL,   {-1450.0,0.0,-500.0},   0.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  900.0,  80.0f, 0, 0, 0,  4.0f,  7.0f,  80.0f, 21.0f},
     {           SCROLL,    {-1450.0,0.0,500.0},   0.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0,  900.0,  80.0f, 0, 0, 0,  5.0f,  7.0f,  80.0f, 21.0f},
-    {      METAL_SHEET,    {500.0,0.0,-1400.0}, -90.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0, 1000.0,  80.0f, 0, 0, 0,  6.0f,  7.0f,  70.0f, 21.0f},
-    {      METAL_SHEET,     {500.0,0.0,1400.0},  90.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0, 1000.0,  80.0f, 0, 0, 0,  7.0f,  7.0f,  70.0f, 21.0f},
+    {   FOLDING_SCREEN,    {500.0,0.0,-1400.0}, -90.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0, 1000.0,  80.0f, 0, 0, 0,  6.0f,  7.0f,  70.0f, 21.0f},
+    {   FOLDING_SCREEN,     {500.0,0.0,1400.0},  90.0, -10000.0, 10000.0, -10000.0f, 10000.0, -10000.0, 10000.0, 0,  0.0,  0.0,       0.0, 1000.0,  80.0f, 0, 0, 0,  7.0f,  7.0f,  70.0f, 21.0f},
     {       ACTOR_NULL,          {0.0,0.0,0.0},   0.0,      0.0,     0.0,         0,     0.0,      0.0,     0.0, 0,  0.0,  0.0,       0.0,    0.0,      0, 0, 0, 0,     0,     0,      0,     0}
 };
 
@@ -3266,40 +3266,40 @@ Mtx GhostCastle_IMtx80 = IDENTITY;
 Lights1 GhostCastle_gcScope2_Light =
     #include "assets/levelGroup/GhostCastle/gcScope2/gcScope2.light.inc.c"
 
-Vtx GhostCastle_model75_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model75/model75.vtx.inc.c"
+Vtx GhostCastle_GetaShoe_RightBand_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_RightBand/GetaShoe_RightBand.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx81 = IDENTITY;
 
-Gfx GhostCastle_model75_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model75/model75.gfx.inc.c"
+Gfx GhostCastle_GetaShoe_RightBand_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_RightBand/GetaShoe_RightBand.gfx.inc.c"
 };
 
-Vtx GhostCastle_model76_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model76/model76.vtx.inc.c"
+Vtx GhostCastle_GetaShoe_LeftBand_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_LeftBand/GetaShoe_LeftBand.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx82 = IDENTITY;
 
-Gfx GhostCastle_model76_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model76/model76.gfx.inc.c"
+Gfx GhostCastle_GetaShoe_LeftBand_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_LeftBand/GetaShoe_LeftBand.gfx.inc.c"
 };
 
-Vtx GhostCastle_model77_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model77/model77.vtx.inc.c"
+Vtx GhostCastle_GetaShoe_GetaSole_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_GetaSole/GetaShoe_GetaSole.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx83 = IDENTITY;
 
-Gfx GhostCastle_model77_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model77/model77.gfx.inc.c"
+Gfx GhostCastle_GetaShoe_GetaSole_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoe_GetaSole/GetaShoe_GetaSole.gfx.inc.c"
 };
 Mtx GhostCastle_IMtx84 = IDENTITY;
 
-Gfx GhostCastle_model78_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model78/model78.gfx.inc.c"
+Gfx GhostCastle_GetaShoeModel_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/GetaShoeModel/GetaShoeModel.gfx.inc.c"
 };
 
-Vtx GhostCastle_model79_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model79/model79.vtx.inc.c"
+Vtx GhostCastle_Screen_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/Screen/Screen.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx85 = IDENTITY;
 unsigned char GhostCastle_Pad67[] = FILEPAD;
@@ -3311,17 +3311,17 @@ unsigned char GhostCastle_green_rgba16_PNG[] = {
 #include "build/assets/levelGroup/GhostCastle/img/green.rgba16.png.inc.c"
 };
 
-Gfx GhostCastle_model79_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model79/model79.gfx.inc.c"
+Gfx GhostCastle_Screen_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/Screen/Screen.gfx.inc.c"
 };
 Mtx GhostCastle_IMtx86 = IDENTITY;
 
-Gfx GhostCastle_model80_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model80/model80.gfx.inc.c"
+Gfx GhostCastle_FoldingScreenModel_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/FoldingScreenModel/FoldingScreenModel.gfx.inc.c"
 };
 
-Vtx GhostCastle_model87_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model87/model87.vtx.inc.c"
+Vtx GhostCastle_Scroll_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/Scroll/Scroll.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx87 = IDENTITY;
 unsigned char GhostCastle_Pad69[] = FILEPAD;
@@ -3333,17 +3333,17 @@ unsigned char GhostCastle_scroll2_rgba16_PNG[] = {
 #include "build/assets/levelGroup/GhostCastle/img/scroll2.rgba16.png.inc.c"
 };
 
-Gfx GhostCastle_model87_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model87/model87.gfx.inc.c"
+Gfx GhostCastle_Scroll_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/Scroll/Scroll.gfx.inc.c"
 };
 Mtx GhostCastle_IMtx88 = IDENTITY;
 
-Gfx GhostCastle_model88_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model88/model88.gfx.inc.c"
+Gfx GhostCastle_WallScrollModel_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/WallScrollModel/WallScrollModel.gfx.inc.c"
 };
 
-Vtx GhostCastle_model81_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model81/model81.vtx.inc.c"
+Vtx GhostCastle_FireShooter_Top_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/FireShooter_Top/FireShooter_Top.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx89 = IDENTITY;
 unsigned char GhostCastle_Pad71[] = FILEPAD;
@@ -3359,12 +3359,12 @@ unsigned char GhostCastle_creatureBody_rgba16_PNG[] = {
 #include "build/assets/levelGroup/GhostCastle/img/creatureBody.rgba16.png.inc.c"
 };
 
-Gfx GhostCastle_model81_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model81/model81.gfx.inc.c"
+Gfx GhostCastle_FireShooter_Top_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/FireShooter_Top/FireShooter_Top.gfx.inc.c"
 };
 
-Vtx GhostCastle_model82_Vtx[] = {
-    #include "assets/levelGroup/GhostCastle/model82/model82.vtx.inc.c"
+Vtx GhostCastle_FireShooter_Bottom_Vtx[] = {
+    #include "assets/levelGroup/GhostCastle/FireShooter_Bottom/FireShooter_Bottom.vtx.inc.c"
 };
 Mtx GhostCastle_IMtx90 = IDENTITY;
 unsigned char GhostCastle_Pad74[] = FILEPAD;
@@ -3372,59 +3372,59 @@ unsigned char GhostCastle_hole_rgba16_PNG[] = {
 #include "build/assets/levelGroup/GhostCastle/img/hole.rgba16.png.inc.c"
 };
 
-Gfx GhostCastle_model82_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model82/model82.gfx.inc.c"
+Gfx GhostCastle_FireShooter_Bottom_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/FireShooter_Bottom/FireShooter_Bottom.gfx.inc.c"
 };
 Mtx GhostCastle_IMtx91 = IDENTITY;
 
-Gfx GhostCastle_model83_Gfx[] = {
-    #include "assets/levelGroup/GhostCastle/model83/model83.gfx.inc.c"
+Gfx GhostCastle_FireShooterModel_Gfx[] = {
+    #include "assets/levelGroup/GhostCastle/FireShooterModel/FireShooterModel.gfx.inc.c"
 };
 
-Anim GhostCastle_unk1Header_Animh = {
-    #include "assets/levelGroup/GhostCastle/anim/unk1Header.animH.inc.c"
+Anim GhostCastle_GetaShoeIdleHeader_Animh = {
+    #include "assets/levelGroup/GhostCastle/anim/GetaShoeIdleHeader.animH.inc.c"
 };
 
-Mtx GhostCastle_unk1_Animarr[2][3] = {
-    #include "assets/levelGroup/GhostCastle/anim/unk1.animArr.inc.c"
+Mtx GhostCastle_GetaShoeIdle_Animarr[2][3] = {
+    #include "assets/levelGroup/GhostCastle/anim/GetaShoeIdle.animArr.inc.c"
 };
 
-AnimPointer GhostCastle_unk1Pointer_Animp[1] = {
-{&GhostCastle_unk1Header_Animh.frames, &GhostCastle_unk1Header_Animh.objects, GhostCastle_unk1_Animarr[0]}
+AnimPointer GhostCastle_GetaShoeIdlePointer_Animp[1] = {
+{&GhostCastle_GetaShoeIdleHeader_Animh.frames, &GhostCastle_GetaShoeIdleHeader_Animh.objects, GhostCastle_GetaShoeIdle_Animarr[0]}
 };
 
-Anim GhostCastle_unk2Header_Animh = {
-    #include "assets/levelGroup/GhostCastle/anim/unk2Header.animH.inc.c"
+Anim GhostCastle_FoldingScreenIdleHeader_Animh = {
+    #include "assets/levelGroup/GhostCastle/anim/FoldingScreenIdleHeader.animH.inc.c"
 };
 
-Mtx GhostCastle_unk2_Animarr[2][1] = {
-    #include "assets/levelGroup/GhostCastle/anim/unk2.animArr.inc.c"
+Mtx GhostCastle_FoldingScreenIdle_Animarr[2][1] = {
+    #include "assets/levelGroup/GhostCastle/anim/FoldingScreenIdle.animArr.inc.c"
 };
 
-AnimPointer GhostCastle_unk2Pointer_Animp[1] = {
-{&GhostCastle_unk2Header_Animh.frames, &GhostCastle_unk2Header_Animh.objects, GhostCastle_unk2_Animarr[0]}
+AnimPointer GhostCastle_FoldingScreenIdlePointer_Animp[1] = {
+{&GhostCastle_FoldingScreenIdleHeader_Animh.frames, &GhostCastle_FoldingScreenIdleHeader_Animh.objects, GhostCastle_FoldingScreenIdle_Animarr[0]}
 };
 
-Anim GhostCastle_unk3Header_Animh = {
-    #include "assets/levelGroup/GhostCastle/anim/unk3Header.animH.inc.c"
+Anim GhostCastle_WallScrollIdleHeader_Animh = {
+    #include "assets/levelGroup/GhostCastle/anim/WallScrollIdleHeader.animH.inc.c"
 };
 
-Mtx GhostCastle_unk3_Animarr[2][1] = {
-    #include "assets/levelGroup/GhostCastle/anim/unk3.animArr.inc.c"
+Mtx GhostCastle_WallScrollIdle_Animarr[2][1] = {
+    #include "assets/levelGroup/GhostCastle/anim/WallScrollIdle.animArr.inc.c"
 };
 
-AnimPointer GhostCastle_unk3Pointer_Animp[1] = {
-{&GhostCastle_unk3Header_Animh.frames, &GhostCastle_unk3Header_Animh.objects, GhostCastle_unk3_Animarr[0]}
+AnimPointer GhostCastle_WallScrollIdlePointer_Animp[1] = {
+{&GhostCastle_WallScrollIdleHeader_Animh.frames, &GhostCastle_WallScrollIdleHeader_Animh.objects, GhostCastle_WallScrollIdle_Animarr[0]}
 };
 
-Anim GhostCastle_unk4Header_Animh = {
-    #include "assets/levelGroup/GhostCastle/anim/unk4Header.animH.inc.c"
+Anim GhostCastle_FireShooterMouthOpeningHeader_Animh = {
+    #include "assets/levelGroup/GhostCastle/anim/FireShooterMouthOpeningHeader.animH.inc.c"
 };
 
-Mtx GhostCastle_unk4_Animarr[10][2] = {
-    #include "assets/levelGroup/GhostCastle/anim/unk4.animArr.inc.c"
+Mtx GhostCastle_FireShooterMouthOpening_Animarr[10][2] = {
+    #include "assets/levelGroup/GhostCastle/anim/FireShooterMouthOpening.animArr.inc.c"
 };
 
-AnimPointer GhostCastle_unk4Pointer_Animp[1] = {
-{&GhostCastle_unk4Header_Animh.frames, &GhostCastle_unk4Header_Animh.objects, GhostCastle_unk4_Animarr[0]}
+AnimPointer GhostCastle_FireShooterMouthOpeningPointer_Animp[1] = {
+{&GhostCastle_FireShooterMouthOpeningHeader_Animh.frames, &GhostCastle_FireShooterMouthOpeningHeader_Animh.objects, GhostCastle_FireShooterMouthOpening_Animarr[0]}
 };

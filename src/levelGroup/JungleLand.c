@@ -3383,8 +3383,8 @@ Mtx JungleLand_IMtx87 = IDENTITY;
 Lights1 JungleLand_jlScope2_Light =
     #include "assets/levelGroup/JungleLand/jlScope2/jlScope2.light.inc.c"
 
-Vtx JungleLand_rockGolem_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolem/rockGolem.vtx.inc.c"
+Vtx JungleLand_Golem_Head_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_Head/Golem_Head.vtx.inc.c"
 };
 Mtx JungleLand_IMtx88 = IDENTITY;
 unsigned char JungleLand_Pad30[] = FILEPAD;
@@ -3404,21 +3404,21 @@ unsigned char JungleLand_golemFace_ci8_PAL[] = {
 #include "build/assets/levelGroup/JungleLand/golemFace.ci8.pal.inc.c"
 };
 
-Gfx JungleLand_rockGolem_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolem/rockGolem.gfx.inc.c"
+Gfx JungleLand_Golem_Head_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_Head/Golem_Head.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemLeg_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg/rockGolemLeg.vtx.inc.c"
+Vtx JungleLand_Golem_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Leg/Golem_L_Leg.vtx.inc.c"
 };
 Mtx JungleLand_IMtx89 = IDENTITY;
 
-Gfx JungleLand_rockGolemLeg_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg/rockGolemLeg.gfx.inc.c"
+Gfx JungleLand_Golem_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Leg/Golem_L_Leg.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemArm_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemArm/rockGolemArm.vtx.inc.c"
+Vtx JungleLand_Golem_L_Arm_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Arm/Golem_L_Arm.vtx.inc.c"
 };
 Mtx JungleLand_IMtx90 = IDENTITY;
 unsigned char JungleLand_Pad34[] = FILEPAD;
@@ -3446,62 +3446,62 @@ unsigned char JungleLand_rock4_ci4_PAL[] = {
 #include "build/assets/levelGroup/JungleLand/rock4.ci4.pal.inc.c"
 };
 
-Gfx JungleLand_rockGolemArm_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemArm/rockGolemArm.gfx.inc.c"
+Gfx JungleLand_Golem_L_Arm_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Arm/Golem_L_Arm.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemLeg2_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg2/rockGolemLeg2.vtx.inc.c"
+Vtx JungleLand_Golem_L_Shoulder_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Shoulder/Golem_L_Shoulder.vtx.inc.c"
 };
 Mtx JungleLand_IMtx91 = IDENTITY;
 
-Gfx JungleLand_rockGolemLeg2_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg2/rockGolemLeg2.gfx.inc.c"
+Gfx JungleLand_Golem_L_Shoulder_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_L_Shoulder/Golem_L_Shoulder.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemBody_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemBody/rockGolemBody.vtx.inc.c"
+Vtx JungleLand_Golem_Body_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_Body/Golem_Body.vtx.inc.c"
 };
 Mtx JungleLand_IMtx92 = IDENTITY;
 
-Gfx JungleLand_rockGolemBody_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemBody/rockGolemBody.gfx.inc.c"
+Gfx JungleLand_Golem_Body_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_Body/Golem_Body.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemLeg3_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg3/rockGolemLeg3.vtx.inc.c"
+Vtx JungleLand_Golem_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Foot/Golem_R_Foot.vtx.inc.c"
 };
 Mtx JungleLand_IMtx93 = IDENTITY;
 
-Gfx JungleLand_rockGolemLeg3_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemLeg3/rockGolemLeg3.gfx.inc.c"
+Gfx JungleLand_Golem_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Foot/Golem_R_Foot.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemElbow_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemElbow/rockGolemElbow.vtx.inc.c"
+Vtx JungleLand_Golem_R_Shoulder_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Shoulder/Golem_R_Shoulder.vtx.inc.c"
 };
 Mtx JungleLand_IMtx94 = IDENTITY;
 
-Gfx JungleLand_rockGolemElbow_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemElbow/rockGolemElbow.gfx.inc.c"
+Gfx JungleLand_Golem_R_Shoulder_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Shoulder/Golem_R_Shoulder.gfx.inc.c"
 };
 
-Vtx JungleLand_rockGolemArm2_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemArm2/rockGolemArm2.vtx.inc.c"
+Vtx JungleLand_Golem_R_Arm_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Arm/Golem_R_Arm.vtx.inc.c"
 };
 Mtx JungleLand_IMtx95 = IDENTITY;
 
-Gfx JungleLand_rockGolemArm2_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/rockGolemArm2/rockGolemArm2.gfx.inc.c"
+Gfx JungleLand_Golem_R_Arm_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Golem_R_Arm/Golem_R_Arm.gfx.inc.c"
 };
 Mtx JungleLand_IMtx96 = IDENTITY;
 
-Gfx JungleLand_unkunk_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/unkunk.gfx.inc.c"
+Gfx JungleLand_GolemModel_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/GolemModel/GolemModel.gfx.inc.c"
 };
 
-Vtx JungleLand_spiderRock_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/spiderRock/spiderRock.vtx.inc.c"
+Vtx JungleLand_SpiderRock_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/SpiderRock/SpiderRock.vtx.inc.c"
 };
 Mtx JungleLand_IMtx97 = IDENTITY;
 unsigned char JungleLand_Pad40[] = FILEPAD;
@@ -3513,17 +3513,17 @@ unsigned char JungleLand_spiderRock_ci8_PAL[] = {
 #include "build/assets/levelGroup/JungleLand/spiderRock.ci8.pal.inc.c"
 };
 
-Gfx JungleLand_spiderRock_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/spiderRock/spiderRock.gfx.inc.c"
+Gfx JungleLand_SpiderRock_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/SpiderRock/SpiderRock.gfx.inc.c"
 };
 Mtx JungleLand_IMtx98 = IDENTITY;
 
-Gfx JungleLand_unkunk2_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/unkunk2.gfx.inc.c"
+Gfx JungleLand_SpiderRockModel_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/SpiderRockModel/SpiderRockModel.gfx.inc.c"
 };
 
-Vtx JungleLand_fish_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/fish/fish.vtx.inc.c"
+Vtx JungleLand_Fish_Body_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Fish_Body/Fish_Body.vtx.inc.c"
 };
 Mtx JungleLand_IMtx99 = IDENTITY;
 unsigned char JungleLand_Pad42[] = FILEPAD;
@@ -3531,17 +3531,17 @@ unsigned char JungleLand_fish_rgba16_PNG[] = {
 #include "build/assets/levelGroup/JungleLand/fish.rgba16.png.inc.c"
 };
 
-Gfx JungleLand_fish_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/fish/fish.gfx.inc.c"
+Gfx JungleLand_Fish_Body_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Fish_Body/Fish_Body.gfx.inc.c"
 };
 Mtx JungleLand_IMtx100 = IDENTITY;
 
-Gfx JungleLand_unkunk3_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/unkunk3.gfx.inc.c"
+Gfx JungleLand_FishBodyModel_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/FishBodyModel/FishBodyModel.gfx.inc.c"
 };
 
-Vtx JungleLand_fishTail_Vtx[] = {
-    #include "assets/levelGroup/JungleLand/fishTail/fishTail.vtx.inc.c"
+Vtx JungleLand_Fish_Tail_Vtx[] = {
+    #include "assets/levelGroup/JungleLand/Fish_Tail/Fish_Tail.vtx.inc.c"
 };
 Mtx JungleLand_IMtx101 = IDENTITY;
 unsigned char JungleLand_Pad43[] = FILEPAD;
@@ -3549,73 +3549,73 @@ unsigned char JungleLand_fishTail_rgba16_PNG[] = {
 #include "build/assets/levelGroup/JungleLand/fishTail.rgba16.png.inc.c"
 };
 
-Gfx JungleLand_fishTail_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/fishTail/fishTail.gfx.inc.c"
+Gfx JungleLand_Fish_Tail_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/Fish_Tail/Fish_Tail.gfx.inc.c"
 };
 Mtx JungleLand_IMtx102 = IDENTITY;
 
-Gfx JungleLand_unkunk4_Gfx[] = {
-    #include "assets/levelGroup/JungleLand/unkunk4.gfx.inc.c"
+Gfx JungleLand_FishTailModel_Gfx[] = {
+    #include "assets/levelGroup/JungleLand/FishTailModel/FishTailModel.gfx.inc.c"
 };
 
-Anim JungleLand_golemSleep_Animh = {
-    #include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleep.animH.inc.c"
+Anim JungleLand_GolemGetUpHeader_Animh = {
+    #include "assets/levelGroup/JungleLand/anim/GolemGetUpHeader.animH.inc.c"
 };
 
-Mtx JungleLand_golemSleep_Animarr[20][8] = {
-    #include "assets/levelGroup/JungleLand/anim/actors/golem/golemSleep.animArr.inc.c"
+Mtx JungleLand_GolemGetUp_Animarr[20][8] = {
+    #include "assets/levelGroup/JungleLand/anim/GolemGetUp.animArr.inc.c"
 };
 
-AnimPointer JungleLand_golemSleepPointers_Animp[1] = {
-{&JungleLand_golemSleep_Animh.frames, &JungleLand_golemSleep_Animh.objects, JungleLand_golemSleep_Animarr[0]}
+AnimPointer JungleLand_GolemGetUpPointers_Animp[1] = {
+{&JungleLand_GolemGetUpHeader_Animh.frames, &JungleLand_GolemGetUpHeader_Animh.objects, JungleLand_GolemGetUp_Animarr[0]}
 };
 
-Anim JungleLand_golemAttack_Animh = {
-    #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animH.inc.c"
+Anim JungleLand_GolemAttackHeader_Animh = {
+    #include "assets/levelGroup/JungleLand/anim/GolemAttackHeader.animH.inc.c"
 };
 
-Mtx JungleLand_golemAttack_Animarr[55][8] = {
-    #include "assets/levelGroup/JungleLand/anim/actors/golem/golemAttack.animArr.inc.c"
+Mtx JungleLand_GolemAttack_Animarr[55][8] = {
+    #include "assets/levelGroup/JungleLand/anim/GolemAttack.animArr.inc.c"
 };
 
-AnimPointer JungleLand_golemAttackPointers_Animp[1] = {
-{&JungleLand_golemAttack_Animh.frames, &JungleLand_golemAttack_Animh.objects, JungleLand_golemAttack_Animarr[0]}
+AnimPointer JungleLand_GolemAttackPointers_Animp[1] = {
+{&JungleLand_GolemAttackHeader_Animh.frames, &JungleLand_GolemAttackHeader_Animh.objects, JungleLand_GolemAttack_Animarr[0]}
 };
 
-Anim JungleLand_spiderRockInit_Animh = {
-    #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animH.inc.c"
+Anim JungleLand_SpiderRockIdleHeader_Animh = {
+    #include "assets/levelGroup/JungleLand/anim/SpiderRockIdleHeader.animH.inc.c"
 };
 
-Mtx JungleLand_spiderRockInit_Animarr[1][1] = {
-    #include "assets/levelGroup/JungleLand/anim/actors/spiderRock/spiderRockInit.animArr.inc.c"
+Mtx JungleLand_SpiderRockIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/JungleLand/anim/SpiderRockIdle.animArr.inc.c"
 };
 
-AnimPointer JungleLand_spiderRockInitPointers_Animp[1] = {
-{&JungleLand_spiderRockInit_Animh.frames, &JungleLand_spiderRockInit_Animh.objects, JungleLand_spiderRockInit_Animarr[0]}
+AnimPointer JungleLand_SpiderRockIdlePointers_Animp[1] = {
+{&JungleLand_SpiderRockIdleHeader_Animh.frames, &JungleLand_SpiderRockIdleHeader_Animh.objects, JungleLand_SpiderRockIdle_Animarr[0]}
 };
 
-Anim JungleLand_fishHeadInit_Animh = {
-    #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animH.inc.c"
+Anim JungleLand_FishBodyIdleHeader_Animh = {
+    #include "assets/levelGroup/JungleLand/anim/FishBodyIdleHeader.animH.inc.c"
 };
 
-Mtx JungleLand_fishHeadInit_Animarr[1][1] = {
-    #include "assets/levelGroup/JungleLand/anim/actors/fish/fishHeadInit.animArr.inc.c"
+Mtx JungleLand_FishBodyIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/JungleLand/anim/FishBodyIdle.animArr.inc.c"
 };
 
-AnimPointer JungleLand_fishHeadInitPointers_Animp[1] = {
-{&JungleLand_fishHeadInit_Animh.frames, &JungleLand_fishHeadInit_Animh.objects, JungleLand_fishHeadInit_Animarr[0]}
+AnimPointer JungleLand_FishBodyIdlePointers_Animp[1] = {
+{&JungleLand_FishBodyIdleHeader_Animh.frames, &JungleLand_FishBodyIdleHeader_Animh.objects, JungleLand_FishBodyIdle_Animarr[0]}
 };
 
-Anim JungleLand_fishTailInit_Animh = {
-    #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animH.inc.c"
+Anim JungleLand_FishTailIdleHeader_Animh = {
+    #include "assets/levelGroup/JungleLand/anim/FishTailIdleHeader.animH.inc.c"
 };
 
-Mtx JungleLand_fishTailInit_Animarr[1][1] = {
-    #include "assets/levelGroup/JungleLand/anim/actors/fish/fishTailInit.animArr.inc.c"
+Mtx JungleLand_FishTailIdle_Animarr[1][1] = {
+    #include "assets/levelGroup/JungleLand/anim/FishTailIdle.animArr.inc.c"
 };
 
-AnimPointer JungleLand_fishTailInitPointers_Animp[1] = {
-{&JungleLand_fishTailInit_Animh.frames, &JungleLand_fishTailInit_Animh.objects, JungleLand_fishTailInit_Animarr[0]}
+AnimPointer JungleLand_FishTailIdlePointers_Animp[1] = {
+{&JungleLand_FishTailIdleHeader_Animh.frames, &JungleLand_FishTailIdleHeader_Animh.objects, JungleLand_FishTailIdle_Animarr[0]}
 };
 
 s32 alignment_Pad_JL2[] = {0, 0};

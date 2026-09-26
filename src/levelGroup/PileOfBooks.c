@@ -321,8 +321,8 @@ Mtx PileOfBooks_IMtx9 = IDENTITY;
 Lights1 PileOfBooks_pobScope2_Light =
     #include "assets/levelGroup/PileOfBooks/pobScope2/pobScope2.light.inc.c"
 
-Vtx PileOfBooks_a_model1_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model1/a_model1.vtx.inc.c"
+Vtx PileOfBooks_L_Barrel_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Barrel/L_Barrel.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx10 = IDENTITY;
 unsigned char PileOfBooks_Pad1[] = FILEPAD;
@@ -342,30 +342,30 @@ unsigned char PileOfBooks_barrelSide_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/barrelSide.ci4.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model1_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model1/a_model1.gfx.inc.c"
+Gfx PileOfBooks_L_Barrel_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Barrel/L_Barrel.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model2_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model2/a_model2.vtx.inc.c"
+Vtx PileOfBooks_R_Barrel_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Barrel/R_Barrel.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx11 = IDENTITY;
 
-Gfx PileOfBooks_a_model2_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model2/a_model2.gfx.inc.c"
+Gfx PileOfBooks_R_Barrel_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Barrel/R_Barrel.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model3_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model3/a_model3.vtx.inc.c"
+Vtx PileOfBooks_Back_Barrel_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/Back_Barrel/Back_Barrel.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx12 = IDENTITY;
 
-Gfx PileOfBooks_a_model3_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model3/a_model3.gfx.inc.c"
+Gfx PileOfBooks_Back_Barrel_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/Back_Barrel/Back_Barrel.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model4_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model4/a_model4.vtx.inc.c"
+Vtx PileOfBooks_FoldingSheet_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/FoldingSheet/FoldingSheet.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx13 = IDENTITY;
 unsigned char PileOfBooks_Pad5[] = FILEPAD;
@@ -385,12 +385,12 @@ unsigned char PileOfBooks_color_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/color.ci4.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model4_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model4/a_model4.gfx.inc.c"
+Gfx PileOfBooks_FoldingSheet_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/FoldingSheet/FoldingSheet.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model5_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model5/a_model5.vtx.inc.c"
+Vtx PileOfBooks_MiddlePlanks_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/MiddlePlanks/MiddlePlanks.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx14 = IDENTITY;
 unsigned char PileOfBooks_Pad9[] = FILEPAD;
@@ -410,39 +410,39 @@ unsigned char PileOfBooks_wood_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/wood.ci4.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model5_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model5/a_model5.gfx.inc.c"
+Gfx PileOfBooks_MiddlePlanks_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/MiddlePlanks/MiddlePlanks.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model6_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model6/a_model6.vtx.inc.c"
+Vtx PileOfBooks_R_Geta_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta/R_Geta.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx15 = IDENTITY;
 
-Gfx PileOfBooks_a_model6_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model6/a_model6.gfx.inc.c"
+Gfx PileOfBooks_R_Geta_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta/R_Geta.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model7_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model7/a_model7.vtx.inc.c"
+Vtx PileOfBooks_R_Geta_BandLeft_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta_BandLeft/R_Geta_BandLeft.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx16 = IDENTITY;
 
-Gfx PileOfBooks_a_model7_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model7/a_model7.gfx.inc.c"
+Gfx PileOfBooks_R_Geta_BandLeft_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta_BandLeft/R_Geta_BandLeft.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model8_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model8/a_model8.vtx.inc.c"
+Vtx PileOfBooks_R_Geta_BandRight_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta_BandRight/R_Geta_BandRight.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx17 = IDENTITY;
 
-Gfx PileOfBooks_a_model8_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model8/a_model8.gfx.inc.c"
+Gfx PileOfBooks_R_Geta_BandRight_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Geta_BandRight/R_Geta_BandRight.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model9_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model9/a_model9.vtx.inc.c"
+Vtx PileOfBooks_R_Unit_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Unit/R_Unit.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx18 = IDENTITY;
 unsigned char PileOfBooks_Pad13[] = FILEPAD;
@@ -454,21 +454,21 @@ unsigned char PileOfBooks_drawer_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/drawer.ci4.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model9_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model9/a_model9.gfx.inc.c"
+Gfx PileOfBooks_R_Unit_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Unit/R_Unit.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model19_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model19/a_model19.vtx.inc.c"
+Vtx PileOfBooks_L_Unit_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Unit/L_Unit.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx19 = IDENTITY;
 
-Gfx PileOfBooks_a_model19_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model19/a_model19.gfx.inc.c"
+Gfx PileOfBooks_L_Unit_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Unit/L_Unit.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model10_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model10/a_model10.vtx.inc.c"
+Vtx PileOfBooks_R_Scroll_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Scroll/R_Scroll.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx20 = IDENTITY;
 unsigned char PileOfBooks_Pad15[] = FILEPAD;
@@ -488,53 +488,53 @@ unsigned char PileOfBooks_scroll_ci4_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/scroll.ci4.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model10_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model10/a_model10.gfx.inc.c"
+Gfx PileOfBooks_R_Scroll_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/R_Scroll/R_Scroll.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model11_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model11/a_model11.vtx.inc.c"
+Vtx PileOfBooks_L_Scroll_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Scroll/L_Scroll.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx21 = IDENTITY;
 
-Gfx PileOfBooks_a_model11_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model11/a_model11.gfx.inc.c"
+Gfx PileOfBooks_L_Scroll_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Scroll/L_Scroll.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model12_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model12/a_model12.vtx.inc.c"
+Vtx PileOfBooks_L_Geta_BandLeft_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta_BandLeft/L_Geta_BandLeft.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx22 = IDENTITY;
 
-Gfx PileOfBooks_a_model12_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model12/a_model12.gfx.inc.c"
+Gfx PileOfBooks_L_Geta_BandLeft_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta_BandLeft/L_Geta_BandLeft.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model13_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model13/a_model13.vtx.inc.c"
+Vtx PileOfBooks_L_Geta_BandRight_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta_BandRight/L_Geta_BandRight.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx23 = IDENTITY;
 
-Gfx PileOfBooks_a_model13_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model13/a_model13.gfx.inc.c"
+Gfx PileOfBooks_L_Geta_BandRight_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta_BandRight/L_Geta_BandRight.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model14_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model14/a_model14.vtx.inc.c"
+Vtx PileOfBooks_L_Geta_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta/L_Geta.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx24 = IDENTITY;
 
-Gfx PileOfBooks_a_model14_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model14/a_model14.gfx.inc.c"
+Gfx PileOfBooks_L_Geta_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/L_Geta/L_Geta.gfx.inc.c"
 };
 Mtx PileOfBooks_IMtx25 = IDENTITY;
 
-Gfx PileOfBooks_a_model15_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model15/a_model15.gfx.inc.c"
+Gfx PileOfBooks_Model_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/Model/Model.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model16_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model16/a_model16.vtx.inc.c"
+Vtx PileOfBooks_Hand_Top_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/Hand_Top/Hand_Top.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx26 = IDENTITY;
 unsigned char PileOfBooks_Pad19[] = FILEPAD;
@@ -562,12 +562,12 @@ unsigned char PileOfBooks_fireSpitter_side_ci8_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/fireSpitter_side.ci8.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model16_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model16/a_model16.gfx.inc.c"
+Gfx PileOfBooks_Hand_Top_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/Hand_Top/Hand_Top.gfx.inc.c"
 };
 
-Vtx PileOfBooks_a_model17_Vtx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model17/a_model17.vtx.inc.c"
+Vtx PileOfBooks_Hand_Bottom_Vtx[] = {
+    #include "assets/levelGroup/PileOfBooks/Hand_Bottom/Hand_Bottom.vtx.inc.c"
 };
 Mtx PileOfBooks_IMtx27 = IDENTITY;
 unsigned char PileOfBooks_Pad25[] = FILEPAD;
@@ -579,71 +579,71 @@ unsigned char PileOfBooks_thing_ci8_PAL[] = {
 #include "build/assets/levelGroup/PileOfBooks/img/thing.ci8.pal.inc.c"
 };
 
-Gfx PileOfBooks_a_model17_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model17/a_model17.gfx.inc.c"
+Gfx PileOfBooks_Hand_Bottom_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/Hand_Bottom/Hand_Bottom.gfx.inc.c"
 };
 Mtx PileOfBooks_IMtx28 = IDENTITY;
 
-Gfx PileOfBooks_a_model18_Gfx[] = {
-    #include "assets/levelGroup/PileOfBooks/a_model18/a_model18.gfx.inc.c"
+Gfx PileOfBooks_HandModel_Gfx[] = {
+    #include "assets/levelGroup/PileOfBooks/HandModel/HandModel.gfx.inc.c"
 };
 
-Anim PileOfBooks_unk1Header_Animh = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk1Header.animH.inc.c"
+Anim PileOfBooks_IntroTransformationHeader_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/IntroTransformationHeader.animH.inc.c"
 };
 
-Mtx PileOfBooks_unk1_Animarr[90][15] = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk1.animArr.inc.c"
+Mtx PileOfBooks_IntroTransformation_Animarr[90][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/IntroTransformation.animArr.inc.c"
 };
 
-AnimPointer PileOfBooks_unk1Pointers_Animp[1] = {
-{&PileOfBooks_unk1Header_Animh.frames, &PileOfBooks_unk1Header_Animh.objects, PileOfBooks_unk1_Animarr[0]}
+AnimPointer PileOfBooks_IntroTransformationPointers_Animp[1] = {
+{&PileOfBooks_IntroTransformationHeader_Animh.frames, &PileOfBooks_IntroTransformationHeader_Animh.objects, PileOfBooks_IntroTransformation_Animarr[0]}
 };
 
-Anim PileOfBooks_unk2Header_Animh = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk2Header.animH.inc.c"
+Anim PileOfBooks_SecondPhaseTransformationHeader_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/SecondPhaseTransformationHeader.animH.inc.c"
 };
 
-Mtx PileOfBooks_unk2_Animarr[100][15] = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk2.animArr.inc.c"
+Mtx PileOfBooks_SecondPhaseTransformation_Animarr[100][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/SecondPhaseTransformation.animArr.inc.c"
 };
 
-AnimPointer PileOfBooks_unk2Pointers_Animp[1] = {
-{&PileOfBooks_unk2Header_Animh.frames, &PileOfBooks_unk2Header_Animh.objects, PileOfBooks_unk2_Animarr[0]}
+AnimPointer PileOfBooks_SecondPhaseTransformationPointers_Animp[1] = {
+{&PileOfBooks_SecondPhaseTransformationHeader_Animh.frames, &PileOfBooks_SecondPhaseTransformationHeader_Animh.objects, PileOfBooks_SecondPhaseTransformation_Animarr[0]}
 };
 
-Anim PileOfBooks_unk3Header_Animh = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk3Header.animH.inc.c"
+Anim PileOfBooks_StartWalkingHeader_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/StartWalkingHeader.animH.inc.c"
 };
 
-Mtx PileOfBooks_unk3_Animarr[12][15] = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk3.animArr.inc.c"
+Mtx PileOfBooks_StartWalking_Animarr[12][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/StartWalking.animArr.inc.c"
 };
 
-AnimPointer PileOfBooks_unk3Pointers_Animp[1] = {
-{&PileOfBooks_unk3Header_Animh.frames, &PileOfBooks_unk3Header_Animh.objects, PileOfBooks_unk3_Animarr[0]}
+AnimPointer PileOfBooks_StartWalkingPointers_Animp[1] = {
+{&PileOfBooks_StartWalkingHeader_Animh.frames, &PileOfBooks_StartWalkingHeader_Animh.objects, PileOfBooks_StartWalking_Animarr[0]}
 };
 
-Anim PileOfBooks_unk4Header_Animh = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk4Header.animH.inc.c"
+Anim PileOfBooks_WalkHeader_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/WalkHeader.animH.inc.c"
 };
 
-Mtx PileOfBooks_unk4_Animarr[40][15] = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk4.animArr.inc.c"
+Mtx PileOfBooks_Walk_Animarr[40][15] = {
+    #include "assets/levelGroup/PileOfBooks/anim/Walk.animArr.inc.c"
 };
 
-AnimPointer PileOfBooks_unk4Pointers_Animp[1] = {
-{&PileOfBooks_unk4Header_Animh.frames, &PileOfBooks_unk4Header_Animh.objects, PileOfBooks_unk4_Animarr[0]}
+AnimPointer PileOfBooks_WalkPointers_Animp[1] = {
+{&PileOfBooks_WalkHeader_Animh.frames, &PileOfBooks_WalkHeader_Animh.objects, PileOfBooks_Walk_Animarr[0]}
 };
 
-Anim PileOfBooks_unk5Header_Animh = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk5Header.animH.inc.c"
+Anim PileOfBooks_HandBitingHeader_Animh = {
+    #include "assets/levelGroup/PileOfBooks/anim/HandBitingHeader.animH.inc.c"
 };
 
-Mtx PileOfBooks_unk5_Animarr[10][2] = {
-    #include "assets/levelGroup/PileOfBooks/anim/unk5.animArr.inc.c"
+Mtx PileOfBooks_HandBiting_Animarr[10][2] = {
+    #include "assets/levelGroup/PileOfBooks/anim/HandBiting.animArr.inc.c"
 };
 
-AnimPointer PileOfBooks_unk5Pointers_Animp[1] = {
-{&PileOfBooks_unk5Header_Animh.frames, &PileOfBooks_unk5Header_Animh.objects, PileOfBooks_unk5_Animarr[0]}
+AnimPointer PileOfBooks_HandBitingPointers_Animp[1] = {
+{&PileOfBooks_HandBitingHeader_Animh.frames, &PileOfBooks_HandBitingHeader_Animh.objects, PileOfBooks_HandBiting_Animarr[0]}
 };

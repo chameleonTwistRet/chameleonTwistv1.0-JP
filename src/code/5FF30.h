@@ -100,13 +100,13 @@ typedef struct UnkPlaySoundEffect {
     s16 unk_0E; //amount of sounds?
 } UnkPlaySoundEffect;
 
-typedef struct Unk_800FFB74 {
-    Mtx* unk_00;
-    void* unk_04;
-    s32* unk_08;
-    s32* unk_0C;
-    s16 unk_10;
-} Unk_800FFB74; // size 0x14
+typedef struct AnimDef {
+    /* 0x00 */ Mtx* animation;
+    /* 0x04 */ void* dlist;
+    /* 0x08 */ s32* numObjects;
+    /* 0x0C */ s32* numFrames;
+    /* 0x10 */ s16 loopFrame; // -1 = play once
+} AnimDef; // size 0x14
 
 typedef struct Unk_800FFDDC {
     /* 0x00 */ s16 unk_00;
@@ -216,7 +216,7 @@ s32 func_8008D5DC(ContMain* controller);
 s32 func_8008D6B4(ContMain*);
 u16 func_8008D6E4(CTTask*, ContMain*);
 s32 func_8008D7B0(CTTask* task);
-s32 func_8008D7FC(CTTask* task);
+s32 CTTask_StepAnim(CTTask* task);
 s32 func_8008D950(CTTask* task);
 void func_8008DAB8(f32, f32, f32, f32, f32, s32, s16, s16);
 void func_8008DB24(f32, f32, f32, f32, f32, s16, s16, s16);
@@ -225,15 +225,15 @@ Gfx* func_8008E314(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* c
 Gfx* func_8008E488(Gfx* gfxPos, Tongue* tongues, PlayerActor* players, Camera* cameras, s32 fbIndex);
 Gfx* SetFrustum(Gfx* gfxPos, s32 fbIndex);
 void func_8008E698(CTTask*);
-void func_8008E7B8(CTTask* arg0);
-void func_8008E840(CTTask*);
+void TaskFade_Finish(CTTask* task);
+void TaskFade_Update(CTTask* task);
 //could be (s16, s16, s16, s16, CTTask*)??
-CTTask* func_8008E9AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
+CTTask* TaskFade_Create(s16 step, s16 r, s16 g, s16 b, s16* doneFlag);
 CTTask* func_8008EA60(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 //s16 might be CTTask??
 CTTask* func_8008EB08(s16, s16, s16, s16, s16*, f32, f32, f32, f32, s16);
 CTTask* func_8008EBCC(s16, s16, s16, s16, CTTask*, f32, f32, f32, f32, s16);
-s32 func_8008EC90(void);
+s32 TaskFade_IsIdle(void);
 void func_8008EF78(CTTask* task);
 void func_8008EFA0(CTTask*);
 CTTask* func_8008F050(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
@@ -630,7 +630,7 @@ extern Mtx D_801B3300[];
 extern Mtx D_801B33C0[];
 extern Mtx D_801B3480[];
 extern Mtx* gMatrixBufPtr;
-extern Unk_800FFB74* D_800FFB74[];
+extern AnimDef* gAnimDefs[];
 extern Unk_800FFDDC* D_800FFDDC[];
 extern s32 D_800FFDEC;
 extern f32* D_800FF610; //this probably isnt right but until we care roll with it

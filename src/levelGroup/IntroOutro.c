@@ -1599,8 +1599,8 @@ Mtx IntroOutro_IMtx41 = IDENTITY;
 Lights1 IntroOutro_ioScope2_Light =
     #include "assets/levelGroup/IntroOutro/ioScope2/ioScope2.light.inc.c"
 
-Vtx IntroOutro_davyChameleon_topRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topRightFoot.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx42 = IDENTITY;
 unsigned char IntroOutro_Pad58[] = FILEPAD;
@@ -1612,66 +1612,66 @@ unsigned char IntroOutro_davyBlue_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/davyChameleon/davyBlue.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_davyChameleon_topRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topRightFoot.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_topRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topRightAnkle.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx43 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_topRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topRightAnkle.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_bottomRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomRightAnkle.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx44 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_bottomRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomRightAnkle.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_bottomLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx45 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_bottomLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_bottomLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomLeftFoot.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx46 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_bottomLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomLeftFoot.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_topLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx47 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_topLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_topLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topLeftFoot.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx48 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_topLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_topLeftFoot.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Front_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_eyeR_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_eyeR.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_R_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_R_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx49 = IDENTITY;
 unsigned char IntroOutro_Pad60[] = FILEPAD;
@@ -1679,66 +1679,66 @@ unsigned char IntroOutro_tinyEye1_ia4_PNG[] = {
 #include "build/assets/levelGroup/IntroOutro/davyChameleon/tinyEye1.ia4.png.inc.c"
 };
 
-Gfx IntroOutro_davyChameleon_eyeR_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_eyeR.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_R_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_R_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_eyeL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_eyeL.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_L_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_L_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx50 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_eyeL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_eyeL.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_L_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_L_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_head.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx51 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_head.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_tail.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx52 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_tail.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_body.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Body_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Body.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx53 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_body.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Body_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Body.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_bottomRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomRightFoot.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx54 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_bottomRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_bottomRightFoot.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Back_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_mouth_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_mouth.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Mouth_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Mouth.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx55 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_mouth_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_mouth.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Mouth_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Mouth.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_backpack1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack1.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Backpack_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx56 = IDENTITY;
 unsigned char IntroOutro_Pad61[] = FILEPAD;
@@ -1750,35 +1750,35 @@ unsigned char IntroOutro_davyBackpack_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/davyChameleon/davyBackpack.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_davyChameleon_backpack1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack1.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Backpack_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_backpack2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack2.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Backpack_FrontStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack_FrontStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx57 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_backpack2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack2.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Backpack_FrontStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack_FrontStrap.gfx.inc.c"
 };
 
-Vtx IntroOutro_davyChameleon_backpack3_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack3.vtx.inc.c"
+Vtx IntroOutro_DavyChameleon_Backpack_BackStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack_BackStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx58 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_backpack4_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon_backpack4.gfx.inc.c"
+Gfx IntroOutro_DavyChameleon_Backpack_BackStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleon_Backpack_BackStrap.gfx.inc.c"
 };
 Mtx IntroOutro_IMtx59 = IDENTITY;
 
-Gfx IntroOutro_davyChameleon_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/davyChameleon/davyChameleon.gfx.inc.c"
+Gfx IntroOutro_DavyChameleonModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/davyChameleon/DavyChameleonModel.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_topRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topRightFoot.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx60 = IDENTITY;
 unsigned char IntroOutro_Pad63[] = FILEPAD;
@@ -1790,66 +1790,66 @@ unsigned char IntroOutro_jackGreen_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/jackChameleon/jackGreen.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_jackChameleon_topRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topRightFoot.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_topRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topRightAnkle.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx61 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_topRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topRightAnkle.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_bottomRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomRightAnkle.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx62 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_bottomRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomRightAnkle.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_bottomLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx63 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_bottomLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_bottomLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomLeftFoot.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx64 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_bottomLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomLeftFoot.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_topLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx65 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_topLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_topLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topLeftFoot.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx66 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_topLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_topLeftFoot.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Front_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_eyeR_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_eyeR.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_R_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_R_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx67 = IDENTITY;
 unsigned char IntroOutro_Pad65[] = FILEPAD;
@@ -1857,66 +1857,66 @@ unsigned char IntroOutro_tinyEye2_ia4_PNG[] = {
 #include "build/assets/levelGroup/IntroOutro/jackChameleon/tinyEye2.ia4.png.inc.c"
 };
 
-Gfx IntroOutro_jackChameleon_eyeR_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_eyeR.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_R_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_R_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_eyeL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_eyeL.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_L_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_L_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx68 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_eyeL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_eyeL.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_L_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_L_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_head.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx69 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_head.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_tail.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx70 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_tail.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_body.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Body_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Body.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx71 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_body.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Body_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Body.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_bottomRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomRightFoot.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx72 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_bottomRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_bottomRightFoot.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Back_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_mouth_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_mouth.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Mouth_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Mouth.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx73 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_mouth_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_mouth.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Mouth_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Mouth.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_backpack1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack1.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Backpack_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx74 = IDENTITY;
 unsigned char IntroOutro_Pad66[] = FILEPAD;
@@ -1928,35 +1928,35 @@ unsigned char IntroOutro_jackBackpack_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/jackChameleon/jackBackpack.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_jackChameleon_backpack1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack1.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Backpack_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_backpack2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack2.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Backpack_FrontStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack_FrontStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx75 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_backpack2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack2.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Backpack_FrontStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack_FrontStrap.gfx.inc.c"
 };
 
-Vtx IntroOutro_jackChameleon_backpack3_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack3.vtx.inc.c"
+Vtx IntroOutro_JackChameleon_Backpack_BackStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack_BackStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx76 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_backpack4_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon_backpack4.gfx.inc.c"
+Gfx IntroOutro_JackChameleon_Backpack_BackStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleon_Backpack_BackStrap.gfx.inc.c"
 };
 Mtx IntroOutro_IMtx77 = IDENTITY;
 
-Gfx IntroOutro_jackChameleon_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/jackChameleon/jackChameleon.gfx.inc.c"
+Gfx IntroOutro_JackChameleonModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/jackChameleon/JackChameleonModel.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_topRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topRightFoot.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx78 = IDENTITY;
 unsigned char IntroOutro_Pad68[] = FILEPAD;
@@ -1968,66 +1968,66 @@ unsigned char IntroOutro_fredOrange_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/fredChameleon/fredOrange.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_fredChameleon_topRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topRightFoot.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_topRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topRightAnkle.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx79 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_topRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topRightAnkle.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_bottomRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomRightAnkle.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx80 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_bottomRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomRightAnkle.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_bottomLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx81 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_bottomLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_bottomLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomLeftFoot.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx82 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_bottomLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomLeftFoot.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_topLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx83 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_topLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_topLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topLeftFoot.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx84 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_topLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_topLeftFoot.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Front_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_eyeR_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_eyeR.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_R_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_R_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx85 = IDENTITY;
 unsigned char IntroOutro_Pad70[] = FILEPAD;
@@ -2035,66 +2035,66 @@ unsigned char IntroOutro_tinyEye3_ia4_PNG[] = {
 #include "build/assets/levelGroup/IntroOutro/fredChameleon/tinyEye3.ia4.png.inc.c"
 };
 
-Gfx IntroOutro_fredChameleon_eyeR_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_eyeR.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_R_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_R_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_eyeL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_eyeL.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_L_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_L_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx86 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_eyeL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_eyeL.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_L_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_L_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_head.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx87 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_head.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_tail.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx88 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_tail.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_body.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Body_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Body.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx89 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_body.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Body_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Body.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_bottomRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomRightFoot.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx90 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_bottomRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_bottomRightFoot.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Back_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_mouth_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_mouth.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Mouth_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Mouth.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx91 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_mouth_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_mouth.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Mouth_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Mouth.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_backpack1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack1.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Backpack_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx92 = IDENTITY;
 unsigned char IntroOutro_Pad71[] = FILEPAD;
@@ -2106,35 +2106,35 @@ unsigned char IntroOutro_fredBackpack_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/fredChameleon/fredBackpack.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_fredChameleon_backpack1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack1.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Backpack_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_backpack2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack2.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Backpack_FrontStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack_FrontStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx93 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_backpack2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack2.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Backpack_FrontStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack_FrontStrap.gfx.inc.c"
 };
 
-Vtx IntroOutro_fredChameleon_backpack3_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack3.vtx.inc.c"
+Vtx IntroOutro_FredChameleon_Backpack_BackStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack_BackStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx94 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_backpack4_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon_backpack4.gfx.inc.c"
+Gfx IntroOutro_FredChameleon_Backpack_BackStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleon_Backpack_BackStrap.gfx.inc.c"
 };
 Mtx IntroOutro_IMtx95 = IDENTITY;
 
-Gfx IntroOutro_fredChameleon_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/fredChameleon/fredChameleon.gfx.inc.c"
+Gfx IntroOutro_FredChameleonModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/fredChameleon/FredChameleonModel.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_topRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topRightFoot.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx96 = IDENTITY;
 unsigned char IntroOutro_Pad73[] = FILEPAD;
@@ -2146,66 +2146,66 @@ unsigned char IntroOutro_lindaPink_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/lindaChameleon/lindaPink.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_lindaChameleon_topRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topRightFoot.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_topRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topRightAnkle.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx97 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_topRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topRightAnkle.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_bottomRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomRightAnkle.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx98 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_bottomRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomRightAnkle.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_bottomLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx99 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_bottomLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_bottomLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomLeftFoot.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx100 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_bottomLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomLeftFoot.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_topLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx101 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_topLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_topLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topLeftFoot.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx102 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_topLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_topLeftFoot.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Front_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_eyeR_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_eyeR.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_R_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_R_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx103 = IDENTITY;
 unsigned char IntroOutro_Pad75[] = FILEPAD;
@@ -2213,66 +2213,66 @@ unsigned char IntroOutro_tinyEye4_ia4_PNG[] = {
 #include "build/assets/levelGroup/IntroOutro/lindaChameleon/tinyEye4.ia4.png.inc.c"
 };
 
-Gfx IntroOutro_lindaChameleon_eyeR_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_eyeR.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_R_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_R_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_eyeL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_eyeL.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_L_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_L_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx104 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_eyeL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_eyeL.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_L_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_L_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_head.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx105 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_head.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_tail.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx106 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_tail.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_body.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Body_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Body.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx107 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_body.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Body_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Body.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_bottomRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomRightFoot.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx108 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_bottomRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_bottomRightFoot.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Back_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_mouth_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_mouth.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Mouth_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Mouth.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx109 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_mouth_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_mouth.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Mouth_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Mouth.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_backpack1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack1.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Backpack_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx110 = IDENTITY;
 unsigned char IntroOutro_Pad76[] = FILEPAD;
@@ -2284,35 +2284,35 @@ unsigned char IntroOutro_lindaBackpack_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/lindaChameleon/lindaBackpack.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_lindaChameleon_backpack1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack1.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Backpack_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_backpack2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack2.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Backpack_FrontStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack_FrontStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx111 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_backpack2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack2.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Backpack_FrontStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack_FrontStrap.gfx.inc.c"
 };
 
-Vtx IntroOutro_lindaChameleon_backpack3_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack3.vtx.inc.c"
+Vtx IntroOutro_LindaChameleon_Backpack_BackStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack_BackStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx112 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_backpack4_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon_backpack4.gfx.inc.c"
+Gfx IntroOutro_LindaChameleon_Backpack_BackStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleon_Backpack_BackStrap.gfx.inc.c"
 };
 Mtx IntroOutro_IMtx113 = IDENTITY;
 
-Gfx IntroOutro_lindaChameleon_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/lindaChameleon/lindaChameleon.gfx.inc.c"
+Gfx IntroOutro_LindaChameleonModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/lindaChameleon/LindaChameleonModel.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_topRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topRightFoot.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx114 = IDENTITY;
 unsigned char IntroOutro_Pad78[] = FILEPAD;
@@ -2324,66 +2324,66 @@ unsigned char IntroOutro_whiteWhite_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/whiteChameleon/whiteWhite.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_whiteChameleon_topRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topRightFoot.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_topRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topRightAnkle.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx115 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_topRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topRightAnkle.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_bottomRightAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomRightAnkle.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx116 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_bottomRightAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomRightAnkle.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_bottomLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx117 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_bottomLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_bottomLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomLeftFoot.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx118 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_bottomLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomLeftFoot.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_topLeftAnkle_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topLeftAnkle.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx119 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_topLeftAnkle_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topLeftAnkle.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_topLeftFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topLeftFoot.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx120 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_topLeftFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_topLeftFoot.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Front_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_eyeR_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_eyeR.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_R_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_R_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx121 = IDENTITY;
 unsigned char IntroOutro_Pad80[] = FILEPAD;
@@ -2391,66 +2391,66 @@ unsigned char IntroOutro_tinyEye5_ia4_PNG[] = {
 #include "build/assets/levelGroup/IntroOutro/whiteChameleon/tinyEye5.ia4.png.inc.c"
 };
 
-Gfx IntroOutro_whiteChameleon_eyeR_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_eyeR.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_R_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_R_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_eyeL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_eyeL.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_L_Eye_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_L_Eye.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx122 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_eyeL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_eyeL.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_L_Eye_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_L_Eye.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_head.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx123 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_head.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_tail.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx124 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_tail.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_body.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Body_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Body.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx125 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_body.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Body_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Body.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_bottomRightFoot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomRightFoot.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx126 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_bottomRightFoot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_bottomRightFoot.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Back_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_mouth_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_mouth.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Mouth_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Mouth.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx127 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_mouth_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_mouth.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Mouth_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Mouth.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_backpack1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack1.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Backpack_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx128 = IDENTITY;
 unsigned char IntroOutro_Pad81[] = FILEPAD;
@@ -2462,35 +2462,35 @@ unsigned char IntroOutro_whiteBackpack_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/whiteChameleon/whiteBackpack.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_whiteChameleon_backpack1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack1.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Backpack_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_backpack2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack2.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Backpack_FrontStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack_FrontStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx129 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_backpack2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack2.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Backpack_FrontStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack_FrontStrap.gfx.inc.c"
 };
 
-Vtx IntroOutro_whiteChameleon_backpack3_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack3.vtx.inc.c"
+Vtx IntroOutro_WhiteChameleon_Backpack_BackStrap_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack_BackStrap.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx130 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_backpack4_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon_backpack4.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleon_Backpack_BackStrap_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleon_Backpack_BackStrap.gfx.inc.c"
 };
 Mtx IntroOutro_IMtx131 = IDENTITY;
 
-Gfx IntroOutro_whiteChameleon_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/whiteChameleon/whiteChameleon.gfx.inc.c"
+Gfx IntroOutro_WhiteChameleonModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/whiteChameleon/WhiteChameleonModel.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_ear_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_ear.vtx.inc.c"
+Vtx IntroOutro_Rabbit_R_Ear_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Ear.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx132 = IDENTITY;
 unsigned char IntroOutro_Pad83[] = FILEPAD;
@@ -2510,21 +2510,21 @@ unsigned char IntroOutro_rabbitCutscene_ear2_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_ear2.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_rabbitCutscene_ear_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_ear.gfx.inc.c"
+Gfx IntroOutro_Rabbit_R_Ear_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Ear.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_earL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_earL.vtx.inc.c"
+Vtx IntroOutro_Rabbit_L_Ear_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Ear.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx133 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_earL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_earL.gfx.inc.c"
+Gfx IntroOutro_Rabbit_L_Ear_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Ear.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_head_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_head.vtx.inc.c"
+Vtx IntroOutro_Rabbit_Head_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Head.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx134 = IDENTITY;
 unsigned char IntroOutro_Pad87[] = FILEPAD;
@@ -2544,39 +2544,39 @@ unsigned char IntroOutro_rabbitCutscene_mouth_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_mouth.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_rabbitCutscene_head_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_head.gfx.inc.c"
+Gfx IntroOutro_Rabbit_Head_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Head.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_foot_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_foot.vtx.inc.c"
+Vtx IntroOutro_Rabbit_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx135 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_foot_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_foot.gfx.inc.c"
+Gfx IntroOutro_Rabbit_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_footL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_footL.vtx.inc.c"
+Vtx IntroOutro_Rabbit_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Foot.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx136 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_footL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_footL.gfx.inc.c"
+Gfx IntroOutro_Rabbit_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Foot.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_leg_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_leg.vtx.inc.c"
+Vtx IntroOutro_Rabbit_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx137 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_leg_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_leg.gfx.inc.c"
+Gfx IntroOutro_Rabbit_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_body_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_body.vtx.inc.c"
+Vtx IntroOutro_Rabbit_Torso_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Torso.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx138 = IDENTITY;
 unsigned char IntroOutro_Pad91[] = FILEPAD;
@@ -2596,30 +2596,30 @@ unsigned char IntroOutro_rabbitCutscene_tuxedoTop_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_tuxedoTop.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_rabbitCutscene_body_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_body.gfx.inc.c"
+Gfx IntroOutro_Rabbit_Torso_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Torso.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_legL_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_legL.vtx.inc.c"
+Vtx IntroOutro_Rabbit_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Leg.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx139 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_legL_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_legL.gfx.inc.c"
+Gfx IntroOutro_Rabbit_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Leg.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_tail_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_tail.vtx.inc.c"
+Vtx IntroOutro_Rabbit_Tail_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Tail.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx140 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_tail_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_tail.gfx.inc.c"
+Gfx IntroOutro_Rabbit_Tail_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Tail.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_watch_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_watch.vtx.inc.c"
+Vtx IntroOutro_Rabbit_Watch_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Watch.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx141 = IDENTITY;
 unsigned char IntroOutro_Pad95[] = FILEPAD;
@@ -2639,32 +2639,32 @@ unsigned char IntroOutro_rabbitCutscene_watchColor_ci4_PAL[] = {
 #include "build/assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_watchColor.ci4.pal.inc.c"
 };
 
-Gfx IntroOutro_rabbitCutscene_watch_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_watch.gfx.inc.c"
+Gfx IntroOutro_Rabbit_Watch_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_Watch.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_unk1_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_unk1.vtx.inc.c"
+Vtx IntroOutro_Rabbit_R_Arm_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Arm.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx142 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_unk1_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_unk1.gfx.inc.c"
+Gfx IntroOutro_Rabbit_R_Arm_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_R_Arm.gfx.inc.c"
 };
 
-Vtx IntroOutro_rabbitCutscene_unk2_Vtx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_unk2.vtx.inc.c"
+Vtx IntroOutro_Rabbit_L_Arm_Vtx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Arm.vtx.inc.c"
 };
 Mtx IntroOutro_IMtx143 = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_unk2_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_unk2.gfx.inc.c"
+Gfx IntroOutro_Rabbit_L_Arm_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/Rabbit_L_Arm.gfx.inc.c"
 };
 
-Mtx IntroOutro_rabbitCutscene_restassociate_Mtx = IDENTITY;
+Mtx IntroOutro_RabbitModel_Mtx = IDENTITY;
 
-Gfx IntroOutro_rabbitCutscene_restassociate_Gfx[] = {
-    #include "assets/levelGroup/IntroOutro/rabbitCutscene/rabbitCutscene_restassociate.gfx.inc.c"
+Gfx IntroOutro_RabbitModel_Gfx[] = {
+    #include "assets/levelGroup/IntroOutro/rabbitCutscene/RabbitModel.gfx.inc.c"
 };
 
 Anim IntroOutro_unk1Header_Animh = {
@@ -2727,62 +2727,62 @@ AnimPointer IntroOutro_unk5Pointers_Animp[1] = {
 {&IntroOutro_unk5Header_Animh.frames, &IntroOutro_unk5Header_Animh.objects, IntroOutro_unk5_Animarr[0]}
 };
 
-Anim IntroOutro_unk6Header_Animh = {
-    #include "assets/levelGroup/IntroOutro/anim/unk6Header.animH.inc.c"
+Anim IntroOutro_RabbitRunHeader_Animh = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitRunHeader.animH.inc.c"
 };
 
-Mtx IntroOutro_unk6_Animarr[20][12] = {
-    #include "assets/levelGroup/IntroOutro/anim/unk6.animArr.inc.c"
+Mtx IntroOutro_RabbitRun_Animarr[20][12] = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitRun.animArr.inc.c"
 };
 
-AnimPointer IntroOutro_unk6Pointers_Animp[1] = {
-{&IntroOutro_unk6Header_Animh.frames, &IntroOutro_unk6Header_Animh.objects, IntroOutro_unk6_Animarr[0]}
+AnimPointer IntroOutro_RabbitRunPointers_Animp[1] = {
+{&IntroOutro_RabbitRunHeader_Animh.frames, &IntroOutro_RabbitRunHeader_Animh.objects, IntroOutro_RabbitRun_Animarr[0]}
 };
 
-Anim IntroOutro_unk7Header_Animh = {
-    #include "assets/levelGroup/IntroOutro/anim/unk7Header.animH.inc.c"
+Anim IntroOutro_RabbitStartJumpHeader_Animh = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitStartJumpHeader.animH.inc.c"
 };
 
-Mtx IntroOutro_unk7_Animarr[10][12] = {
-    #include "assets/levelGroup/IntroOutro/anim/unk7.animArr.inc.c"
+Mtx IntroOutro_RabbitStartJump_Animarr[10][12] = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitStartJump.animArr.inc.c"
 };
 
-AnimPointer IntroOutro_unk7Pointers_Animp[1] = {
-{&IntroOutro_unk7Header_Animh.frames, &IntroOutro_unk7Header_Animh.objects, IntroOutro_unk7_Animarr[0]}
+AnimPointer IntroOutro_RabbitStartJumpPointers_Animp[1] = {
+{&IntroOutro_RabbitStartJumpHeader_Animh.frames, &IntroOutro_RabbitStartJumpHeader_Animh.objects, IntroOutro_RabbitStartJump_Animarr[0]}
 };
 
-Anim IntroOutro_unk8Header_Animh = {
-    #include "assets/levelGroup/IntroOutro/anim/unk8Header.animH.inc.c"
+Anim IntroOutro_RabbitRunAndJumpHeader_Animh = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitRunAndJumpHeader.animH.inc.c"
 };
 
-Mtx IntroOutro_unk8_Animarr[20][12] = {
-    #include "assets/levelGroup/IntroOutro/anim/unk8.animArr.inc.c"
+Mtx IntroOutro_RabbitRunAndJump_Animarr[20][12] = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitRunAndJump.animArr.inc.c"
 };
 
-AnimPointer IntroOutro_unk8Pointers_Animp[1] = {
-{&IntroOutro_unk8Header_Animh.frames, &IntroOutro_unk8Header_Animh.objects, IntroOutro_unk8_Animarr[0]}
+AnimPointer IntroOutro_RabbitRunAndJumpPointers_Animp[1] = {
+{&IntroOutro_RabbitRunAndJumpHeader_Animh.frames, &IntroOutro_RabbitRunAndJumpHeader_Animh.objects, IntroOutro_RabbitRunAndJump_Animarr[0]}
 };
 
-Anim IntroOutro_unk9Header_Animh = {
-    #include "assets/levelGroup/IntroOutro/anim/unk9Header.animH.inc.c"
+Anim IntroOutro_RabbitCheckTimeHeader_Animh = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitCheckTimeHeader.animH.inc.c"
 };
 
-Mtx IntroOutro_unk9_Animarr[20][12] = {
-    #include "assets/levelGroup/IntroOutro/anim/unk9.animArr.inc.c"
+Mtx IntroOutro_RabbitCheckTime_Animarr[20][12] = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitCheckTime.animArr.inc.c"
 };
 
-AnimPointer IntroOutro_unk9Pointers_Animp[1] = {
-{&IntroOutro_unk9Header_Animh.frames, &IntroOutro_unk9Header_Animh.objects, IntroOutro_unk9_Animarr[0]}
+AnimPointer IntroOutro_RabbitCheckTimePointers_Animp[1] = {
+{&IntroOutro_RabbitCheckTimeHeader_Animh.frames, &IntroOutro_RabbitCheckTimeHeader_Animh.objects, IntroOutro_RabbitCheckTime_Animarr[0]}
 };
 
-Anim IntroOutro_unk10Header_Animh = {
-    #include "assets/levelGroup/IntroOutro/anim/unk10Header.animH.inc.c"
+Anim IntroOutro_RabbitSkipHeader_Animh = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitSkipHeader.animH.inc.c"
 };
 
-Mtx IntroOutro_unk10_Animarr[10][12] = {
-    #include "assets/levelGroup/IntroOutro/anim/unk10.animArr.inc.c"
+Mtx IntroOutro_RabbitSkip_Animarr[10][12] = {
+    #include "assets/levelGroup/IntroOutro/anim/RabbitSkip.animArr.inc.c"
 };
 
-AnimPointer IntroOutro_unk19Pointers_Animp[1] = {
-{&IntroOutro_unk10Header_Animh.frames, &IntroOutro_unk10Header_Animh.objects, IntroOutro_unk10_Animarr[0]}
+AnimPointer IntroOutro_RabbitSkipPointers_Animp[1] = {
+{&IntroOutro_RabbitSkipHeader_Animh.frames, &IntroOutro_RabbitSkipHeader_Animh.objects, IntroOutro_RabbitSkip_Animarr[0]}
 };

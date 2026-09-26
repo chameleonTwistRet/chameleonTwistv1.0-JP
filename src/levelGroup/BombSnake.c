@@ -187,43 +187,43 @@ ModelCollision BombSnake_arenaFloor_collision = {
 };
 Mtx BombSnake_IMtx5 = IDENTITY;
 
-Anim BombSnake_unk1Header_Animh = {
-    #include "assets/levelGroup/BombSnake/anim/unk1Header.animH.inc.c"
+Anim BombSnake_HeadIdleHeader_Animh = {
+    #include "assets/levelGroup/BombSnake/anim/HeadIdleHeader.animH.inc.c"
 };
 
-Mtx BombSnake_unk1_Animarr[2][6] = {
-    #include "assets/levelGroup/BombSnake/anim/unk1.animArr.inc.c"
+Mtx BombSnake_HeadIdle_Animarr[2][6] = {
+    #include "assets/levelGroup/BombSnake/anim/HeadIdle.animArr.inc.c"
 };
 
-Anim BombSnake_unk2Header_Animh = {
-    #include "assets/levelGroup/BombSnake/anim/unk2Header.animH.inc.c"
+Anim BombSnake_TailIdleHeader_Animh = {
+    #include "assets/levelGroup/BombSnake/anim/TailIdleHeader.animH.inc.c"
 };
 
-Mtx BombSnake_unk2_Animarr[2][1] = {
-    #include "assets/levelGroup/BombSnake/anim/unk2.animArr.inc.c"
+Mtx BombSnake_TailIdle_Animarr[2][1] = {
+    #include "assets/levelGroup/BombSnake/anim/TailIdle.animArr.inc.c"
 };
 
-Anim BombSnake_unk3Header_Animh = {
-    #include "assets/levelGroup/BombSnake/anim/unk3Header.animH.inc.c"
+Anim BombSnake_TailLightMoveHeader_Animh = {
+    #include "assets/levelGroup/BombSnake/anim/TailLightMoveHeader.animH.inc.c"
 };
 
-Mtx BombSnake_unk3_Animarr[15][1] = {
-    #include "assets/levelGroup/BombSnake/anim/unk3.animArr.inc.c"
+Mtx BombSnake_TailLightMove_Animarr[15][1] = {
+    #include "assets/levelGroup/BombSnake/anim/TailLightMove.animArr.inc.c"
 };
 
-Anim BombSnake_unk4Header_Animh = {
-    #include "assets/levelGroup/BombSnake/anim/unk4Header.animH.inc.c"
+Anim BombSnake_TailHeavyMoveHeader_Animh = {
+    #include "assets/levelGroup/BombSnake/anim/TailHeavyMoveHeader.animH.inc.c"
 };
 
-Mtx BombSnake_unk4_Animarr[15][1] = {
-    #include "assets/levelGroup/BombSnake/anim/unk4.animArr.inc.c"
+Mtx BombSnake_TailHeavyMove_Animarr[15][1] = {
+    #include "assets/levelGroup/BombSnake/anim/TailHeavyMove.animArr.inc.c"
 };
 
 Lights1 BombSnake_bsScope2_Light =
     #include "assets/levelGroup/BombSnake/bsScope2/bsScope2.light.inc.c"
 
-Vtx BombSnake_bombSnakeHead_Vtx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHead/bombSnakeHead.vtx.inc.c"
+Vtx BombSnake_Head_Vtx[] = {
+    #include "assets/levelGroup/BombSnake/Head/Head.vtx.inc.c"
 };
 Mtx BombSnake_IMtx6 = IDENTITY;
 unsigned char BombSnake_Pad2[] = FILEPAD;
@@ -243,12 +243,12 @@ unsigned char BombSnake_color_ci4_PAL[] = {
 #include "build/assets/levelGroup/BombSnake/img/color.ci4.pal.inc.c"
 };
 
-Gfx BombSnake_bombSnakeHead_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHead/bombSnakeHead.gfx.inc.c"
+Gfx BombSnake_Head_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/Head/Head.gfx.inc.c"
 };
 
-Vtx BombSnake_bombSnakeHeadSpike_Vtx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHeadSpike/bombSnakeHeadSpike.vtx.inc.c"
+Vtx BombSnake_Spike_Vtx[] = {
+    #include "assets/levelGroup/BombSnake/Spike/Spike.vtx.inc.c"
 };
 Mtx BombSnake_IMtx7 = IDENTITY;
 unsigned char BombSnake_Pad6[] = FILEPAD;
@@ -260,12 +260,12 @@ unsigned char BombSnake_bombSnakeHeadSpike_ci4_PAL[] = {
 #include "build/assets/levelGroup/BombSnake/img/bombSnakeHeadSpike.ci4.pal.inc.c"
 };
 
-Gfx BombSnake_bombSnakeHeadSpike_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHeadSpike/bombSnakeHeadSpike.gfx.inc.c"
+Gfx BombSnake_Spike_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/Spike/Spike.gfx.inc.c"
 };
 
-Vtx BombSnake_bombSnakeHeadGem_Vtx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHeadGem/bombSnakeHeadGem.vtx.inc.c"
+Vtx BombSnake_Gem_Vtx[] = {
+    #include "assets/levelGroup/BombSnake/Gem/Gem.vtx.inc.c"
 };
 Mtx BombSnake_IMtx8 = IDENTITY;
 unsigned char BombSnake_Pad8[] = FILEPAD;
@@ -277,12 +277,12 @@ unsigned char BombSnake_bombSnakeHeadGem_ci8_PAL[] = {
 #include "build/assets/levelGroup/BombSnake/img/bombSnakeHeadGem.ci8.pal.inc.c"
 };
 
-Gfx BombSnake_bombSnakeHeadGem_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeHeadGem/bombSnakeHeadGem.gfx.inc.c"
+Gfx BombSnake_Gem_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/Gem/Gem.gfx.inc.c"
 };
 
-Vtx BombSnake_bombSnakeEars_Vtx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeEars/bombSnakeEars.vtx.inc.c"
+Vtx BombSnake_Ears_Vtx[] = {
+    #include "assets/levelGroup/BombSnake/Ears/Ears.vtx.inc.c"
 };
 Mtx BombSnake_IMtx9 = IDENTITY;
 unsigned char BombSnake_Pad10[] = FILEPAD;
@@ -290,8 +290,8 @@ unsigned char BombSnake_bombSnakeEars_rgba16_PNG[] = {
 #include "build/assets/levelGroup/BombSnake/img/bombSnakeEars.rgba16.png.inc.c"
 };
 
-Gfx BombSnake_bombSnakeEars_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeEars/bombSnakeEars.gfx.inc.c"
+Gfx BombSnake_Ears_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/Ears/Ears.gfx.inc.c"
 };
 
 Vtx BombSnake_unkD_Vtx[] = {
@@ -313,38 +313,38 @@ Gfx BombSnake_unkE_Gfx[] = {
 };
 Mtx BombSnake_IMtx12 = IDENTITY;
 
-Gfx BombSnake_unkF_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/unkF/unkF.gfx.inc.c"
+Gfx BombSnake_HeadModel_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/HeadModel/HeadModel.gfx.inc.c"
 };
 
-Vtx BombSnake_bombSnakeTail_Vtx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeTail/bombSnakeTail.vtx.inc.c"
+Vtx BombSnake_Tail_Vtx[] = {
+    #include "assets/levelGroup/BombSnake/Tail/Tail.vtx.inc.c"
 };
 Mtx BombSnake_IMtx13 = IDENTITY;
 
-Gfx BombSnake_bombSnakeTail_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/bombSnakeTail/bombSnakeTail.gfx.inc.c"
+Gfx BombSnake_Tail_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/Tail/Tail.gfx.inc.c"
 };
 Mtx BombSnake_IMtx14 = IDENTITY;
 
-Gfx BombSnake_unk11_Gfx[] = {
-    #include "assets/levelGroup/BombSnake/unk11/unk11.gfx.inc.c"
+Gfx BombSnake_TailModel_Gfx[] = {
+    #include "assets/levelGroup/BombSnake/TailModel/TailModel.gfx.inc.c"
 };
 
-AnimPointer BombSnake_unk1Pointers_Animp[1] = {
-{&BombSnake_unk1Header_Animh.frames, &BombSnake_unk1Header_Animh.objects, BombSnake_unk1_Animarr[0]}
+AnimPointer BombSnake_HeadIdlePointers_Animp[1] = {
+{&BombSnake_HeadIdleHeader_Animh.frames, &BombSnake_HeadIdleHeader_Animh.objects, BombSnake_HeadIdle_Animarr[0]}
 };
 
-AnimPointer BombSnake_unk2Pointers_Animp[1] = {
-{&BombSnake_unk2Header_Animh.frames, &BombSnake_unk2Header_Animh.objects, BombSnake_unk2_Animarr[0]}
+AnimPointer BombSnake_TailIdlePointers_Animp[1] = {
+{&BombSnake_TailIdleHeader_Animh.frames, &BombSnake_TailIdleHeader_Animh.objects, BombSnake_TailIdle_Animarr[0]}
 };
 
-AnimPointer BombSnake_unk3Pointers_Animp[1] = {
-{&BombSnake_unk3Header_Animh.frames, &BombSnake_unk3Header_Animh.objects, BombSnake_unk3_Animarr[0]}
+AnimPointer BombSnake_TailLightMovePointers_Animp[1] = {
+{&BombSnake_TailLightMoveHeader_Animh.frames, &BombSnake_TailLightMoveHeader_Animh.objects, BombSnake_TailLightMove_Animarr[0]}
 };
 
-AnimPointer BombSnake_unk4Pointers_Animp[1] = {
-{&BombSnake_unk4Header_Animh.frames, &BombSnake_unk4Header_Animh.objects, BombSnake_unk4_Animarr[0]}
+AnimPointer BombSnake_TailHeavyMovePointers_Animp[1] = {
+{&BombSnake_TailHeavyMoveHeader_Animh.frames, &BombSnake_TailHeavyMoveHeader_Animh.objects, BombSnake_TailHeavyMove_Animarr[0]}
 };
 
 char SomeBSS[0x320];

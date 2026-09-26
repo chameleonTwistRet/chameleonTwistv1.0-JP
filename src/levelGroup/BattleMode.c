@@ -1255,8 +1255,8 @@ Mtx BattleMode_IMtx33 = IDENTITY;
 Lights1 BattleMode_battleScope2_Light =
     #include "assets/levelGroup/BattleMode/battleScope2/battleScope2.light.inc.c"
 
-Vtx BattleMode_a_model1_Vtx[] = {
-    #include "assets/levelGroup/BattleMode/a_model1/a_model1.vtx.inc.c"
+Vtx BattleMode_PopcornBucket_Vtx[] = {
+    #include "assets/levelGroup/BattleMode/PopcornBucket/PopcornBucket.vtx.inc.c"
 };
 Mtx BattleMode_IMtx34 = IDENTITY;
 unsigned char BattleMode_Pad8[] = FILEPAD;
@@ -1272,18 +1272,18 @@ unsigned char BattleMode_bucket_rgba16_PNG[] = {
 #include "build/assets/levelGroup/BattleMode/img/bucket.rgba16.png.inc.c"
 };
 
-Gfx BattleMode_a_model1_Gfx[] = {
-    #include "assets/levelGroup/BattleMode/a_model1/a_model1.gfx.inc.c"
+Gfx BattleMode_PopcornBucket_Gfx[] = {
+    #include "assets/levelGroup/BattleMode/PopcornBucket/PopcornBucket.gfx.inc.c"
 };
 
-Anim BattleMode_unk1Header_Animh = {
-    #include "assets/levelGroup/BattleMode/anim/unk1Header.animH.inc.c"
+Anim BattleMode_PopcornBucketIdleHeader_Animh = {
+    #include "assets/levelGroup/BattleMode/anim/PopcornBucketIdleHeader.animH.inc.c"
 };
 
-Mtx BattleMode_unk1_Animarr[2][1] = {
-    #include "assets/levelGroup/BattleMode/anim/unk1.animArr.inc.c"
+Mtx BattleMode_PopcornBucketIdle_Animarr[2][1] = {
+    #include "assets/levelGroup/BattleMode/anim/PopcornBucketIdle.animArr.inc.c"
 };
 
-AnimPointer BattleMode_unk1Pointers_Animp[1] = {
-{&BattleMode_unk1Header_Animh.frames, &BattleMode_unk1Header_Animh.objects, BattleMode_unk1_Animarr[0]}
+AnimPointer BattleMode_PopcornBucketIdlePointers_Animp[1] = {
+{&BattleMode_PopcornBucketIdleHeader_Animh.frames, &BattleMode_PopcornBucketIdleHeader_Animh.objects, BattleMode_PopcornBucketIdle_Animarr[0]}
 };

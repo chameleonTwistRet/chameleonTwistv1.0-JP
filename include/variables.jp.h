@@ -225,7 +225,7 @@ extern f32 D_80176F50;
 extern OSMesgQueue gSchedMessageQueue;
 extern OSTask* gCurrentGfxTask;
 extern OSTask* gCurrentAudioTask;
-extern s16 D_801B3540;
+extern s16 gFadeActive;
 extern u8 gAlHeapBase[300000];
 extern s32 D_801FC9A0;
 extern s32 TempoToSetBGM;

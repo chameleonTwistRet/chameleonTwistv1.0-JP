@@ -329,7 +329,7 @@ void Process_BattleMenu(void);
 void Process_OptionsMenu(void);
 void Process_GameOver(void);
 void Process_JSSLogo(void);
-void Process_PreCredits(void);
+void Process_StageClear(void);
 void func_800A07E0(void);
 void Process_Ranking(void);
 void func_800557F8(void);

@@ -535,7 +535,7 @@ void Actors_Init(s32 actorIndex, s32 actorID, f32 posX, f32 posY, f32 posZ, f32 
     case SAUCER:
         ActorInit_Saucer(actorInstance);
         return;
-    case METAL_SHEET:
+    case FOLDING_SCREEN:
         ActorInit_MetalSheet(actorInstance);
         return;
     case SCROLL:

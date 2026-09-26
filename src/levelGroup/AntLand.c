@@ -3035,8 +3035,8 @@ Mtx AntLand_IMtx64 = IDENTITY;
 Lights1 AntLand_alScope2_Light =
     #include "assets/levelGroup/AntLand/alScope2.light.inc.c"
 
-Vtx AntLand_yellowAnt_vtx_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx.vtx.inc.c"
+Vtx AntLand_YellowAnt_Head_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_Head/YellowAnt_Head.vtx.inc.c"
 };
 Mtx AntLand_IMtx65 = IDENTITY;
 unsigned char AntLand_Pad44[] = FILEPAD;
@@ -3056,98 +3056,98 @@ unsigned char AntLand_yellowAnt_yellowEyeColor_ci4_PAL[] = {
 #include "build/assets/levelGroup/AntLand/yellowAnt_yellowEyeColor.ci4.pal.inc.c"
 };
 
-Gfx AntLand_yellowAnt_gfx_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx.gfx.inc.c"
+Gfx AntLand_YellowAnt_Head_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_Head/YellowAnt_Head.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx2_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx2.vtx.inc.c"
+Vtx AntLand_YellowAnt_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Foot/YellowAnt_R_Foot.vtx.inc.c"
 };
 Mtx AntLand_IMtx66 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx2_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx2.gfx.inc.c"
+Gfx AntLand_YellowAnt_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Foot/YellowAnt_R_Foot.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx3_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx3.vtx.inc.c"
+Vtx AntLand_YellowAnt_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Leg/YellowAnt_R_Leg.vtx.inc.c"
 };
 Mtx AntLand_IMtx67 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx3_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx3.gfx.inc.c"
+Gfx AntLand_YellowAnt_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Leg/YellowAnt_R_Leg.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx4_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx4.vtx.inc.c"
+Vtx AntLand_YellowAnt_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Leg/YellowAnt_L_Leg.vtx.inc.c"
 };
 Mtx AntLand_IMtx68 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx4_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx4.gfx.inc.c"
+Gfx AntLand_YellowAnt_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Leg/YellowAnt_L_Leg.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx5_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx5.vtx.inc.c"
+Vtx AntLand_YellowAnt_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Foot/YellowAnt_L_Foot.vtx.inc.c"
 };
 Mtx AntLand_IMtx69 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx5_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx5.gfx.inc.c"
+Gfx AntLand_YellowAnt_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Foot/YellowAnt_L_Foot.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx6_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx6.vtx.inc.c"
+Vtx AntLand_YellowAnt_R_Mandible_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Mandible/YellowAnt_R_Mandible.vtx.inc.c"
 };
 Mtx AntLand_IMtx70 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx6_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx6.gfx.inc.c"
+Gfx AntLand_YellowAnt_R_Mandible_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Mandible/YellowAnt_R_Mandible.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx7_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx7.vtx.inc.c"
+Vtx AntLand_YellowAnt_L_Mandible_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Mandible/YellowAnt_L_Mandible.vtx.inc.c"
 };
 Mtx AntLand_IMtx71 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx7_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx7.gfx.inc.c"
+Gfx AntLand_YellowAnt_L_Mandible_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Mandible/YellowAnt_L_Mandible.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx8_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx8.vtx.inc.c"
+Vtx AntLand_YellowAnt_R_AntennaStem_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_AntennaStem/YellowAnt_R_AntennaStem.vtx.inc.c"
 };
 Mtx AntLand_IMtx72 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx8_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx8.gfx.inc.c"
+Gfx AntLand_YellowAnt_R_AntennaStem_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_AntennaStem/YellowAnt_R_AntennaStem.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx9_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx9.vtx.inc.c"
+Vtx AntLand_YellowAnt_L_AntennaStem_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_AntennaStem/YellowAnt_L_AntennaStem.vtx.inc.c"
 };
 Mtx AntLand_IMtx73 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx9_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx9.gfx.inc.c"
+Gfx AntLand_YellowAnt_L_AntennaStem_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_AntennaStem/YellowAnt_L_AntennaStem.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx10_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx10.vtx.inc.c"
+Vtx AntLand_YellowAnt_R_Ear_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Ear/YellowAnt_R_Ear.vtx.inc.c"
 };
 Mtx AntLand_IMtx74 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx10_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx10.gfx.inc.c"
+Gfx AntLand_YellowAnt_R_Ear_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_R_Ear/YellowAnt_R_Ear.gfx.inc.c"
 };
 
-Vtx AntLand_yellowAnt_vtx11_Vtx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_vtx11.vtx.inc.c"
+Vtx AntLand_YellowAnt_L_Ear_Vtx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Ear/YellowAnt_L_Ear.vtx.inc.c"
 };
 Mtx AntLand_IMtx75 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx11_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx11.gfx.inc.c"
+Gfx AntLand_YellowAnt_L_Ear_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAnt_L_Ear/YellowAnt_L_Ear.gfx.inc.c"
 };
 
 Vtx AntLand_yellowAnt_vtx12_Vtx[] = {
@@ -3169,18 +3169,18 @@ Gfx AntLand_yellowAnt_gfx13_Gfx[] = {
 };
 Mtx AntLand_IMtx78 = IDENTITY;
 
-Gfx AntLand_yellowAnt_gfx14_Gfx[] = {
-    #include "assets/levelGroup/AntLand/yellowAnt_gfx14.gfx.inc.c"
+Gfx AntLand_YellowAntModel_Gfx[] = {
+    #include "assets/levelGroup/AntLand/YellowAntModel/YellowAntModel.gfx.inc.c"
 };
 
-Anim AntLand_yellowAntAnim_Animh = {
-    #include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnim.animH.inc.c"
+Anim AntLand_YellowAntWalkHeader_Animh = {
+    #include "assets/levelGroup/AntLand/anim/YellowAntWalkHeader.animH.inc.c"
 };
 
-Mtx AntLand_yellowAntAnim_Animarr[20][13] = {
-    #include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnim.animArr.inc.c"
+Mtx AntLand_YellowAntWalk_Animarr[20][13] = {
+    #include "assets/levelGroup/AntLand/anim/YellowAntWalk.animArr.inc.c"
 };
 
-AnimPointer AntLand_yellowAntAnimPointers_Animp[1] = {
-{&AntLand_yellowAntAnim_Animh.frames, &AntLand_yellowAntAnim_Animh.objects, AntLand_yellowAntAnim_Animarr[0]}
+AnimPointer AntLand_YellowAntWalkPointers_Animp[1] = {
+{&AntLand_YellowAntWalkHeader_Animh.frames, &AntLand_YellowAntWalkHeader_Animh.objects, AntLand_YellowAntWalk_Animarr[0]}
 };

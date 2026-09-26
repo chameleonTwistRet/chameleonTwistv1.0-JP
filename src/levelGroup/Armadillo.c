@@ -189,8 +189,8 @@ Mtx Armadillo_IMtx5 = IDENTITY;
 Lights1 Armadillo_adScope2_Light =
     #include "assets/levelGroup/Armadillo/adScope2/adScope2.light.inc.c"
 
-Vtx Armadillo_a_model1_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model1/a_model1.vtx.inc.c"
+Vtx Armadillo_ShellTail_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellTail/ShellTail.vtx.inc.c"
 };
 Mtx Armadillo_IMtx6 = IDENTITY;
 unsigned char Armadillo_Pad1[] = FILEPAD;
@@ -210,57 +210,57 @@ unsigned char Armadillo_shell_ci8_PAL[] = {
 #include "build/assets/levelGroup/Armadillo/img/shell.ci8.pal.inc.c"
 };
 
-Gfx Armadillo_a_model1_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model1/a_model1.gfx.inc.c"
+Gfx Armadillo_ShellTail_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellTail/ShellTail.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model2_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model2/a_model2.vtx.inc.c"
+Vtx Armadillo_ShellSix_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellSix/ShellSix.vtx.inc.c"
 };
 Mtx Armadillo_IMtx7 = IDENTITY;
 
-Gfx Armadillo_a_model2_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model2/a_model2.gfx.inc.c"
+Gfx Armadillo_ShellSix_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellSix/ShellSix.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model3_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model3/a_model3.vtx.inc.c"
+Vtx Armadillo_ShellFive_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellFive/ShellFive.vtx.inc.c"
 };
 Mtx Armadillo_IMtx8 = IDENTITY;
 
-Gfx Armadillo_a_model3_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model3/a_model3.gfx.inc.c"
+Gfx Armadillo_ShellFive_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellFive/ShellFive.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model4_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model4/a_model4.vtx.inc.c"
+Vtx Armadillo_ShellFour_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellFour/ShellFour.vtx.inc.c"
 };
 Mtx Armadillo_IMtx9 = IDENTITY;
 
-Gfx Armadillo_a_model4_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model4/a_model4.gfx.inc.c"
+Gfx Armadillo_ShellFour_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellFour/ShellFour.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model5_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model5/a_model5.vtx.inc.c"
+Vtx Armadillo_ShellThree_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellThree/ShellThree.vtx.inc.c"
 };
 Mtx Armadillo_IMtx10 = IDENTITY;
 
-Gfx Armadillo_a_model5_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model5/a_model5.gfx.inc.c"
+Gfx Armadillo_ShellThree_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellThree/ShellThree.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model6_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model6/a_model6.vtx.inc.c"
+Vtx Armadillo_ShellOne_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellOne/ShellOne.vtx.inc.c"
 };
 Mtx Armadillo_IMtx11 = IDENTITY;
 
-Gfx Armadillo_a_model6_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model6/a_model6.gfx.inc.c"
+Gfx Armadillo_ShellOne_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellOne/ShellOne.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model7_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model7/a_model7.vtx.inc.c"
+Vtx Armadillo_Head_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Head/Head.vtx.inc.c"
 };
 Mtx Armadillo_IMtx12 = IDENTITY;
 unsigned char Armadillo_Pad5[] = FILEPAD;
@@ -288,12 +288,12 @@ unsigned char Armadillo_shineThing_ci8_PAL[] = {
 #include "build/assets/levelGroup/Armadillo/img/shineThing.ci8.pal.inc.c"
 };
 
-Gfx Armadillo_a_model7_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model7/a_model7.gfx.inc.c"
+Gfx Armadillo_Head_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Head/Head.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model8_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model8/a_model8.vtx.inc.c"
+Vtx Armadillo_Back_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Foot/Back_R_Foot.vtx.inc.c"
 };
 Mtx Armadillo_IMtx13 = IDENTITY;
 unsigned char Armadillo_Pad11[] = FILEPAD;
@@ -305,12 +305,12 @@ unsigned char Armadillo_foot_ci8_PAL[] = {
 #include "build/assets/levelGroup/Armadillo/img/foot.ci8.pal.inc.c"
 };
 
-Gfx Armadillo_a_model8_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model8/a_model8.gfx.inc.c"
+Gfx Armadillo_Back_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Foot/Back_R_Foot.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model9_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model9/a_model9.vtx.inc.c"
+Vtx Armadillo_Back_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Leg/Back_R_Leg.vtx.inc.c"
 };
 Mtx Armadillo_IMtx14 = IDENTITY;
 unsigned char Armadillo_Pad13[] = FILEPAD;
@@ -322,182 +322,182 @@ unsigned char Armadillo_skin2Compressed_ci4_PAL[] = {
 #include "build/assets/levelGroup/Armadillo/img/skin2Compressed.ci4.pal.inc.c"
 };
 
-Gfx Armadillo_a_model9_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model9/a_model9.gfx.inc.c"
+Gfx Armadillo_Back_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Leg/Back_R_Leg.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model10_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model10/a_model10.vtx.inc.c"
+Vtx Armadillo_Back_R_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Thigh/Back_R_Thigh.vtx.inc.c"
 };
 Mtx Armadillo_IMtx15 = IDENTITY;
 
-Gfx Armadillo_a_model10_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model10/a_model10.gfx.inc.c"
+Gfx Armadillo_Back_R_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_R_Thigh/Back_R_Thigh.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model11_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model11/a_model11.vtx.inc.c"
+Vtx Armadillo_Front_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Foot/Front_R_Foot.vtx.inc.c"
 };
 Mtx Armadillo_IMtx16 = IDENTITY;
 
-Gfx Armadillo_a_model11_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model11/a_model11.gfx.inc.c"
+Gfx Armadillo_Front_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Foot/Front_R_Foot.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model12_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model12/a_model12.vtx.inc.c"
+Vtx Armadillo_Front_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Leg/Front_R_Leg.vtx.inc.c"
 };
 Mtx Armadillo_IMtx17 = IDENTITY;
 
-Gfx Armadillo_a_model12_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model12/a_model12.gfx.inc.c"
+Gfx Armadillo_Front_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Leg/Front_R_Leg.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model13_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model13/a_model13.vtx.inc.c"
+Vtx Armadillo_Front_R_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Thigh/Front_R_Thigh.vtx.inc.c"
 };
 Mtx Armadillo_IMtx18 = IDENTITY;
 
-Gfx Armadillo_a_model13_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model13/a_model13.gfx.inc.c"
+Gfx Armadillo_Front_R_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_R_Thigh/Front_R_Thigh.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model14_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model14/a_model14.vtx.inc.c"
+Vtx Armadillo_Front_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Foot/Front_L_Foot.vtx.inc.c"
 };
 Mtx Armadillo_IMtx19 = IDENTITY;
 
-Gfx Armadillo_a_model14_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model14/a_model14.gfx.inc.c"
+Gfx Armadillo_Front_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Foot/Front_L_Foot.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model15_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model15/a_model15.vtx.inc.c"
+Vtx Armadillo_Front_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Leg/Front_L_Leg.vtx.inc.c"
 };
 Mtx Armadillo_IMtx20 = IDENTITY;
 
-Gfx Armadillo_a_model15_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model15/a_model15.gfx.inc.c"
+Gfx Armadillo_Front_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Leg/Front_L_Leg.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model16_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model16/a_model16.vtx.inc.c"
+Vtx Armadillo_Front_L_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Thigh/Front_L_Thigh.vtx.inc.c"
 };
 Mtx Armadillo_IMtx21 = IDENTITY;
 
-Gfx Armadillo_a_model16_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model16/a_model16.gfx.inc.c"
+Gfx Armadillo_Front_L_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Front_L_Thigh/Front_L_Thigh.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model17_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model17/a_model17.vtx.inc.c"
+Vtx Armadillo_Back_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Foot/Back_L_Foot.vtx.inc.c"
 };
 Mtx Armadillo_IMtx22 = IDENTITY;
 
-Gfx Armadillo_a_model17_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model17/a_model17.gfx.inc.c"
+Gfx Armadillo_Back_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Foot/Back_L_Foot.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model18_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model18/a_model18.vtx.inc.c"
+Vtx Armadillo_Back_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Leg/Back_L_Leg.vtx.inc.c"
 };
 Mtx Armadillo_IMtx23 = IDENTITY;
 
-Gfx Armadillo_a_model18_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model18/a_model18.gfx.inc.c"
+Gfx Armadillo_Back_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Leg/Back_L_Leg.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model19_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model19/a_model19.vtx.inc.c"
+Vtx Armadillo_Back_L_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Thigh/Back_L_Thigh.vtx.inc.c"
 };
 Mtx Armadillo_IMtx24 = IDENTITY;
 
-Gfx Armadillo_a_model19_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model19/a_model19.gfx.inc.c"
+Gfx Armadillo_Back_L_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Back_L_Thigh/Back_L_Thigh.gfx.inc.c"
 };
 
-Vtx Armadillo_a_model20_Vtx[] = {
-    #include "assets/levelGroup/Armadillo/a_model20/a_model20.vtx.inc.c"
+Vtx Armadillo_ShellTwo_Vtx[] = {
+    #include "assets/levelGroup/Armadillo/ShellTwo/ShellTwo.vtx.inc.c"
 };
 Mtx Armadillo_IMtx25 = IDENTITY;
 
-Gfx Armadillo_a_model20_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model20/a_model20.gfx.inc.c"
+Gfx Armadillo_ShellTwo_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/ShellTwo/ShellTwo.gfx.inc.c"
 };
 Mtx Armadillo_IMtx26 = IDENTITY;
 
-Gfx Armadillo_a_model21_Gfx[] = {
-    #include "assets/levelGroup/Armadillo/a_model21/a_model21.gfx.inc.c"
+Gfx Armadillo_Model_Gfx[] = {
+    #include "assets/levelGroup/Armadillo/Model/Model.gfx.inc.c"
 };
 
-Anim Armadillo_unk1Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk1Header.animH.inc.c"
+Anim Armadillo_IdleHeader_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/IdleHeader.animH.inc.c"
 };
 
-Mtx Armadillo_unk1_Animarr[25][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk1.animArr.inc.c"
+Mtx Armadillo_Idle_Animarr[25][20] = {
+    #include "assets/levelGroup/Armadillo/anim/Idle.animArr.inc.c"
 };
 
-Anim Armadillo_unk2Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk2Header.animH.inc.c"
+Anim Armadillo_Idle2Header_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/Idle2Header.animH.inc.c"
 };
 
-Mtx Armadillo_unk2_Animarr[21][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk2.animArr.inc.c"
+Mtx Armadillo_Idle2_Animarr[21][20] = {
+    #include "assets/levelGroup/Armadillo/anim/Idle2.animArr.inc.c"
 };
 
-AnimPointer Armadillo_unk1Pointers_Animp[1] = {
-{&Armadillo_unk1Header_Animh.frames, &Armadillo_unk1Header_Animh.objects, Armadillo_unk1_Animarr[0]}
+AnimPointer Armadillo_IdlePointers_Animp[1] = {
+{&Armadillo_IdleHeader_Animh.frames, &Armadillo_IdleHeader_Animh.objects, Armadillo_Idle_Animarr[0]}
 };
 
-AnimPointer Armadillo_unk2Pointers_Animp[1] = {
-{&Armadillo_unk2Header_Animh.frames, &Armadillo_unk2Header_Animh.objects, Armadillo_unk2_Animarr[0]}
+AnimPointer Armadillo_Idle2Pointers_Animp[1] = {
+{&Armadillo_Idle2Header_Animh.frames, &Armadillo_Idle2Header_Animh.objects, Armadillo_Idle2_Animarr[0]}
 };
 
-Anim Armadillo_unk3Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk3Header.animH.inc.c"
+Anim Armadillo_UnrollHeader_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/UnrollHeader.animH.inc.c"
 };
 
-Mtx Armadillo_unk3_Animarr[10][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk3.animArr.inc.c"
+Mtx Armadillo_Unroll_Animarr[10][20] = {
+    #include "assets/levelGroup/Armadillo/anim/Unroll.animArr.inc.c"
 };
 
-AnimPointer Armadillo_unk3Pointers_Animp[1] = {
-{&Armadillo_unk3Header_Animh.frames, &Armadillo_unk3Header_Animh.objects, Armadillo_unk3_Animarr[0]}
+AnimPointer Armadillo_UnrollPointers_Animp[1] = {
+{&Armadillo_UnrollHeader_Animh.frames, &Armadillo_UnrollHeader_Animh.objects, Armadillo_Unroll_Animarr[0]}
 };
 
-Anim Armadillo_unk4Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk4Header.animH.inc.c"
+Anim Armadillo_WiggleUpsideDownHeader_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/WiggleUpsideDownHeader.animH.inc.c"
 };
 
-Mtx Armadillo_unk4_Animarr[10][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk4.animArr.inc.c"
+Mtx Armadillo_WiggleUpsideDown_Animarr[10][20] = {
+    #include "assets/levelGroup/Armadillo/anim/WiggleUpsideDown.animArr.inc.c"
 };
 
-AnimPointer Armadillo_unk4Pointers_Animp[1] = {
-{&Armadillo_unk4Header_Animh.frames, &Armadillo_unk4Header_Animh.objects, Armadillo_unk4_Animarr[0]}
+AnimPointer Armadillo_WiggleUpsideDownPointers_Animp[1] = {
+{&Armadillo_WiggleUpsideDownHeader_Animh.frames, &Armadillo_WiggleUpsideDownHeader_Animh.objects, Armadillo_WiggleUpsideDown_Animarr[0]}
 };
 
-Anim Armadillo_unk5Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk5Header.animH.inc.c"
+Anim Armadillo_TryGetUpHeader_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/TryGetUpHeader.animH.inc.c"
 };
 
-Mtx Armadillo_unk5_Animarr[15][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk5.animArr.inc.c"
+Mtx Armadillo_TryGetUp_Animarr[15][20] = {
+    #include "assets/levelGroup/Armadillo/anim/TryGetUp.animArr.inc.c"
 };
 
-AnimPointer Armadillo_unk5Pointers_Animp[1] = {
-{&Armadillo_unk5Header_Animh.frames, &Armadillo_unk5Header_Animh.objects, Armadillo_unk5_Animarr[0]}
+AnimPointer Armadillo_TryGetUpPointers_Animp[1] = {
+{&Armadillo_TryGetUpHeader_Animh.frames, &Armadillo_TryGetUpHeader_Animh.objects, Armadillo_TryGetUp_Animarr[0]}
 };
 
-Anim Armadillo_unk6Header_Animh = {
-    #include "assets/levelGroup/Armadillo/anim/unk6Header.animH.inc.c"
+Anim Armadillo_GetUpHeader_Animh = {
+    #include "assets/levelGroup/Armadillo/anim/GetUpHeader.animH.inc.c"
 };
 
-Mtx Armadillo_unk6_Animarr[15][20] = {
-    #include "assets/levelGroup/Armadillo/anim/unk6.animArr.inc.c"
+Mtx Armadillo_GetUp_Animarr[15][20] = {
+    #include "assets/levelGroup/Armadillo/anim/GetUp.animArr.inc.c"
 };
 
-AnimPointer Armadillo_unk6Pointers_Animp[1] = {
-{&Armadillo_unk6Header_Animh.frames, &Armadillo_unk6Header_Animh.objects, Armadillo_unk6_Animarr[0]}
+AnimPointer Armadillo_GetUpPointers_Animp[1] = {
+{&Armadillo_GetUpHeader_Animh.frames, &Armadillo_GetUpHeader_Animh.objects, Armadillo_GetUp_Animarr[0]}
 };

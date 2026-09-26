@@ -193,17 +193,17 @@ Mtx Quintella_IMtx5 = IDENTITY;
 Lights1 Quintella_qtScope2_Light =
     #include "assets/levelGroup/Quintella/qtScope2/qtScope2.light.inc.c"
 
-Vtx Quintella_a_model1_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model1/a_model1.vtx.inc.c"
+Vtx Quintella_Crown_Vtx[] = {
+    #include "assets/levelGroup/Quintella/Crown/Crown.vtx.inc.c"
 };
 Mtx Quintella_IMtx6 = IDENTITY;
 
-Gfx Quintella_a_model1_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model1/a_model1.gfx.inc.c"
+Gfx Quintella_Crown_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Crown/Crown.gfx.inc.c"
 };
 
-Vtx Quintella_a_model2_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model2/a_model2.vtx.inc.c"
+Vtx Quintella_Abdomen_Vtx[] = {
+    #include "assets/levelGroup/Quintella/Abdomen/Abdomen.vtx.inc.c"
 };
 Mtx Quintella_IMtx7 = IDENTITY;
 unsigned char Quintella_Pad4[] = FILEPAD;
@@ -231,12 +231,12 @@ unsigned char Quintella_gaster_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/gaster.ci4.pal.inc.c"
 };
 
-Gfx Quintella_a_model2_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model2/a_model2.gfx.inc.c"
+Gfx Quintella_Abdomen_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Abdomen/Abdomen.gfx.inc.c"
 };
 
-Vtx Quintella_a_model3_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model3/a_model3.vtx.inc.c"
+Vtx Quintella_Head_Vtx[] = {
+    #include "assets/levelGroup/Quintella/Head/Head.vtx.inc.c"
 };
 Mtx Quintella_IMtx8 = IDENTITY;
 unsigned char Quintella_Pad10[] = FILEPAD;
@@ -256,12 +256,12 @@ unsigned char Quintella_color3_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/color3.ci4.pal.inc.c"
 };
 
-Gfx Quintella_a_model3_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model3/a_model3.gfx.inc.c"
+Gfx Quintella_Head_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Head/Head.gfx.inc.c"
 };
 
-Vtx Quintella_a_model4_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model4/a_model4.vtx.inc.c"
+Vtx Quintella_L_Arm_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Arm/L_Arm.vtx.inc.c"
 };
 Mtx Quintella_IMtx9 = IDENTITY;
 unsigned char Quintella_Pad14[] = FILEPAD;
@@ -273,84 +273,84 @@ unsigned char Quintella_shoulder_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/shoulder.ci4.pal.inc.c"
 };
 
-Gfx Quintella_a_model4_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model4/a_model4.gfx.inc.c"
+Gfx Quintella_L_Arm_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Arm/L_Arm.gfx.inc.c"
 };
 
-Vtx Quintella_a_model5_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model5/a_model5.vtx.inc.c"
+Vtx Quintella_R_Foot_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Foot/R_Foot.vtx.inc.c"
 };
 Mtx Quintella_IMtx10 = IDENTITY;
 
-Gfx Quintella_a_model5_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model5/a_model5.gfx.inc.c"
+Gfx Quintella_R_Foot_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Foot/R_Foot.gfx.inc.c"
 };
 
-Vtx Quintella_a_model6_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model6/a_model6.vtx.inc.c"
+Vtx Quintella_L_Foot_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Foot/L_Foot.vtx.inc.c"
 };
 Mtx Quintella_IMtx11 = IDENTITY;
 
-Gfx Quintella_a_model6_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model6/a_model6.gfx.inc.c"
+Gfx Quintella_L_Foot_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Foot/L_Foot.gfx.inc.c"
 };
 
-Vtx Quintella_a_model7_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model7/a_model7.vtx.inc.c"
+Vtx Quintella_R_Arm_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Arm/R_Arm.vtx.inc.c"
 };
 Mtx Quintella_IMtx12 = IDENTITY;
 
-Gfx Quintella_a_model7_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model7/a_model7.gfx.inc.c"
+Gfx Quintella_R_Arm_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Arm/R_Arm.gfx.inc.c"
 };
 
-Vtx Quintella_a_model8_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model8/a_model8.vtx.inc.c"
+Vtx Quintella_R_Hand_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Hand/R_Hand.vtx.inc.c"
 };
 Mtx Quintella_IMtx13 = IDENTITY;
 
-Gfx Quintella_a_model8_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model8/a_model8.gfx.inc.c"
+Gfx Quintella_R_Hand_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Hand/R_Hand.gfx.inc.c"
 };
 
-Vtx Quintella_a_model9_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model9/a_model9.vtx.inc.c"
+Vtx Quintella_R_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Thigh/R_Thigh.vtx.inc.c"
 };
 Mtx Quintella_IMtx14 = IDENTITY;
 
-Gfx Quintella_a_model9_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model9/a_model9.gfx.inc.c"
+Gfx Quintella_R_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Thigh/R_Thigh.gfx.inc.c"
 };
 
-Vtx Quintella_a_model10_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model10/a_model10.vtx.inc.c"
+Vtx Quintella_R_Leg_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Leg/R_Leg.vtx.inc.c"
 };
 Mtx Quintella_IMtx15 = IDENTITY;
 
-Gfx Quintella_a_model10_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model10/a_model10.gfx.inc.c"
+Gfx Quintella_R_Leg_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Leg/R_Leg.gfx.inc.c"
 };
 
-Vtx Quintella_a_model11_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model11/a_model11.vtx.inc.c"
+Vtx Quintella_L_Thigh_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Thigh/L_Thigh.vtx.inc.c"
 };
 Mtx Quintella_IMtx16 = IDENTITY;
 
-Gfx Quintella_a_model11_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model11/a_model11.gfx.inc.c"
+Gfx Quintella_L_Thigh_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Thigh/L_Thigh.gfx.inc.c"
 };
 
-Vtx Quintella_a_model12_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model12/a_model12.vtx.inc.c"
+Vtx Quintella_L_Leg_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Leg/L_Leg.vtx.inc.c"
 };
 Mtx Quintella_IMtx17 = IDENTITY;
 
-Gfx Quintella_a_model12_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model12/a_model12.gfx.inc.c"
+Gfx Quintella_L_Leg_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Leg/L_Leg.gfx.inc.c"
 };
 
-Vtx Quintella_a_model13_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model13/a_model13.vtx.inc.c"
+Vtx Quintella_Torso_Vtx[] = {
+    #include "assets/levelGroup/Quintella/Torso/Torso.vtx.inc.c"
 };
 Mtx Quintella_IMtx18 = IDENTITY;
 unsigned char Quintella_Pad16[] = FILEPAD;
@@ -374,30 +374,30 @@ unsigned char Quintella_dress_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/dress.ci4.pal.inc.c"
 };
 
-Gfx Quintella_a_model13_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model13/a_model13.gfx.inc.c"
+Gfx Quintella_Torso_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Torso/Torso.gfx.inc.c"
 };
 
-Vtx Quintella_a_model14_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model14/a_model14.vtx.inc.c"
+Vtx Quintella_L_Ear_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Ear/L_Ear.vtx.inc.c"
 };
 Mtx Quintella_IMtx19 = IDENTITY;
 
-Gfx Quintella_a_model14_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model14/a_model14.gfx.inc.c"
+Gfx Quintella_L_Ear_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Ear/L_Ear.gfx.inc.c"
 };
 
-Vtx Quintella_a_model15_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model15/a_model15.vtx.inc.c"
+Vtx Quintella_L_Hand_Vtx[] = {
+    #include "assets/levelGroup/Quintella/L_Hand/L_Hand.vtx.inc.c"
 };
 Mtx Quintella_IMtx20 = IDENTITY;
 
-Gfx Quintella_a_model15_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model15/a_model15.gfx.inc.c"
+Gfx Quintella_L_Hand_Gfx[] = {
+    #include "assets/levelGroup/Quintella/L_Hand/L_Hand.gfx.inc.c"
 };
 
-Vtx Quintella_a_model16_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model16/a_model16.vtx.inc.c"
+Vtx Quintella_Fan_Vtx[] = {
+    #include "assets/levelGroup/Quintella/Fan/Fan.vtx.inc.c"
 };
 Mtx Quintella_IMtx21 = IDENTITY;
 unsigned char Quintella_Pad21[] = FILEPAD;
@@ -409,102 +409,102 @@ unsigned char Quintella_fan_ci4_PAL[] = {
 #include "build/assets/levelGroup/Quintella/img/fan.ci4.pal.inc.c"
 };
 
-Gfx Quintella_a_model16_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model16/a_model16.gfx.inc.c"
+Gfx Quintella_Fan_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Fan/Fan.gfx.inc.c"
 };
 
-Vtx Quintella_a_model17_Vtx[] = {
-    #include "assets/levelGroup/Quintella/a_model17/a_model17.vtx.inc.c"
+Vtx Quintella_R_Ear_Vtx[] = {
+    #include "assets/levelGroup/Quintella/R_Ear/R_Ear.vtx.inc.c"
 };
 Mtx Quintella_IMtx22 = IDENTITY;
 
-Gfx Quintella_a_model17_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model17/a_model17.gfx.inc.c"
+Gfx Quintella_R_Ear_Gfx[] = {
+    #include "assets/levelGroup/Quintella/R_Ear/R_Ear.gfx.inc.c"
 };
 Mtx Quintella_IMtx23 = IDENTITY;
 
-Gfx Quintella_a_model18_Gfx[] = {
-    #include "assets/levelGroup/Quintella/a_model18/a_model18.gfx.inc.c"
+Gfx Quintella_Model_Gfx[] = {
+    #include "assets/levelGroup/Quintella/Model/Model.gfx.inc.c"
 };
 
-Anim Quintella_unk1Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk1Header.animH.inc.c"
+Anim Quintella_WalkHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/WalkHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk1_Animarr[40][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk1.animArr.inc.c"
+Mtx Quintella_Walk_Animarr[40][17] = {
+    #include "assets/levelGroup/Quintella/anim/Walk.animArr.inc.c"
 };
 
-Anim Quintella_unk2Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk2Header.animH.inc.c"
+Anim Quintella_GetUpStompHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/GetUpStompHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk2_Animarr[30][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk2.animArr.inc.c"
+Mtx Quintella_GetUpStomp_Animarr[30][17] = {
+    #include "assets/levelGroup/Quintella/anim/GetUpStomp.animArr.inc.c"
 };
 
-Anim Quintella_unk3Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk3Header.animH.inc.c"
+Anim Quintella_TrippingOverHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/TrippingOverHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk3_Animarr[15][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk3.animArr.inc.c"
+Mtx Quintella_TrippingOver_Animarr[15][17] = {
+    #include "assets/levelGroup/Quintella/anim/TrippingOver.animArr.inc.c"
 };
 
-Anim Quintella_unk4Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk4Header.animH.inc.c"
+Anim Quintella_StunnedHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/StunnedHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk4_Animarr[20][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk4.animArr.inc.c"
+Mtx Quintella_Stunned_Animarr[20][17] = {
+    #include "assets/levelGroup/Quintella/anim/Stunned.animArr.inc.c"
 };
 
-Anim Quintella_unk5Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk5Header.animH.inc.c"
+Anim Quintella_SlamHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/SlamHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk5_Animarr[40][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk5.animArr.inc.c"
+Mtx Quintella_Slam_Animarr[40][17] = {
+    #include "assets/levelGroup/Quintella/anim/Slam.animArr.inc.c"
 };
 
-Anim Quintella_unk6Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk6Header.animH.inc.c"
+Anim Quintella_SpinHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/SpinHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk6_Animarr[60][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk6.animArr.inc.c"
+Mtx Quintella_Spin_Animarr[60][17] = {
+    #include "assets/levelGroup/Quintella/anim/Spin.animArr.inc.c"
 };
 
-Anim Quintella_unk7Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk7Header.animH.inc.c"
+Anim Quintella_StageClearJumpedOnHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/StageClearJumpedOnHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk7_Animarr[3][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk7.animArr.inc.c"
+Mtx Quintella_StageClearJumpedOn_Animarr[3][17] = {
+    #include "assets/levelGroup/Quintella/anim/StageClearJumpedOn.animArr.inc.c"
 };
 
-Anim Quintella_unk8Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk8Header.animH.inc.c"
+Anim Quintella_StageClearAirborneHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/StageClearAirborneHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk8_Animarr[5][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk8.animArr.inc.c"
+Mtx Quintella_StageClearAirborne_Animarr[5][17] = {
+    #include "assets/levelGroup/Quintella/anim/StageClearAirborne.animArr.inc.c"
 };
 
-Anim Quintella_unk9Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk9Header.animH.inc.c"
+Anim Quintella_StageClearBounceHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/StageClearBounceHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk9_Animarr[30][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk9.animArr.inc.c"
+Mtx Quintella_StageClearBounce_Animarr[30][17] = {
+    #include "assets/levelGroup/Quintella/anim/StageClearBounce.animArr.inc.c"
 };
 
-Anim Quintella_unk10Header_Animh = {
-    #include "assets/levelGroup/Quintella/anim/unk10Header.animH.inc.c"
+Anim Quintella_StageClearDeathHeader_Animh = {
+    #include "assets/levelGroup/Quintella/anim/StageClearDeathHeader.animH.inc.c"
 };
 
-Mtx Quintella_unk10_Animarr[55][17] = {
-    #include "assets/levelGroup/Quintella/anim/unk10.animArr.inc.c"
+Mtx Quintella_StageClearDeath_Animarr[55][17] = {
+    #include "assets/levelGroup/Quintella/anim/StageClearDeath.animArr.inc.c"
 };
 
 Anim Quintella_unk11Header_Animh = {
@@ -515,44 +515,44 @@ Mtx Quintella_unk11_Animarr[5][17] = {
     #include "assets/levelGroup/Quintella/anim/unk11.animArr.inc.c"
 };
 
-AnimPointer Quintella_unk1Pointers_Animp[1] = {
-{&Quintella_unk1Header_Animh.frames, &Quintella_unk1Header_Animh.objects, Quintella_unk1_Animarr[0]}
+AnimPointer Quintella_WalkPointers_Animp[1] = {
+{&Quintella_WalkHeader_Animh.frames, &Quintella_WalkHeader_Animh.objects, Quintella_Walk_Animarr[0]}
 };
 
-AnimPointer Quintella_unk2Pointers_Animp[1] = {
-{&Quintella_unk2Header_Animh.frames, &Quintella_unk2Header_Animh.objects, Quintella_unk2_Animarr[0]}
+AnimPointer Quintella_GetUpStompPointers_Animp[1] = {
+{&Quintella_GetUpStompHeader_Animh.frames, &Quintella_GetUpStompHeader_Animh.objects, Quintella_GetUpStomp_Animarr[0]}
 };
 
-AnimPointer Quintella_unk3Pointers_Animp[1] = {
-{&Quintella_unk3Header_Animh.frames, &Quintella_unk3Header_Animh.objects, Quintella_unk3_Animarr[0]}
+AnimPointer Quintella_TrippingOverPointers_Animp[1] = {
+{&Quintella_TrippingOverHeader_Animh.frames, &Quintella_TrippingOverHeader_Animh.objects, Quintella_TrippingOver_Animarr[0]}
 };
 
-AnimPointer Quintella_unk4Pointers_Animp[1] = {
-{&Quintella_unk4Header_Animh.frames, &Quintella_unk4Header_Animh.objects, Quintella_unk4_Animarr[0]}
+AnimPointer Quintella_StunnedPointers_Animp[1] = {
+{&Quintella_StunnedHeader_Animh.frames, &Quintella_StunnedHeader_Animh.objects, Quintella_Stunned_Animarr[0]}
 };
 
-AnimPointer Quintella_unk5Pointers_Animp[1] = {
-{&Quintella_unk5Header_Animh.frames, &Quintella_unk5Header_Animh.objects, Quintella_unk5_Animarr[0]}
+AnimPointer Quintella_SlamPointers_Animp[1] = {
+{&Quintella_SlamHeader_Animh.frames, &Quintella_SlamHeader_Animh.objects, Quintella_Slam_Animarr[0]}
 };
 
-AnimPointer Quintella_unk6Pointers_Animp[1] = {
-{&Quintella_unk6Header_Animh.frames, &Quintella_unk6Header_Animh.objects, Quintella_unk6_Animarr[0]}
+AnimPointer Quintella_SpinPointers_Animp[1] = {
+{&Quintella_SpinHeader_Animh.frames, &Quintella_SpinHeader_Animh.objects, Quintella_Spin_Animarr[0]}
 };
 
-AnimPointer Quintella_unk7Pointers_Animp[1] = {
-{&Quintella_unk7Header_Animh.frames, &Quintella_unk7Header_Animh.objects, Quintella_unk7_Animarr[0]}
+AnimPointer Quintella_StageClearJumpedOnPointers_Animp[1] = {
+{&Quintella_StageClearJumpedOnHeader_Animh.frames, &Quintella_StageClearJumpedOnHeader_Animh.objects, Quintella_StageClearJumpedOn_Animarr[0]}
 };
 
-AnimPointer Quintella_unk8Pointers_Animp[1] = {
-{&Quintella_unk8Header_Animh.frames, &Quintella_unk8Header_Animh.objects, Quintella_unk8_Animarr[0]}
+AnimPointer Quintella_StageClearAirbornePointers_Animp[1] = {
+{&Quintella_StageClearAirborneHeader_Animh.frames, &Quintella_StageClearAirborneHeader_Animh.objects, Quintella_StageClearAirborne_Animarr[0]}
 };
 
-AnimPointer Quintella_unk9Pointers_Animp[1] = {
-{&Quintella_unk9Header_Animh.frames, &Quintella_unk9Header_Animh.objects, Quintella_unk9_Animarr[0]}
+AnimPointer Quintella_StageClearBouncePointers_Animp[1] = {
+{&Quintella_StageClearBounceHeader_Animh.frames, &Quintella_StageClearBounceHeader_Animh.objects, Quintella_StageClearBounce_Animarr[0]}
 };
 
-AnimPointer Quintella_unk10Pointers_Animp[1] = {
-{&Quintella_unk10Header_Animh.frames, &Quintella_unk10Header_Animh.objects, Quintella_unk10_Animarr[0]}
+AnimPointer Quintella_StageClearDeathPointers_Animp[1] = {
+{&Quintella_StageClearDeathHeader_Animh.frames, &Quintella_StageClearDeathHeader_Animh.objects, Quintella_StageClearDeath_Animarr[0]}
 };
 
 AnimPointer Quintella_unk11Pointers_Animp[1] = {
